@@ -1,6 +1,9 @@
 import { ActivityType } from "./activity_type.js";
 import { Coordinates } from "./coordinates.js";
 
+/**
+ * Route class represents a route in the app.
+ */
 export class Route {
   public id: string
   public name: string
@@ -12,6 +15,18 @@ export class Route {
   public activity: ActivityType
   public averageScore: number
 
+  /**
+   * constructor creates a new Route object from the data provided.
+   * @param id ID of the route.
+   * @param name Name of the route.
+   * @param start Geographic coordinates of the starting point of the route.
+   * @param end Geographic coordinates of the ending point of the route.
+   * @param distanceKm Length of the route, in kilometers.
+   * @param averageSlope Average slope of the route, in degrees.
+   * @param userIds List of users that have traveled through the route.
+   * @param activity Type of activity in this route.
+   * @param averageScore Average score of this route.
+   */
   constructor(id: string, name: string, start: Coordinates, end: Coordinates, distanceKm: number,
       averageSlope: number, userIds: string[], activity: ActivityType, averageScore: number) {
     
