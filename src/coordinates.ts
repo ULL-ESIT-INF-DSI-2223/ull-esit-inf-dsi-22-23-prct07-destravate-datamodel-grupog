@@ -26,7 +26,7 @@ export class Coordinates {
     return new Coordinates(
       Number(m[1]) * (m[2] === "N" ? 1 : -1),
       Number(m[3]) * (m[4] === "E" ? 1 : -1),
-      Number(3))
+      Number(m[5]))
   }
 
   toString(): string {
