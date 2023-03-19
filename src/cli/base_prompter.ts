@@ -24,4 +24,10 @@ export default abstract class BasePrompter {
    * edit modifies an object of the prompter type from the database.
    */
   abstract edit(): Promise<void>
+
+  /**
+   * print shows the list of objects of the prompter type contained in the database, sorted by the criteria defined by
+   * the user.
+   */
+  abstract print(): Promise<void>
 }

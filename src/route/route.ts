@@ -1,4 +1,5 @@
-import { ActivityType } from "../activity_type.js";
+import { getBorderCharacters, table } from "table";
+import { ActivityType, activityTypeToString } from "../activity_type.js";
 import Coordinates from "./coordinates.js";
 
 /**
@@ -52,5 +53,41 @@ export default class Route {
     this.userIds = userIds
     this.activity = activity
     this.averageScore = averageScore
+  }
+
+  /**
+   * printTable prints a table containing the list of routes provided.
+   * @param list List of routes to print.
+   */
+  static printTable(list: Route[]): void {
+    const tableData = [[
+      "Identificador",
+      "Nombre",
+      "Punto de inicio",
+      "Punto de finalización",
+      "Longitud",
+      "Inclinación media",
+      "Usuarios que la han hecho",
+      "Tipo de actividad",
+      "Puntuación media"
+    ]] as unknown[][]
+  
+    list.forEach(route => tableData.push([
+      route.id,
+      route.name,
+      Coordinates.toString(route.start),
+      Coordinates.toString(route.end),
+      `${route.distanceKm} km`,
+      `${route.averageSlope}°`,
+      route.userIds,
+      activityTypeToString(route.activity),
+      `${route.averageScore}/10`
+    ]))
+
+    console.log(table(tableData, {
+      border: getBorderCharacters("norc"),
+      columnDefault: {alignment: "center"},
+      drawHorizontalLine: (lineIndex: number, rowCount: number) => lineIndex < 2 || lineIndex === rowCount
+    }))
   }
 }
