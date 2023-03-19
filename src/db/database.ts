@@ -119,7 +119,7 @@ export default class Database {
    * challenge returns the list of challenges in the database.
    * @returns The list of challenges in the database.
    */
-  challenge(): Challenge[] {
+  challenges(): Challenge[] {
     return this._db.data!.challenges;
   }
 

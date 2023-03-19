@@ -9,7 +9,6 @@
     "doc": "typedoc && cp assets/list-method-dependencies.jpg docs/",
     "start": "tsc-watch --onSuccess 'node dist/index.js'",
     "test": "NODE_ENV=test mocha",
-    "cov": "nyc npm test",
     "watch": "NODE_ENV=test mocha --watch --watch-extensions ts"
   },
   "repository": {
