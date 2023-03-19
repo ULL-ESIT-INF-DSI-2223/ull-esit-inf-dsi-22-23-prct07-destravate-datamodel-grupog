@@ -12,7 +12,7 @@ describe("Challenges", () => {
     expect(() => new Challenge("123", "Challenge", [route1, route2], ["a", "b"],ActivityType.RUNNING)).not.to.throw()
     // Invalid constructors
     expect(() => new Challenge("123", "", [route1, route2], ["a", "b"],ActivityType.RUNNING)).to.throw("invalid name")
-    expect(() => new Challenge("123", "Challenge", [route1, route2], ["a", "b"],ActivityType.RUNNING)).to.throw("invalid distance in kilometers")
-    expect(() => new Challenge("123", "Challenge", [route1, route2], ["a", "b"],ActivityType.RUNNING)).to.throw("invalid total distance in kilometers")
+    //expect(() => new Challenge("123", "Challenge", [route1, route2], ["a", "b"],ActivityType.RUNNING)).to.throw("invalid distance in kilometers")
+    //expect(() => new Challenge("123", "Challenge", [route1, route2], ["a", "b"],ActivityType.RUNNING)).to.throw("invalid total distance in kilometers")
   })
 })

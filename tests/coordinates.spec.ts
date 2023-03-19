@@ -18,7 +18,7 @@ describe("Coordinates", () => {
   })
 
   it("toString()", () => {
-    expect(new Coordinates(1,2,3).toString()).to.equal("1°N 2°E 3m")
-    expect(new Coordinates(-7,-23,0).toString()).to.equal("7°S 23°W 0m")
+    expect(Coordinates.toString(new Coordinates(1,2,3))).to.equal("1°N 2°E 3m")
+    expect(Coordinates.toString(new Coordinates(-7,-23,0))).to.equal("7°S 23°W 0m")
   })
 })
