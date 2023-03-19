@@ -5,15 +5,15 @@ export default class Group {
   public name: string;
   public participants: string[];
   public statistics: Statistics;
-  public favouriteRoutes: string[];
+  public favoriteRoutes: string[];
   public routeHistory: string[];
 
-  constructor(id, name, participants, statistics, favouriteRoutes, routeHistory) { 
+  constructor(id: string, name: string, participants: string[], statistics: Statistics, favoriteRoutes: string[], routeHistory: string[]) { 
     this.id = id;
     this.name = name;
     this.participants = participants;
     this.statistics = statistics
-    this.favouriteRoutes = favouriteRoutes;
+    this.favoriteRoutes = favoriteRoutes;
     this.routeHistory = routeHistory;
   }
 }

@@ -1,23 +1,26 @@
+import { ActivityType } from "./activity_type.js";
+import { Statistics } from "./statistics.js";
+
 export default class User {
   public id: string; 
   public name: string;
   public friends: string[];
   public groupFriends: string[]
   public statistics: Statistics;
-  public favouriteRoutes: string[];
+  public favoriteRoutes: string[];
   public activeChallenges: string[];
   public routeHistory: string[];
-  // activity: "running" | "cycling"
-  // TODO: PONER TIPOOOOS !!!!
-  constructor(id, name, friends, groupFriends, statistics, favouriteRoutes, activeChallenges, routeHistory) {
+  public activity: ActivityType;
+  constructor(id: string, name: string, friends: string[], groupFriends: string[], statistics: Statistics, favoriteRoutes: string[], activeChallenges: string[], routeHistory: string[], activity: ActivityType) {
     this.id = id;
     this.name = name;
     this.friends = friends;
     this.groupFriends = groupFriends;
     this.statistics = statistics;
-    this.favouriteRoutes = favouriteRoutes;
+    this.favoriteRoutes = favoriteRoutes;
     this.activeChallenges = activeChallenges;
     this.routeHistory = routeHistory;
+    this.activity = activity;
   }
 }
 
