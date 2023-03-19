@@ -1,4 +1,4 @@
-import { Route } from "../route.js"
+import Route from "../route/route.js"
 
 /**
  * DatabaseStructure type represents the structure of the database.

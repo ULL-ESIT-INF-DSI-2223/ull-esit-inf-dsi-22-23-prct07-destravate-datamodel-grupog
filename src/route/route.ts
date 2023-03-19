@@ -1,10 +1,10 @@
-import { ActivityType } from "./activity_type.js";
-import { Coordinates } from "./coordinates.js";
+import { ActivityType } from "../activity_type.js";
+import Coordinates from "./coordinates.js";
 
 /**
  * Route class represents a route in the app.
  */
-export class Route {
+export default class Route {
   public id: string
   public name: string
   public start: Coordinates

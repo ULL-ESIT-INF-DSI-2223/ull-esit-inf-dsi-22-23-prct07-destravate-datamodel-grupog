@@ -1,7 +1,7 @@
 /**
  * Coordinates class represents geographic coordinates.
  */
-export class Coordinates {
+export default class Coordinates {
   private degreesNorth: number
   private degreesEast: number
   private metersOverSeaLevel: number
