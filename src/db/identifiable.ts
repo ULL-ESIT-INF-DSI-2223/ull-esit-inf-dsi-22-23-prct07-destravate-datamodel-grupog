@@ -1,6 +1,6 @@
 /**
  * Identifiable interface represents all objets that contains an ID.
  */
-export interface Identifiable {
+export default interface Identifiable {
   id: string
 }
