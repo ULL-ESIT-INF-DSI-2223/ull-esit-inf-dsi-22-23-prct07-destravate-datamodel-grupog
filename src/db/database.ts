@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url"
 import { randomUUID } from "crypto";
-import { Route } from "../route.js";
+import Route from "../route/route.js";
 import Identifiable from "./identifiable.js";
 import { Collection, DatabaseStructure } from "./structure.js";
 
@@ -64,9 +65,39 @@ export default class Database {
   private async add(col: Collection, i: Identifiable): Promise<string> {
     const id = randomUUID()
     i.id = id;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (this._db.data as any)[col].push(i)
     await this._db.write()
     return id
+  }
+
+  /**
+   * set method sets the object provided to the matching one (same ID) in the database. If no object with the same ID
+   * exist in the database, a new one is created.
+   * @param col Collection to add the object to.
+   * @param obj Object to add to the collection.
+   */
+  private set(col: Collection, obj: Identifiable): Promise<void> {
+    const i = (this._db.data as any)[col].findIndex((e: Identifiable) => e.id === obj.id) as number
+    if (i < 0) {
+      (this._db.data as any)[col].push(obj)
+    } else {
+      (this._db.data as any)[col][i] = obj
+    }
+    return this._db.write()
+  }
+
+  /**
+   * delete method deletes the object with the ID provided from the collection provided. If no object with matching ID
+   * is found, it does not return error. 
+   * @param col Collection to remove the object from.
+   * @param id ID of the object to remove.
+   */
+  private delete(col: Collection, id: string): Promise<void> {
+    const i = (this._db.data as any)[col].findIndex((e: Identifiable) => e.id === id) as number
+    if (i < 0) {
+      return Promise.resolve()
+    }
+    (this._db.data as any)[col].splice(i, 1)
+    return this._db.write()
   }
 }
