@@ -36,10 +36,10 @@ export default class Route {
     if (distanceKm < 0 || distanceKm > 41_000 || isNaN(distanceKm)) {
       throw new Error("invalid distance in kilometers");
     }
-    if (averageSlope < 0 || averageSlope > 90 || isNaN(averageSlope)) {
+    if (averageSlope < -90 || averageSlope > 90 || isNaN(averageSlope)) {
       throw new Error("invalid average slope");
     }
-    if (averageScore < 0 || averageScore > 10 || isNaN(averageScore)) {
+    if (averageScore < 1 || averageScore > 10 || isNaN(averageScore)) {
       throw new Error("invalid average score");
     }
 
