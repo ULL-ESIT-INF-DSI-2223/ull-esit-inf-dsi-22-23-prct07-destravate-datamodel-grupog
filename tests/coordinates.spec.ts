@@ -1,7 +1,7 @@
 import { expect } from "chai"
 import { ActivityType } from "../src/activity_type.js"
-import { Coordinates } from "../src/coordinates.js"
-import { Route } from "../src/route.js"
+import Coordinates  from "../src/route/coordinates.js"
+import  Route  from "../src/route/route.js"
 
 describe("Coordinates", () => {
   it("Constructor", () => {
