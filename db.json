@@ -1,6 +1,197 @@
 {
   "challenges": [],
   "groups": [],
-  "routes": [],
+  "routes": [
+    {
+      "id": "fd549425-1869-4397-87f0-4a11b99dffbc",
+      "name": "Punta del Inglés",
+      "start": {
+        "latitude": 28.10682524,
+        "longitude": -16.4397382,
+        "mosl": 1114
+      },
+      "end": {
+        "latitude": 28.28137333,
+        "longitude": -16.58673462,
+        "mosl": 2058
+      },
+      "distanceKm": 9.17,
+      "averageSlope": 15,
+      "userIds": [],
+      "activity": 1,
+      "averageScore": 9
+    },
+    {
+      "id": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+      "name": "Cruz del Carmen a Punta del Hidalgo",
+      "start": {
+        "latitude": 28.30337627,
+        "longitude": -16.3957746,
+        "mosl": 754
+      },
+      "end": {
+        "latitude": 28.38145544,
+        "longitude": -16.42322633,
+        "mosl": 3513
+      },
+      "distanceKm": 20.59,
+      "averageSlope": 38,
+      "userIds": [],
+      "activity": 1,
+      "averageScore": 4
+    },
+    {
+      "id": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+      "name": "Erjos a Las Portelas",
+      "start": {
+        "latitude": 28.30207565,
+        "longitude": -16.76025673,
+        "mosl": 985
+      },
+      "end": {
+        "latitude": 28.19210766,
+        "longitude": -16.19100044,
+        "mosl": 2130
+      },
+      "distanceKm": 7.69,
+      "averageSlope": 32,
+      "userIds": [],
+      "activity": 1,
+      "averageScore": 6
+    },
+    {
+      "id": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+      "name": "Camino de Candelaria",
+      "start": {
+        "latitude": 28.50383829,
+        "longitude": -16.31445384,
+        "mosl": 3541
+      },
+      "end": {
+        "latitude": 28.52722014,
+        "longitude": -16.52663311,
+        "mosl": 2319
+      },
+      "distanceKm": 22.9,
+      "averageSlope": 23,
+      "userIds": [],
+      "activity": 0,
+      "averageScore": 3
+    },
+    {
+      "id": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+      "name": "Barranco de Ruiz",
+      "start": {
+        "latitude": 28.25608023,
+        "longitude": -16.20676622,
+        "mosl": 1204
+      },
+      "end": {
+        "latitude": 28.30095618,
+        "longitude": -16.28478967,
+        "mosl": 1720
+      },
+      "distanceKm": 15.56,
+      "averageSlope": 25,
+      "userIds": [],
+      "activity": 1,
+      "averageScore": 5
+    },
+    {
+      "id": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+      "name": "Paisaje Lunar de Vilaflor",
+      "start": {
+        "latitude": 28.30936985,
+        "longitude": -16.17865267,
+        "mosl": 1194
+      },
+      "end": {
+        "latitude": 28.46924575,
+        "longitude": -16.63499774,
+        "mosl": 2444
+      },
+      "distanceKm": 20.6,
+      "averageSlope": 25,
+      "userIds": [],
+      "activity": 1,
+      "averageScore": 3
+    },
+    {
+      "id": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+      "name": "Subida al Teide",
+      "start": {
+        "latitude": 28.44164292,
+        "longitude": -16.63921105,
+        "mosl": 3390
+      },
+      "end": {
+        "latitude": 28.00498434,
+        "longitude": -16.5597032,
+        "mosl": 2648
+      },
+      "distanceKm": 1.31,
+      "averageSlope": 17,
+      "userIds": [],
+      "activity": 0,
+      "averageScore": 10
+    },
+    {
+      "id": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+      "name": "Camino del Agua",
+      "start": {
+        "latitude": 28.2712898,
+        "longitude": -16.83358045,
+        "mosl": 1884
+      },
+      "end": {
+        "latitude": 28.0047078,
+        "longitude": -16.73863985,
+        "mosl": 3094
+      },
+      "distanceKm": 20.25,
+      "averageSlope": 11,
+      "userIds": [],
+      "activity": 0,
+      "averageScore": 5
+    },
+    {
+      "id": "80edccc7-a314-465d-9d84-2e55f71e088e",
+      "name": "Ramblas de Castro",
+      "start": {
+        "latitude": 28.54444281,
+        "longitude": -16.13164351,
+        "mosl": 2059
+      },
+      "end": {
+        "latitude": 28.56074785,
+        "longitude": -16.12260164,
+        "mosl": 3709
+      },
+      "distanceKm": 21.15,
+      "averageSlope": 7,
+      "userIds": [],
+      "activity": 1,
+      "averageScore": 7
+    },
+    {
+      "id": "ace47fe0-d927-439c-afce-1647c4c64f21",
+      "name": "Llano de Ucanca a Vilaflor",
+      "start": {
+        "latitude": 28.27019409,
+        "longitude": -16.33041367,
+        "mosl": 577
+      },
+      "end": {
+        "latitude": 28.13069574,
+        "longitude": -16.17166212,
+        "mosl": 1121
+      },
+      "distanceKm": 16.7,
+      "averageSlope": 1,
+      "userIds": [],
+      "activity": 1,
+      "averageScore": 8
+    }
+  ],
   "users": []
 }
