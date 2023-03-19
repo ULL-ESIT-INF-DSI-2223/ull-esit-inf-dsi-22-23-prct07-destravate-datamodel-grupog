@@ -2,29 +2,29 @@
  * Coordinates class represents geographic coordinates.
  */
 export default class Coordinates {
-  private degreesNorth: number
-  private degreesEast: number
-  private metersOverSeaLevel: number
+  public latitude: number
+  public longitude: number
+  public mosl: number
 
   /**
    * constructor creates a new Coordinates object from the data provided.
-   * @param degreesNorth Degrees to the north of the equator. If negative, to the south.
-   * @param degreesEast Degrees to the east of the prime meridian. If negative, to the west.
-   * @param metersOverSeaLevel Meters over sea level.
+   * @param latitude Degrees to the north of the equator. If negative, to the south.
+   * @param longitude Degrees to the east of the prime meridian. If negative, to the west.
+   * @param mosl Meters over sea level.
    */
-  constructor(degreesNorth: number, degreesEast: number, metersOverSeaLevel: number) {
-    if (degreesNorth > 90 || degreesNorth < -90 || isNaN(degreesNorth)) {
+  constructor(latitude: number, longitude: number, mosl: number) {
+    if (latitude > 90 || latitude < -90 || isNaN(latitude)) {
       throw new Error("Invalid North-South Coordinate");
     }
-    if (degreesEast > 180 || degreesEast < -180 || isNaN(degreesEast)) {
+    if (longitude > 180 || longitude < -180 || isNaN(longitude)) {
       throw new Error("Invalid East-West Coordinate");
     }
-    if (metersOverSeaLevel > 10_000 || metersOverSeaLevel < 0 || isNaN(metersOverSeaLevel)) {
+    if (mosl > 10_000 || mosl < -500 || isNaN(mosl)) {
       throw new Error("Invalid meters over sea level");
     }
-    this.degreesEast = degreesEast
-    this.degreesNorth = degreesNorth
-    this.metersOverSeaLevel = metersOverSeaLevel
+    this.longitude = longitude
+    this.latitude = latitude
+    this.mosl = mosl
   }
 
   /**
@@ -48,6 +48,6 @@ export default class Coordinates {
    * @returns A string containing this coordinates.
    */
   toString(): string {
-    return `${Math.abs(this.degreesNorth)}°${this.degreesNorth >= 0 ? "N" : "S"} ${Math.abs(this.degreesEast)}°${this.degreesEast >= 0 ? "E" : "W"} ${this.metersOverSeaLevel}m`
+    return `${Math.abs(this.latitude)}°${this.latitude >= 0 ? "N" : "S"} ${Math.abs(this.longitude)}°${this.longitude >= 0 ? "E" : "W"} ${this.mosl}m`
   }
 }
