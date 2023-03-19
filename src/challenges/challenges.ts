@@ -1,4 +1,3 @@
-import Identifiable from "../db/identifiable.js";
 import { ActivityType } from "../activity_type.js";
 import Route from "../route/route.js";
 
