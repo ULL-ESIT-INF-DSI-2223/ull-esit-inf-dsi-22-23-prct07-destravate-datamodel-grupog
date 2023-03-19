@@ -40,12 +40,32 @@ export default class Database {
 
   /**
    * addRoute adds a new Route to the database. The ID of the Route is ignored and a new one is assigned.
-   * @param col Collection to add the Route to.
-   * @param i Route to add to the collection.
+   * @param r Route to add to the collection.
    * @returns The new ID of the Route added.
    */
   async addRoute(r: Route): Promise<string> {
     return this.add(Collection.ROUTES, r)
+  }
+
+  /**
+   * setRoute sets the Route provided to the matching one (same ID) in the database. If no Route with the same ID exist
+   * in the database, a new one is created.
+   * @param r Route to add to the collection.
+   */
+  async setRoute(r: Route): Promise<void> {
+    return this.set(Collection.ROUTES, r)
+  }
+
+  /**
+   * delete deletes the Route with the ID provided from the collection provided. If no Route with matching ID is found,
+   * it does not return error.
+   * @param r Either the Route to remove, or the ID of the Route to remove.
+   */
+  async deleteRoute(r: Route|string): Promise<void> {
+    if (typeof r !== "string") {
+      r = r.id
+    }
+    return this.delete(Collection.ROUTES, r)
   }
 
   /**
