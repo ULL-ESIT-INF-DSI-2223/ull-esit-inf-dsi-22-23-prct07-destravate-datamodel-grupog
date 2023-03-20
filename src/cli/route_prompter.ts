@@ -50,7 +50,7 @@ export default class RoutePrompter extends Prompter {
 
     const r = this.db.routes().find(r => r.id === routeID)
     if (!r) {
-      throw new Error(`somehow a non existing ID (${routeID}) was chosen`);
+      throw new Error(`somehow a non existing route ID (${routeID}) was chosen`);
     }
 
     await this.db.setRoute(await this.dataPrompt({

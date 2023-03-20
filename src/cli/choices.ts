@@ -5,7 +5,7 @@ import { compareStrings, compareStringsFirstIgnoringCase } from "../utils/sort_f
 /**
  * Choice type represents a generic choice for inquirer.js
  */
-type Choice<T> = {
+export type Choice<T> = {
   name: string
   value: T
 }
