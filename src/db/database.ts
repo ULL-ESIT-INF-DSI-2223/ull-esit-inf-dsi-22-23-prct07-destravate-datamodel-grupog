@@ -8,7 +8,7 @@ import { randomUUID } from "crypto";
 import Route from "../route/route.js";
 import Identifiable from "./identifiable.js";
 import { Collection, DatabaseStructure } from "./structure.js";
-import Challenge from "../challenges/challenges.js";
+import Challenge from "../challenge/challenge.js";
 
 /**
  * Database class represents the storage of data of this program.

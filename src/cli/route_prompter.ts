@@ -3,13 +3,13 @@ import Database from "../db/database.js";
 import Coordinates from "../route/coordinates.js";
 import Route from "../route/route.js";
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
-import BasePrompter from "./base_prompter.js";
+import Prompter from "./prompter.js";
 import { activityTypes, routes, users } from "./choices.js";
 
 /**
  * RoutePrompter creates a new Prompter object for the Routes. It can manage user input related to this class.
  */
-export default class RoutePrompter extends BasePrompter {
+export default class RoutePrompter extends Prompter {
   /**
    * constructor creates a new prompter using the Database provided.
    * @param db Database for querying during prompts.

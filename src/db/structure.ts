@@ -1,5 +1,5 @@
 import Route from "../route/route.js";
-import Challenge from "../challenges/challenges.js";
+import Challenge from "../challenge/challenge.js";
 
 /**
  * DatabaseStructure type represents the structure of the database.
