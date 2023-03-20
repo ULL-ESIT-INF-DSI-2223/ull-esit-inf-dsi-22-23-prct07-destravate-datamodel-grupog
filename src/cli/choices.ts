@@ -95,5 +95,5 @@ function sortByNameThenValue(a: Choice<any>, b: Choice<any>): number {
   if (diff !== 0) {
     return diff;
   }
-  return compareStrings(a.value, b.value)
+  return compareStrings(a.value, b.value);
 }
