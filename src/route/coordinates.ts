@@ -44,10 +44,10 @@ export default class Coordinates {
   }
 
   /**
-   * toString returns a string representation of this Coordinates object.
-   * @returns A string containing this coordinates.
+   * toString returns a string representation of the given Coordinates object.
+   * @returns A string containing the given coordinates.
    */
-  toString(): string {
-    return `${Math.abs(this.latitude)}°${this.latitude >= 0 ? "N" : "S"} ${Math.abs(this.longitude)}°${this.longitude >= 0 ? "E" : "W"} ${this.mosl}m`
+  static toString(c: Coordinates): string {
+    return `${Math.abs(c.latitude)}°${c.latitude >= 0 ? "N" : "S"} ${Math.abs(c.longitude)}°${c.longitude >= 0 ? "E" : "W"} ${c.mosl}m`
   }
 }

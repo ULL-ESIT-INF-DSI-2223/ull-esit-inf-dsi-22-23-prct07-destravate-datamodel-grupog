@@ -1,9 +1,9 @@
 import Database from "../db/database.js";
 
 /**
- * BasePrompter represents the basic prompter for a given class.
+ * Prompter represents the basic prompter for a given class.
  */
-export default abstract class BasePrompter {
+export default abstract class Prompter {
   /**
    * constructor creates a new prompter using the Database provided.
    * @param db Database for querying during prompts.
@@ -24,4 +24,10 @@ export default abstract class BasePrompter {
    * edit modifies an object of the prompter type from the database.
    */
   abstract edit(): Promise<void>
+
+  /**
+   * print shows the list of objects of the prompter type contained in the database, sorted by the criteria defined by
+   * the user.
+   */
+  abstract print(): Promise<void>
 }

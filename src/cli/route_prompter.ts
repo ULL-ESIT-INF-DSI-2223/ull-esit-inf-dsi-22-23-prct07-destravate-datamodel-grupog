@@ -2,13 +2,14 @@ import inquirer from "inquirer";
 import Database from "../db/database.js";
 import Coordinates from "../route/coordinates.js";
 import Route from "../route/route.js";
-import BasePrompter from "./base_prompter.js";
+import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
+import Prompter from "./prompter.js";
 import { activityTypes, routes, users } from "./choices.js";
 
 /**
  * RoutePrompter creates a new Prompter object for the Routes. It can manage user input related to this class.
  */
-export default class RoutePrompter extends BasePrompter {
+export default class RoutePrompter extends Prompter {
   /**
    * constructor creates a new prompter using the Database provided.
    * @param db Database for querying during prompts.
@@ -67,6 +68,55 @@ export default class RoutePrompter extends BasePrompter {
       activityType: r.activity,
       averageScore: r.averageScore
     }))
+  }
+
+  /**
+   * print shows the list of routes contained in the database, sorted by the criteria defined by the user.
+   */
+  async print(): Promise<void> {
+    // Let user select sort function
+    const { sortFunc } = await inquirer.prompt([{
+      type: "list",
+      name: "sortFunc",
+      message: "¿Desea aplicar un criterio de ordenación?",
+      choices: [
+        {name: "No", value: undefined},
+        {name: "Nombre", value: (a: Route, b: Route) => compareStringsFirstIgnoringCase(a.name, b.name)},
+        {name: "Número de usuarios que la han hecho", value: (a: Route, b: Route) => a.userIds.length - b.userIds.length},
+        {name: "Longitud", value: (a: Route, b: Route) => a.distanceKm - b.distanceKm},
+        {name: "Calificación media", value: (a: Route, b: Route) => a.averageScore - b.averageScore},
+        {name: "Tipo de Actividad", value: (a: Route, b: Route) => a.activity - b.activity},
+      ]
+    }])
+    
+    // Do shallow copy to avoid modifying DB while still being performant
+    const routes = this.db.routes().slice()
+
+    if (sortFunc) {
+      // Apply sort function and ask if want reverse order
+      routes.sort(sortFunc)
+      if ((await inquirer.prompt([{
+        type: "list",
+        name: "reverse",
+        message: "¿En qué sentido?",
+        choices: [
+          {name: "Ascendente", value: false},
+          {name: "Descendente", value: true},
+        ]
+      }])).reverse) {
+        routes.reverse()
+      }
+    }
+
+    // Print
+    Route.printTable(routes)
+
+    // Pause
+    await inquirer.prompt([{
+      type: "input",
+      name: ".",
+      message: "Pulse Enter para continuar..."
+    }])
   }
 
   /**

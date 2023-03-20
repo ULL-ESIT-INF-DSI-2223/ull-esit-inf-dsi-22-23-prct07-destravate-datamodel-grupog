@@ -1,5 +1,6 @@
 import { ActivityType } from "../activity_type.js";
 import Database from "../db/database.js";
+import { compareStrings, compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
 
 /**
  * Choice type represents a generic choice for inquirer.js
@@ -90,22 +91,9 @@ export function users(db: Database): Choice<string>[] {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function sortByNameThenValue(a: Choice<any>, b: Choice<any>): number {
-  const [aLow, bLow] = [a.name.toLowerCase, b.name.toLowerCase];
-  if (aLow < bLow) {
-    return -1;
-  } else if (aLow > bLow) {
-    return 1;
-  } else if (a.name < b.name) {
-    // Sort second by case-sensitive name
-    return -1;
-  } else if (a.name > b.name) {
-    return 1;
-  } else if (a.value < b.value) {
-    // Sort third by ID
-    return -1;
-  } else if (a.value > b.value) {
-    return 1;
-  } else {
-    return 0;
+  const diff = compareStringsFirstIgnoringCase(a.name, b.name);
+  if (diff !== 0) {
+    return diff;
   }
+  return compareStrings(a.value, b.value)
 }
