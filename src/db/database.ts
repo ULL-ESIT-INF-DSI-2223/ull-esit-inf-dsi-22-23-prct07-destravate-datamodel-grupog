@@ -45,8 +45,7 @@ export default class Database {
     }
   }
 
-  //Routes
-
+  // Groups
   /**
    * addGroup adds a new Group to the database. The ID of the Group is ignored and a new one is assigned.
    * @param g Group to add to the collection.
@@ -70,7 +69,7 @@ export default class Database {
    * it does not return error.
    * @param g Either the Group to remove, or the ID of the Group to remove.
    */
-  async deleteGroup(g: Group|string): Promise<void> {
+  async deleteGroup(g: Group | string): Promise<void> {
     if (typeof g !== "string") {
       g = g.id
     }
@@ -85,6 +84,7 @@ export default class Database {
     return this._db.data!.groups
   }
 
+  // Route
   /**
    * addRoute adds a new Route to the database. The ID of the Route is ignored and a new one is assigned.
    * @param r Route to add to the collection.
@@ -163,6 +163,7 @@ export default class Database {
     return this._db.data!.challenges;
   }
 
+  // Users
   /**
    * addUser adds a new User to the database. The ID of the User is ignored and a new one is assigned.
    * @param u User to add to the collection.
