@@ -1,15 +1,17 @@
-import Route from "../route/route.js";
+import Group from "../group/group.js"
+import Route from "../route/route.js"
 import Challenge from "../challenge/challenge.js";
+import { UserData } from "../user/user_data.js";
 
 /**
  * DatabaseStructure type represents the structure of the database.
  */
 export type DatabaseStructure = {
-  challenges: Challenge[];
-  groups: unknown[];
-  routes: Route[];
-  users: unknown[];
-};
+  challenges: Challenge[]
+  groups: Group[]
+  routes: Route[]
+  users: UserData[]
+}
 
 /**
  * Collection enum enumerates all the collections in the database.

@@ -64,22 +64,52 @@ export function challenges(db: Database): Choice<string>[] {
 }
 
 /**
+ * challenge function returns a list of choices for all challenges.
+ * @param db Database to read the challenge from.
+ * @returns A list of all the challenge choices, using their ID as value.
+ */
+export function challenges(db: Database): Choice<string>[] {
+  return db
+    .challenges()
+    .reduce((acc, challenge) => {
+      acc.push({
+        name: `${challenge.name} (${challenge.id})`,
+        value: challenge.id,
+      });
+      return acc;
+    }, [] as Choice<string>[])
+    .sort(sortByNameThenValue);
+}
+
+/**
  * routes function returns a list of choices for all users.
  * @param db Database to read the users from.
  * @returns A list of all the user choices, using their ID as value.
  */
 export function users(db: Database): Choice<string>[] {
-  // TODO: Change for users when they are added.
-  return db
-    .routes()
-    .reduce((acc, user) => {
-      acc.push({
-        name: `${user.name} (${user.id})`,
-        value: user.id,
-      });
-      return acc;
-    }, [] as Choice<string>[])
-    .sort(sortByNameThenValue);
+  return db.userData().reduce((acc, user) => {
+    acc.push({
+      name: `${user.name} (${user.id})`,
+      value: user.id
+    })
+    return acc
+  }, [] as Choice<string>[]).sort(sortByNameThenValue)
+}
+
+/**
+ * routes function returns a list of choices for all users.
+ * @param db Database to read the users from.
+ * @returns A list of all the user choices, using their ID as value.
+ */
+export function groups(db: Database): Choice<string>[] {
+  // TODO: Change for groups when they are added.
+  return db.groups().reduce((acc, group) => {
+    acc.push({
+      name: `${group.name} (${group.id})`,
+      value: group.id
+    })
+    return acc
+  }, [] as Choice<string>[]).sort(sortByNameThenValue)
 }
 
 /**
