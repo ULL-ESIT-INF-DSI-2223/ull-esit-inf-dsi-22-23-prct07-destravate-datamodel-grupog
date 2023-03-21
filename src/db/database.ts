@@ -11,6 +11,7 @@ import { Collection, DatabaseStructure } from "./structure.js";
 import Group from "../group/group.js";
 import User from "../user/user.js";
 import Challenge from "../challenges/challenges.js";
+import { UserData } from "../user/user_data.js";
 
 /**
  * Database class represents the storage of data of this program.
@@ -199,6 +200,14 @@ export default class Database {
    * @returns The list of users in the database.
    */
   users(): User[] {
+    return this.userData().map(data => User.parse(data))
+  }
+
+  /**
+   * userData returns the list of users in the database as is (not parsed).
+   * @returns The list of raw users in the database.
+   */
+  userData(): UserData[] {
     return this._db.data!.users
   }
 

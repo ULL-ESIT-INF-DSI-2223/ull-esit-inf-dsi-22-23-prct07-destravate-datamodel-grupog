@@ -1,10 +1,12 @@
+import { randomUUID } from "crypto"
 import inquirer from "inquirer";
 import Database from "../db/database.js";
 import User from "../user/user.js";
-import {Statistics} from "../statistics/statistics.js"
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
 import BasePrompter from "./base_prompter.js";
 import { activityTypes, routes, users, groups, challenges } from "./choices.js";
+import { appName } from "../consts.js";
+import RouteHistory from "../user/route_history.js";
 
 /**
  * UserPrompter creates a new Prompter object for the User. It can manage user input related to this class.
@@ -50,7 +52,7 @@ export default class UserPrompter extends BasePrompter {
 
     const u = this.db.users().find(u => u.id === userID)
     if (!u) {
-      throw new Error(`somehow a non existing ID (${userID}) was chosen`);
+      throw new Error(`somehow a non existing user ID (${userID}) was chosen`);
     }
 
     await this.db.setUser(await this.dataPrompt({
@@ -58,11 +60,12 @@ export default class UserPrompter extends BasePrompter {
       name: u.name,
       friends: u.friends,
       groupFriends: u.groupFriends,
-      statistics: u.statistics,
       favouriteRoutes: u.favoriteRoutes,
       activeChallenges: u.activeChallenges,
       routeHistory: u.routeHistory,
       activity: u.activity,
+      passwordHash: u.passwordHash,
+      isAdmin: u.isAdmin
     }))
   }
 
@@ -125,11 +128,7 @@ export default class UserPrompter extends BasePrompter {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async dataPrompt(defaults?: any): Promise<User> {
-    if (!defaults) {
-      defaults = {id: ""}
-    }
-
-    const input = await inquirer.prompt([
+    const questions = [
       {
         type: "input",
         name: "name",
@@ -140,14 +139,14 @@ export default class UserPrompter extends BasePrompter {
       {
         type: "checkbox",
         name: "friends",
-        message: "Indique sus amigos en Destratave: ",
+        message: `Indique sus amigos en ${appName}:`,
         default: defaults.userIds,
         choices: users(this.db)
       },
       {
         type: "checkbox",
         name: "groupFriends",
-        message: "Indique sus grupos de amigos en Destratave: ",
+        message: `Indique sus grupos de amigos en ${appName}:`,
         default: defaults.groupFriends,
         choices: groups(this.db)
       },
@@ -166,40 +165,107 @@ export default class UserPrompter extends BasePrompter {
         choices: challenges(this.db)
       },
       {
-        type: "checkbox",
-        name: "routeHistory",
-        message: "Indica las rutas que has terminado:",
-        default: defaults.routeHistory,
-        choices: routes(this.db)
-      },
-      {
         type: "list",
         name: "activity",
         message: "Seleccione el tipo de actividad que vas a realizar:",
         default: defaults.activityType,
         choices: activityTypes()
+      },
+      {
+        type: "password",
+        name: "password",
+        message: `Introduzca una contraseña para el usuario${defaults.passwordHash ? " (dejar en blanco para no modificar)" : ""}:`,
+        mask: "*",
+        validate: (p: string) => defaults.passwordHash || p !== ""
+      },
+      {
+        type: "confirm",
+        name: "isAdmin",
+        message: "¿Dar permisos de administración al usuario?",
+        default: defaults.isAdmin
+      },
+      {
+        type: "checkbox",
+        name: "routeIDs",
+        message: "Indica las rutas que has terminado:",
+        default: defaults.routeHistory.map((rh: RouteHistory) => rh.routeId),
+        choices: routes(this.db)
       }
-    ])
+    ] as unknown[]
 
-    const statistics: Statistics = {
-      totalKmWeekly: 0,
-      totalKmMonthly: 0,
-      totalKmYearly: 0,
-      totalElevationWeekly: 0,
-      totalElevationMonthly: 0,
-      totalElevationYearly: 0,
-    };
+    if (!defaults) {
+      defaults = {}
+      questions.unshift({
+        type: "input",
+        name: "id",
+        message: "Defina el ID del usuario:",
+        default: randomUUID(),
+        validate: (id: string) => {
+          if (id === "") {
+            return "El ID no puede estar vacío"
+          }
+          if (this.db.users().findIndex(user => user.id === id) >= 0) {
+            return "Ya existe un usuario con este ID"
+          }
+          return true
+        } 
+      })
+    }
 
+    const input = await inquirer.prompt(questions)
+
+    input.routesHistory = await Promise.all(input.routeIDs.map(async (routeID: string) => {
+      const originalDate = {
+        year: undefined as (number|undefined),
+        month: undefined as (number|undefined),
+        day: undefined as (number|undefined)
+      }
+      const originalRouteHistory = defaults.routeHistory.find((rh: RouteHistory) => rh.routeId === routeID)
+      if (originalRouteHistory) {
+        originalDate.year = originalRouteHistory.date.getFullYear()
+        originalDate.month = originalRouteHistory.date.getMonth() + 1
+        originalDate.day = originalRouteHistory.date.getDate()
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const route = this.db.routes().find(r => r.id === routeID)!;
+      const {y, m, d} = await inquirer.prompt([
+        {
+          type: "number",
+          name: "y",
+          message: `Indique el año en el que ha realizado la ruta ${route.name}:`,
+          default: originalDate.year,
+          validate: (y: number) => y >= 1979 && y <= new Date().getFullYear() ? true : "El año debe estar entre 1970 y el actual"
+        },
+        {
+          type: "number",
+          name: "m",
+          message: `Indique (con número) el mes en el que ha realizado la ruta ${route.name}:`,
+          default: originalDate.month,
+          validate: (m: number) => m >= 1 && m <= 12 ? true : "Mes inválido"
+        },
+        {
+          type: "number",
+          name: "d",
+          message: `Indique el día del mes en el que ha realizado la ruta ${route.name}:`,
+          default: originalDate.day,
+          validate: (d: number) => d >= 1 && d <= 31 ? true : "Día del mes inválido"
+        }
+      ])
+      return new RouteHistory(routeID, new Date(y, m-1, d, 0, 0, 0, 0), route.distanceKm, route.averageSlope)
+    }))
+    
     return new User(
-      defaults.id,
+      input.id,
       input.name,
       input.friends,
       input.groupFriends,
-      statistics,
       input.favoriteRoutes,
       input.activeChallenges,
       input.routeHistory,
-      input.activity
+      input.activity,
+      input.password === "" ? defaults.passwordHash : hashPassword(input.password),
+      input.isAdmin
     )
   }
 }

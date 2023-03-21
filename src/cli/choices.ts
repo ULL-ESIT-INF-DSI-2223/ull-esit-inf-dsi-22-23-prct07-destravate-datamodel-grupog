@@ -67,7 +67,7 @@ export function challenges(db: Database): Choice<string>[] {
  */
 export function users(db: Database): Choice<string>[] {
   // TODO: Change for users when they are added.
-  return db.users().reduce((acc, user) => {
+  return db.userData().reduce((acc, user) => {
     acc.push({
       name: `${user.name} (${user.id})`,
       value: user.id

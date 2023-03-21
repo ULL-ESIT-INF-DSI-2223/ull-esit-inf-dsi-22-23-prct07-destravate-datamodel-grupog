@@ -1,7 +1,7 @@
 import Group from "../group/group.js"
 import Route from "../route/route.js"
-import User from "../user/user.js"
 import Challenge from "../challenges/challenges.js";
+import { UserData } from "../user/user_data.js";
 
 /**
  * DatabaseStructure type represents the structure of the database.
@@ -10,7 +10,7 @@ export type DatabaseStructure = {
   challenges: Challenge[]
   groups: Group[]
   routes: Route[]
-  users: User[]
+  users: UserData[]
 }
 
 /**

@@ -1,32 +1,46 @@
 import { ActivityType, activityTypeToString } from "../activity_type.js";
-import { Statistics } from "../statistics/statistics.js";
 import { getBorderCharacters, table } from "table";
+import RouteHistory from "./route_history.js";
+import { UserData } from "./user_data.js";
 
 export default class User {
   public id: string; 
   public name: string;
   public friends: string[];
   public groupFriends: string[]
-  public statistics: Statistics;
   public favoriteRoutes: string[];
   public activeChallenges: string[];
-  public routeHistory: string[];
+  public routeHistory: RouteHistory[];
   public activity: ActivityType;
   public passwordHash: string;
   public isAdmin: boolean;
 
-  constructor(id: string, name: string, friends: string[], groupFriends: string[], statistics: Statistics, favoriteRoutes: string[], activeChallenges: string[], routeHistory: string[], activity: ActivityType) {
+  constructor(id: string, name: string, friends: string[], groupFriends: string[], favoriteRoutes: string[], activeChallenges: string[], routeHistory: RouteHistory[], activity: ActivityType, passwordHash: string, isAdmin: boolean) {
     this.id = id;
     this.name = name;
     this.friends = friends;
     this.groupFriends = groupFriends;
-    this.statistics = statistics;
     this.favoriteRoutes = favoriteRoutes;
     this.activeChallenges = activeChallenges;
     this.routeHistory = routeHistory;
     this.activity = activity;
-    this.passwordHash = "";
-    this.isAdmin = false;
+    this.passwordHash = passwordHash;
+    this.isAdmin = isAdmin;
+  }
+
+  static parse(data: UserData): User {
+    return new User(
+      data.id,
+      data.name,
+      data.friends,
+      data.groupFriends,
+      data.favoriteRoutes,
+      data.activeChallenges,
+      data.routeHistory.map(data => RouteHistory.parse(data)),
+      data.activity,
+      data.passwordHash,
+      data.isAdmin
+    )
   }
 
   /**
@@ -56,12 +70,6 @@ export default class User {
       user.name,
       user.friends.map((friend) => friend),
       user.groupFriends.map((group) => group),
-      user.statistics.totalKmWeekly,
-      user.statistics.totalKmMonthly,
-      user.statistics.totalKmYearly,
-      user.statistics.totalElevationWeekly,
-      user.statistics.totalElevationMonthly,
-      user.statistics.totalElevationYearly,
       user.favoriteRoutes.map((route) => route),
       user.activeChallenges.map((challenge) => challenge),
       user.routeHistory.map((route) => route),
