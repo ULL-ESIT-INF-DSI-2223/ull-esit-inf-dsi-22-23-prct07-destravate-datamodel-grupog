@@ -10,7 +10,7 @@ import Identifiable from "./identifiable.js";
 import { Collection, DatabaseStructure } from "./structure.js";
 import Group from "../group/group.js";
 import User from "../user/user.js";
-import Challenge from "../challenges/challenges.js";
+import Challenge from "../challenge/challenge.js";
 import { UserData } from "../user/user_data.js";
 
 /**
