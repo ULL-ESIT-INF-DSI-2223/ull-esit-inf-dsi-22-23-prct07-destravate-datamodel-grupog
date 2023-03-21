@@ -1,5 +1,5 @@
-import { ActivityType, activityTypeToString } from "./activity_type.js";
-import { Statistics } from "./statistics.js";
+import { ActivityType, activityTypeToString } from "../activity_type.js";
+import { Statistics } from "../statistics/statistics.js";
 import { getBorderCharacters, table } from "table";
 
 export default class User {
@@ -30,8 +30,8 @@ export default class User {
   }
 
   /**
-   * printTable prints a table containing the list of routes provided.
-   * @param list List of routes to print.
+   * printTable prints a table containing the list of users provided.
+   * @param list List of users to print.
    */
   static printTable(list: User[]): void {
     const tableData = [[

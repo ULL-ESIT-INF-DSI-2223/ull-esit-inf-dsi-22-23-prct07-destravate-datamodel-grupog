@@ -1,10 +1,10 @@
 import inquirer from "inquirer";
 import Database from "../db/database.js";
-import Group from "../group.js";
-import { Statistics } from "../statistics.js"
+import Group from "../group/group.js";
+import { Statistics } from "../statistics/statistics.js"
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
 import BasePrompter from "./base_prompter.js";
-import { routes, users, groups } from "./choices.js";
+import { activityTypes, routes, users, groups } from "./choices.js";
 
 /**
  * GroupPrompter creates a new Prompter object for the Group. It can manage Group input related to this class.
@@ -155,6 +155,13 @@ export default class GroupPrompter extends BasePrompter {
         default: defaults.routeHistory,
         choices: routes(this.db)
       },
+      {
+        type: "list",
+        name: "activity",
+        message: "Seleccione el tipo de actividad que vas a realizar:",
+        default: defaults.activityType,
+        choices: activityTypes()
+      }
     ])
 
     const statistics: Statistics = {
@@ -172,7 +179,8 @@ export default class GroupPrompter extends BasePrompter {
       input.participants,
       statistics,
       input.favoriteRoutes,
-      input.routeHistory
+      input.routeHistory,
+      input.activity
     )
   }
 }

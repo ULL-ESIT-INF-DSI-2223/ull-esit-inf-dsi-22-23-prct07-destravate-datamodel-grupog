@@ -1,7 +1,7 @@
 import inquirer from "inquirer";
 import Database from "../db/database.js";
-import User from "../user.js";
-import {Statistics} from "../statistics.js"
+import User from "../user/user.js";
+import {Statistics} from "../statistics/statistics.js"
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
 import BasePrompter from "./base_prompter.js";
 import { activityTypes, routes, users, groups, challenges } from "./choices.js";

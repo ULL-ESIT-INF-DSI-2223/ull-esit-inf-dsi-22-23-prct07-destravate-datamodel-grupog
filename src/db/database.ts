@@ -8,8 +8,8 @@ import { randomUUID } from "crypto";
 import Route from "../route/route.js";
 import Identifiable from "./identifiable.js";
 import { Collection, DatabaseStructure } from "./structure.js";
-import Group from "../group.js";
-import User from "../user.js";
+import Group from "../group/group.js";
+import User from "../user/user.js";
 import Challenge from "../challenges/challenges.js";
 
 /**
