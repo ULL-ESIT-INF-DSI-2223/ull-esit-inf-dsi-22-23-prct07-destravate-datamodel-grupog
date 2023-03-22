@@ -5,7 +5,7 @@ import { compareStrings, compareStringsFirstIgnoringCase } from "../utils/sort_f
 /**
  * Choice type represents a generic choice for inquirer.js
  */
-type Choice<T> = {
+export type Choice<T> = {
   name: string;
   value: T;
 };
@@ -39,24 +39,6 @@ export function routes(db: Database): Choice<string>[] {
       acc.push({
         name: `${route.name} (${route.id})`,
         value: route.id,
-      });
-      return acc;
-    }, [] as Choice<string>[])
-    .sort(sortByNameThenValue);
-}
-
-/**
- * challenge function returns a list of choices for all challenges.
- * @param db Database to read the challenge from.
- * @returns A list of all the challenge choices, using their ID as value.
- */
-export function challenges(db: Database): Choice<string>[] {
-  return db
-    .challenges()
-    .reduce((acc, challenge) => {
-      acc.push({
-        name: `${challenge.name} (${challenge.id})`,
-        value: challenge.id,
       });
       return acc;
     }, [] as Choice<string>[])

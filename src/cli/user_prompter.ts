@@ -3,7 +3,7 @@ import inquirer from "inquirer";
 import Database from "../db/database.js";
 import User from "../user/user.js";
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
-import BasePrompter from "./base_prompter.js";
+import Prompter from "./prompter.js";
 import { activityTypes, routes, users, groups, challenges } from "./choices.js";
 import { appName } from "../consts.js";
 import RouteHistory from "../user/route_history.js";
@@ -12,7 +12,7 @@ import { hashPassword } from "../utils/password.js";
 /**
  * UserPrompter creates a new Prompter object for the User. It can manage user input related to this class.
  */
-export default class UserPrompter extends BasePrompter {
+export default class UserPrompter extends Prompter {
   /**
    * constructor creates a new prompter using the Database provided.
    * @param db Database for querying during prompts.
@@ -82,13 +82,17 @@ export default class UserPrompter extends BasePrompter {
       choices: [
         {name: "No", value: undefined},
         {name: "Nombre", value: (a: User, b: User) => compareStringsFirstIgnoringCase(a.name, b.name)},
-        // {name: "Estadisticas en Km semanales", value: (a: User, b: User) => a.statistics.totalKmWeekly - b.statistics.totalKmWeekly},
-        // {name: "Estadisticas en elevación semanales", value: (a: User, b: User) => a.statistics.totalElevationWeekly - b.statistics.totalElevationWeekly},
-        // {name: "Estadisticas en Km mensuales", value: (a: User, b: User) => a.statistics.totalKmMonthly - b.statistics.totalKmMonthly},
-        // {name: "Estadisticas en elevación mensuales", value: (a: User, b: User) => a.statistics.totalElevationMonthly - b.statistics.totalElevationMonthly},
-        // {name: "Estadisticas en Km anuales", value: (a: User, b: User) => a.statistics.totalKmYearly - b.statistics.totalKmYearly},
-        // {name: "Estadisticas en elevación anuales", value: (a: User, b: User) => a.statistics.totalElevationYearly - b.statistics.totalElevationYearly},
+        /*
+        TODO: FIX INVALID CODE
+
+        {name: "Estadisticas en Km semanales", value: (a: User, b: User) => a.statistics.totalKmWeekly - b.statistics.totalKmWeekly},
+        {name: "Estadisticas en elevación semanales", value: (a: User, b: User) => a.statistics.totalElevationWeekly - b.statistics.totalElevationWeekly},
+        {name: "Estadisticas en Km mensuales", value: (a: User, b: User) => a.statistics.totalKmMonthly - b.statistics.totalKmMonthly},
+        {name: "Estadisticas en elevación mensuales", value: (a: User, b: User) => a.statistics.totalElevationMonthly - b.statistics.totalElevationMonthly},
+        {name: "Estadisticas en Km anuales", value: (a: User, b: User) => a.statistics.totalKmYearly - b.statistics.totalKmYearly},
+        {name: "Estadisticas en elevación anuales", value: (a: User, b: User) => a.statistics.totalElevationYearly - b.statistics.totalElevationYearly},
         {name: "Tipo de Actividad", value: (a: User, b: User) => a.activity - b.activity},
+        */
       ]
     }])
     

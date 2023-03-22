@@ -3,13 +3,13 @@ import Database from "../db/database.js";
 import Group from "../group/group.js";
 import { Statistics } from "../statistics/statistics.js"
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
-import BasePrompter from "./base_prompter.js";
+import Prompter from "./prompter.js";
 import { activityTypes, routes, users, groups } from "./choices.js";
 
 /**
  * GroupPrompter creates a new Prompter object for the Group. It can manage Group input related to this class.
  */
-export default class GroupPrompter extends BasePrompter {
+export default class GroupPrompter extends Prompter {
   /**
    * constructor creates a new prompter using the Database provided.
    * @param db Database for querying during prompts.
