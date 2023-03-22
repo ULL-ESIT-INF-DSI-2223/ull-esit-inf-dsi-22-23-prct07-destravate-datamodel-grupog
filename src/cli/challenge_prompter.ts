@@ -1,7 +1,8 @@
 import inquirer from "inquirer";
 import Database from "../db/database.js";
-import Challenge from "../challenges/challenges.js";
-import BasePrompter from "./base_prompter.js";
+import Challenge from "../challenge/challenge.js";
+import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
+import BasePrompter from "./prompter.js";
 import { activityTypes, challenges, routes, users } from "./choices.js";
 
 /**
@@ -68,6 +69,83 @@ export default class ChallengePrompter extends BasePrompter {
         activityType: c.activity,
       })
     );
+  }
+
+  /**
+   * print shows the list of challenges contained in the database, sorted by the criteria defined by the user.
+   */
+  async print(): Promise<void> {
+    // Let user select sort function
+    const { sortFunc } = await inquirer.prompt([
+      {
+        type: "list",
+        name: "sortFunc",
+        message: "¿Desea aplicar un criterio de ordenación?",
+        choices: [
+          { name: "No", value: undefined },
+          {
+            name: "Nombre",
+            value: (a: Challenge, b: Challenge) =>
+              compareStringsFirstIgnoringCase(a.name, b.name),
+          },
+          {
+            name: "Número de rutas que tiene el reto",
+            value: (a: Challenge, b: Challenge) =>
+              a.routes.length - b.routes.length,
+          },
+          {
+            name: "Longitud",
+            value: (a: Challenge, b: Challenge) => a.totalKm - b.totalKm,
+          },
+          {
+            name: "Número de usuarios lo están haciendo",
+            value: (a: Challenge, b: Challenge) =>
+              a.userIds.length - b.userIds.length,
+          },
+          {
+            name: "Tipo de Actividad",
+            value: (a: Challenge, b: Challenge) => a.activity - b.activity,
+          },
+        ],
+      },
+    ]);
+
+    // Do shallow copy to avoid modifying DB while still being performant
+    const challenges = this.db.challenges().slice();
+
+    if (sortFunc) {
+      // Apply sort function and ask if want reverse order
+      challenges.sort(sortFunc);
+      if (
+        (
+          await inquirer.prompt([
+            {
+              type: "list",
+              name: "reverse",
+              message: "¿En qué sentido?",
+              choices: [
+                { name: "Ascendente", value: false },
+                { name: "Descendente", value: true },
+              ],
+            },
+          ])
+        ).reverse
+      ) {
+        challenges.reverse();
+      }
+    }
+
+    // Print
+    Challenge.printTable(challenges);
+
+    // Pause
+    await inquirer.prompt([
+      {
+        type: "input",
+        name: ".",
+        message: "Pulse Enter para continuar...",
+      },
+    ]);
   }
 
   /**

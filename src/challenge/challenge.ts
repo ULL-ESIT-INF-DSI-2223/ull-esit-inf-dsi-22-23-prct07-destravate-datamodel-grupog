@@ -1,4 +1,5 @@
-import { ActivityType } from "../activity_type.js";
+import { getBorderCharacters, table } from "table";
+import { ActivityType, activityTypeToString } from "../activity_type.js";
 import Route from "../route/route.js";
 
 export default class Challenge {
@@ -40,5 +41,42 @@ export default class Challenge {
     this.totalKm = kmSum;
     this.userIds = userIds;
     this.activity = activity;
+  }
+
+  /**
+   * printTable prints a table containing the list of challenges provided.
+   * @param list List of challenges to print.
+   */
+  static printTable(list: Challenge[]): void {
+    const tableData = [
+      [
+        "Identificador",
+        "Nombre",
+        "Rutas del reto",
+        "Longitud total",
+        "Usuarios que lo estan haciendo",
+        "Tipo de actividad",
+      ],
+    ] as unknown[][];
+
+    list.forEach((challenge) =>
+      tableData.push([
+        challenge.id,
+        challenge.name,
+        challenge.routes,
+        `${challenge.totalKm} km`,
+        challenge.userIds,
+        activityTypeToString(challenge.activity),
+      ])
+    );
+
+    console.log(
+      table(tableData, {
+        border: getBorderCharacters("norc"),
+        columnDefault: { alignment: "center" },
+        drawHorizontalLine: (lineIndex: number, rowCount: number) =>
+          lineIndex < 2 || lineIndex === rowCount,
+      })
+    );
   }
 }
