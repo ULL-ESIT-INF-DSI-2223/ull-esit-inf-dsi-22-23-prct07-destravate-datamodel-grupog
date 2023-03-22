@@ -1,15 +1,16 @@
 import inquirer from "inquirer";
 import Database from "../../db/database.js";
 import { Choice } from "../choices.js";
+import AdminManager from "./admin_manager.js";
 import SessionManager from "./session_manager.js";
 
 export default class MainManager {
-  private db: Database
+  private admin: AdminManager
   private session: SessionManager
 
   constructor(db: Database) {
-    this.db = db
     this.session = new SessionManager(db)
+    this.admin = new AdminManager(db, this.session)
   }
 
   async main(): Promise<void> {
@@ -38,7 +39,13 @@ export default class MainManager {
         message: "Menú principal",
         choices
       }])
-      if (callable === "exit") return;
+      switch (callable) {
+        case "admin":
+          this.admin.main()
+          break;
+        case "exit":
+          return;
+      }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await ((this as any)[callable]())
@@ -72,9 +79,6 @@ export default class MainManager {
     throw new Error("TODO not implemented");
   }
   protected async printUsers(): Promise<void> {
-    throw new Error("TODO not implemented");
-  }
-  protected async admin(): Promise<void> {
     throw new Error("TODO not implemented");
   }
 }
