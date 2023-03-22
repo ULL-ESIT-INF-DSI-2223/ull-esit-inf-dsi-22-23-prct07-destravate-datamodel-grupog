@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import inquirer from "inquirer";
 import Database from "../../db/database.js";
+import User from "../../user/user.js";
 import { passwordMatches } from "../../utils/password.js";
 import { users } from "../choices.js";
 
@@ -32,7 +33,7 @@ export default class SessionManager {
   }
 
   isAdmin(): boolean {
-    return this.user && this.user.isAdmin
+    return (!!this.user) && this.user.isAdmin
   }
 
   logout(): void {
