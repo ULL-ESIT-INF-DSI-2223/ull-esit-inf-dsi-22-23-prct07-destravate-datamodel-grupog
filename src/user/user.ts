@@ -43,6 +43,12 @@ export default class User {
     )
   }
 
+  weeklyKmStatistics() {
+    const todaysDate = new Date();
+    const oneWeekLess = (new Date()).setDate(todaysDate.getDate() - 7);
+    console.log(oneWeekLess);
+  }
+
   /**
    * printTable prints a table containing the list of users provided.
    * @param list List of users to print.
