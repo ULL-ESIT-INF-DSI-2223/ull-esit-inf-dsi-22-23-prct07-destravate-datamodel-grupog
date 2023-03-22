@@ -8,6 +8,7 @@ import { activityTypes, routes, users, groups, challenges } from "./choices.js";
 import { appName } from "../consts.js";
 import RouteHistory from "../user/route_history.js";
 import { hashPassword } from "../utils/password.js";
+import Route from "../route/route.js";
 
 /**
  * UserPrompter creates a new Prompter object for the User. It can manage user input related to this class.
@@ -218,13 +219,14 @@ export default class UserPrompter extends Prompter {
 
     const input = await inquirer.prompt(questions)
 
-    input.routeHistory = await Promise.all(input.routeIDs.map(async (routeID: string) => {
+    const newRouteHistory = [] as RouteHistory[]
+    for (const routeID of input.routeIDs) {
       const originalDate = {
         year: undefined as (number|undefined),
         month: undefined as (number|undefined),
         day: undefined as (number|undefined)
       }
-      
+
       const originalRouteHistory = input.routeHistory?.find((rh: RouteHistory) => rh.routeId === routeID)
       if (originalRouteHistory) {
         originalDate.year = originalRouteHistory.date.getFullYear()
@@ -257,8 +259,9 @@ export default class UserPrompter extends Prompter {
           validate: (d: number) => d >= 1 && d <= 31 ? true : "Día del mes inválido"
         }
       ])
-      return new RouteHistory(routeID, new Date(y, m-1, d, 0, 0, 0, 0), route.distanceKm, route.averageSlope)
-    }))
+      newRouteHistory.push(new RouteHistory(routeID, new Date(y, m-1, d, 0, 0, 0, 0), route.distanceKm, route.averageSlope))
+    }
+    input.routeHistory = newRouteHistory
     
     return new User(
       input.id,
