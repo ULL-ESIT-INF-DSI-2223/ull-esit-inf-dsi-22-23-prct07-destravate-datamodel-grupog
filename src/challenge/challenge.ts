@@ -30,15 +30,10 @@ export default class Challenge {
       throw new Error("invalid name");
     }
 
-    let kmSum = 0;
-    routes.forEach((route) => {
-      kmSum = kmSum + route.distanceKm;
-    });
-
     this.id = id;
     this.name = name;
     this.routes = routes;
-    this.totalKm = kmSum;
+    this.totalKm = routes.reduce((acc, r) => acc + r.distanceKm, 0);
     this.userIds = userIds;
     this.activity = activity;
   }

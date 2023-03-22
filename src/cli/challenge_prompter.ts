@@ -191,24 +191,12 @@ export default class ChallengePrompter extends Prompter {
       },
     ]);
 
-    const inputChallenge = new Challenge(
+    return inputChallenge = new Challenge(
       defaults.id,
       input.name,
       input.routes,
       input.userIds,
       input.activityType
     );
-
-    let kmSum = 0;
-
-    this.db.routes().forEach((route1) => {
-      input.routes.forEach((route2: string) => {
-        if (route1.id === route2) {
-          kmSum = kmSum + route1.distanceKm;
-        }
-      });
-    });
-    inputChallenge.totalKm = kmSum;
-    return inputChallenge;
   }
 }
