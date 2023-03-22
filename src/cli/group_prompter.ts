@@ -1,10 +1,11 @@
+import { randomUUID } from "crypto"
 import inquirer from "inquirer";
 import Database from "../db/database.js";
 import Group from "../group/group.js";
-import { Statistics } from "../statistics/statistics.js"
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
 import Prompter from "./prompter.js";
 import { activityTypes, routes, users, groups } from "./choices.js";
+import RouteHistoryGroup from "../group/route_history_group.js";
 
 /**
  * GroupPrompter creates a new Prompter object for the Group. It can manage Group input related to this class.
@@ -57,9 +58,10 @@ export default class GroupPrompter extends Prompter {
       id: g.id,
       name: g.name,
       participants: g.participants,
-      statistics: g.statistics,
       favouriteRoutes: g.favoriteRoutes,
-      routeHistory: g.routeHistory
+      routeHistory: g.routeHistory,
+      createdBy: g.createdBy,
+      activity: g.activity
     }))
   }
 
@@ -75,12 +77,12 @@ export default class GroupPrompter extends Prompter {
       choices: [
         {name: "No", value: undefined},
         {name: "Nombre del grupo", value: (a: Group, b: Group) => compareStringsFirstIgnoringCase(a.name, b.name)},
-        {name: "Estadisticas en Km semanales", value: (a: Group, b: Group) => a.statistics.totalKmWeekly - b.statistics.totalKmWeekly},
-        {name: "Estadisticas en elevación semanales", value: (a: Group, b: Group) => a.statistics.totalElevationWeekly - b.statistics.totalElevationWeekly},
-        {name: "Estadisticas en Km mensuales", value: (a: Group, b: Group) => a.statistics.totalKmMonthly - b.statistics.totalKmMonthly},
-        {name: "Estadisticas en elevación mensuales", value: (a: Group, b: Group) => a.statistics.totalElevationMonthly - b.statistics.totalElevationMonthly},
-        {name: "Estadisticas en Km anuales", value: (a: Group, b: Group) => a.statistics.totalKmYearly - b.statistics.totalKmYearly},
-        {name: "Estadisticas en elevación anuales", value: (a: Group, b: Group) => a.statistics.totalElevationYearly - b.statistics.totalElevationYearly},
+        // {name: "Estadisticas en Km semanales", value: (a: Group, b: Group) => a.statistics.totalKmWeekly - b.statistics.totalKmWeekly},
+        // {name: "Estadisticas en elevación semanales", value: (a: Group, b: Group) => a.statistics.totalElevationWeekly - b.statistics.totalElevationWeekly},
+        // {name: "Estadisticas en Km mensuales", value: (a: Group, b: Group) => a.statistics.totalKmMonthly - b.statistics.totalKmMonthly},
+        // {name: "Estadisticas en elevación mensuales", value: (a: Group, b: Group) => a.statistics.totalElevationMonthly - b.statistics.totalElevationMonthly},
+        // {name: "Estadisticas en Km anuales", value: (a: Group, b: Group) => a.statistics.totalKmYearly - b.statistics.totalKmYearly},
+        // {name: "Estadisticas en elevación anuales", value: (a: Group, b: Group) => a.statistics.totalElevationYearly - b.statistics.totalElevationYearly},
         {name: "Creador", value: (a: Group, b: Group) => compareStringsFirstIgnoringCase(a.createdBy, b.createdBy)},
       ]
     }])
@@ -126,7 +128,8 @@ export default class GroupPrompter extends Prompter {
       defaults = {id: ""}
     }
 
-    const input = await inquirer.prompt([
+    const questions = [
+    // const input = await inquirer.prompt([
       {
         type: "input",
         name: "name",
@@ -150,10 +153,17 @@ export default class GroupPrompter extends Prompter {
       },
       {
         type: "checkbox",
-        name: "routeHistory",
+        name: "routeIDs",
         message: "Indica las rutas que ha terminado el grupo:",
-        default: defaults.routeHistory,
+        default: defaults?.routeHistory.map((rh: RouteHistoryGroup) => rh.routeId),
         choices: routes(this.db)
+      },
+      {
+        type: "list",
+        name: "createdBy",
+        message: "Indica el creador del grupo:",
+        default: defaults.createdBy,
+        choices: users(this.db)
       },
       {
         type: "list",
@@ -162,24 +172,91 @@ export default class GroupPrompter extends Prompter {
         default: defaults.activityType,
         choices: activityTypes()
       }
-    ])
+    ] as unknown[]
 
-    const statistics: Statistics = {
-      totalKmWeekly: 0,
-      totalKmMonthly: 0,
-      totalKmYearly: 0,
-      totalElevationWeekly: 0,
-      totalElevationMonthly: 0,
-      totalElevationYearly: 0,
-    };
+    if (!defaults) {
+      defaults = {}
+      questions.unshift({
+        type: "input",
+        name: "id",
+        message: "Defina el ID del grupo:",
+        default: randomUUID(),
+        validate: (id: string) => {
+
+          if (id === "") {
+            return "El ID no puede estar vacío"
+          }
+
+          if (this.db.users().findIndex(user => user.id === id) >= 0) {
+            return "Ya existe un grupo con este ID"
+          }
+
+          return true
+        }
+      })
+    }
+
+    const input = await inquirer.prompt(questions)
+
+    input.routeHistory = await Promise.all(input.routeIDs.map(async (routeID: string) => {
+      const originalDate = {
+        year: undefined as (number|undefined),
+        month: undefined as (number|undefined),
+        day: undefined as (number|undefined)
+      }
+      
+      const originalRouteHistory = input.routeHistory?.find((rh: RouteHistoryGroup) => rh.routeId === routeID)
+      if (originalRouteHistory) {
+        originalDate.year = originalRouteHistory.date.getFullYear()
+        originalDate.month = originalRouteHistory.date.getMonth() + 1
+        originalDate.day = originalRouteHistory.date.getDate()
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const route = this.db.routes().find(r => r.id === routeID)!;
+      const {y, m, d} = await inquirer.prompt([
+        {
+          type: "number",
+          name: "y",
+          message: `Indique el año en el que ha realizado la ruta ${route.name}:`,
+          default: originalDate.year,
+          validate: (y: number) => y >= 1979 && y <= new Date().getFullYear() ? true : "El año debe estar entre 1970 y el actual"
+        },
+        {
+          type: "number",
+          name: "m",
+          message: `Indique (con número) el mes en el que ha realizado la ruta ${route.name}:`,
+          default: originalDate.month,
+          validate: (m: number) => m >= 1 && m <= 12 ? true : "Mes inválido"
+        },
+        {
+          type: "number",
+          name: "d",
+          message: `Indique el día del mes en el que ha realizado la ruta ${route.name}:`,
+          default: originalDate.day,
+          validate: (d: number) => d >= 1 && d <= 31 ? true : "Día del mes inválido"
+        }
+      ])
+
+      const participants: string[] = await inquirer.prompt([
+        {
+          type: "checkbox",
+          name: "participants",
+          message: `Indique los usuarios que han participado en la ruta ${route.name}:`,
+          default: defaults.participants,
+          choices: users(this.db)
+        }
+      ])
+      return new RouteHistoryGroup(routeID, new Date(y, m-1, d, 0, 0, 0, 0), route.distanceKm, route.averageSlope, participants)
+    }))
 
     return new Group(
       defaults.id,
       input.name,
       input.participants,
-      statistics,
       input.favoriteRoutes,
       input.routeHistory,
+      input.createdBy,
       input.activity
     )
   }

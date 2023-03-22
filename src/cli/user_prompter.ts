@@ -82,17 +82,13 @@ export default class UserPrompter extends Prompter {
       choices: [
         {name: "No", value: undefined},
         {name: "Nombre", value: (a: User, b: User) => compareStringsFirstIgnoringCase(a.name, b.name)},
-        /*
-        TODO: FIX INVALID CODE
-
-        {name: "Estadisticas en Km semanales", value: (a: User, b: User) => a.statistics.totalKmWeekly - b.statistics.totalKmWeekly},
-        {name: "Estadisticas en elevación semanales", value: (a: User, b: User) => a.statistics.totalElevationWeekly - b.statistics.totalElevationWeekly},
-        {name: "Estadisticas en Km mensuales", value: (a: User, b: User) => a.statistics.totalKmMonthly - b.statistics.totalKmMonthly},
-        {name: "Estadisticas en elevación mensuales", value: (a: User, b: User) => a.statistics.totalElevationMonthly - b.statistics.totalElevationMonthly},
-        {name: "Estadisticas en Km anuales", value: (a: User, b: User) => a.statistics.totalKmYearly - b.statistics.totalKmYearly},
-        {name: "Estadisticas en elevación anuales", value: (a: User, b: User) => a.statistics.totalElevationYearly - b.statistics.totalElevationYearly},
+        {name: "Estadisticas en Km semanales", value: (a: User, b: User) => a.weeklyKmStatistics() - b.weeklyKmStatistics()},
+        {name: "Estadisticas en elevación semanales", value: (a: User, b: User) => a.weeklySlopeStatistics() - b.weeklySlopeStatistics()},
+        {name: "Estadisticas en Km mensuales", value: (a: User, b: User) => a.monthlyKmStatistics() - b.monthlyKmStatistics()},
+        {name: "Estadisticas en elevación mensuales", value: (a: User, b: User) => a.monthlySlopeStatistics() - b.monthlySlopeStatistics()},
+        {name: "Estadisticas en Km anuales", value: (a: User, b: User) => a.yearlyKmStatistics() - b.yearlyKmStatistics()},
+        {name: "Estadisticas en elevación anuales", value: (a: User, b: User) => a.yearlySlopeStatistics() - b.yearlySlopeStatistics()},
         {name: "Tipo de Actividad", value: (a: User, b: User) => a.activity - b.activity},
-        */
       ]
     }])
     
@@ -206,15 +202,15 @@ export default class UserPrompter extends Prompter {
         message: "Defina el ID del usuario:",
         default: randomUUID(),
         validate: (id: string) => {
-          console.log("Aqui 1")
+
           if (id === "") {
             return "El ID no puede estar vacío"
           }
-          console.log("Aqui 2")
+
           if (this.db.users().findIndex(user => user.id === id) >= 0) {
             return "Ya existe un usuario con este ID"
           }
-          console.log("Aqui 3")
+
           return true
         } 
       })
@@ -222,14 +218,14 @@ export default class UserPrompter extends Prompter {
 
     const input = await inquirer.prompt(questions)
 
-    input.routesHistory = await Promise.all(input.routeIDs.map(async (routeID: string) => {
+    input.routeHistory = await Promise.all(input.routeIDs.map(async (routeID: string) => {
       const originalDate = {
         year: undefined as (number|undefined),
         month: undefined as (number|undefined),
         day: undefined as (number|undefined)
       }
       
-      const originalRouteHistory = input.routesHistory.find((rh: RouteHistory) => rh.routeId === routeID)
+      const originalRouteHistory = input.routeHistory?.find((rh: RouteHistory) => rh.routeId === routeID)
       if (originalRouteHistory) {
         originalDate.year = originalRouteHistory.date.getFullYear()
         originalDate.month = originalRouteHistory.date.getMonth() + 1

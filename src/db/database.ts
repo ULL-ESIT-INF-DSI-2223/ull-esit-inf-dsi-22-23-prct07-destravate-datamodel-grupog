@@ -12,6 +12,7 @@ import Group from "../group/group.js";
 import User from "../user/user.js";
 import Challenge from "../challenge/challenge.js";
 import { UserData } from "../user/user_data.js";
+import { GroupData } from "../group/group_data.js";
 
 /**
  * Database class represents the storage of data of this program.
@@ -82,6 +83,14 @@ export default class Database {
    * @returns The list of groups in the database.
    */
   groups(): Group[] {
+    return this.groupData().map(data => Group.parse(data))
+  }
+
+  /**
+   * groupData returns the list of groups in the database as is (not parsed).
+   * @returns The list of raw groups in the database.
+   */
+  groupData(): GroupData[] {
     return this._db.data!.groups
   }
 
