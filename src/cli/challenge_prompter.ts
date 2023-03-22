@@ -2,13 +2,13 @@ import inquirer from "inquirer";
 import Database from "../db/database.js";
 import Challenge from "../challenge/challenge.js";
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
-import BasePrompter from "./prompter.js";
+import Prompter from "./prompter.js";
 import { activityTypes, challenges, routes, users } from "./choices.js";
 
 /**
  * ChallengePrompter creates a new Prompter object for the Challenges. It can manage user input related to this class.
  */
-export default class ChallengePrompter extends BasePrompter {
+export default class ChallengePrompter extends Prompter {
   /**
    * constructor creates a new prompter using the Database provided.
    * @param db Database for querying during prompts.
@@ -32,12 +32,14 @@ export default class ChallengePrompter extends BasePrompter {
       await inquirer.prompt([
         {
           type: "checkbox",
-          name: "challenge",
+          name: "challenges",
           message: "Seleccione los retos que desea borrar:",
           choices: challenges(this.db),
         },
       ])
-    ).challenges.forEach(async (id: string) => await this.db.deleteRoute(id));
+    ).challenges.forEach(
+      async (id: string) => await this.db.deleteChallenge(id)
+    );
   }
 
   /**
@@ -189,12 +191,23 @@ export default class ChallengePrompter extends BasePrompter {
       },
     ]);
 
-    return new Challenge(
+    const inputChallenge = new Challenge(
       defaults.id,
       input.name,
       input.routes,
       input.userIds,
       input.activityType
     );
+    let kmSum = 0;
+
+    for (let i = 0; i < routes(this.db).length; i++) {
+      for (let j = 0; j < input.routes.length; j++) {
+        if (this.db.routes()[i].id === input.routes[j]) {
+          kmSum = kmSum + this.db.routes()[i].distanceKm;
+        }
+      }
+    }
+    inputChallenge.setTotalKm(kmSum);
+    return inputChallenge;
   }
 }

@@ -43,6 +43,9 @@ export default class Challenge {
     this.activity = activity;
   }
 
+  setTotalKm(km: number) {
+    this.totalKm = km;
+  }
   /**
    * printTable prints a table containing the list of challenges provided.
    * @param list List of challenges to print.
