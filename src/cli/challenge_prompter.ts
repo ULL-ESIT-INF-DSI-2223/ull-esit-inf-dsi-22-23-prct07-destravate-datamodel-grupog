@@ -207,7 +207,7 @@ export default class ChallengePrompter extends Prompter {
         }
       }
     }
-    inputChallenge.setTotalKm(kmSum);
+    inputChallenge.totalKm = kmSum;
     return inputChallenge;
   }
 }
