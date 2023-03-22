@@ -1,6 +1,6 @@
 import Group from "../group/group.js"
 import Route from "../route/route.js"
-import Challenge from "../challenges/challenges.js";
+import Challenge from "../challenge/challenge.js";
 import { UserData } from "../user/user_data.js";
 
 /**
