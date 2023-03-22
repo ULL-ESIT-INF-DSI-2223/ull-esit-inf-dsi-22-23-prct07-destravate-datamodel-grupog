@@ -56,7 +56,6 @@ export default class SessionManager {
       },
     ])
     
-    // TODO change for users
     const user = this.db.users().find(user => user.id === credentials.user)
     if (!user) {
       throw new Error(`somehow a non existing user ID (${credentials.user}) was chosen`);
