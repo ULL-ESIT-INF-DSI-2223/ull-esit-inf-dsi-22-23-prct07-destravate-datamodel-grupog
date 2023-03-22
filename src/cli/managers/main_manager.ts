@@ -33,52 +33,48 @@ export default class MainManager {
         choices.push({name: "Administración", value: "admin"})
       }
 
-      const { callable } = await inquirer.prompt([{
+      const { operation } = await inquirer.prompt([{
         type: "list",
-        name: "callable",
+        name: "operation",
         message: "Menú principal",
         choices
       }])
-      switch (callable) {
+      switch (operation) {
+        case "addFriends":
+          throw new Error("TODO: not implemented");
+          break;
         case "admin":
-          this.admin.main()
+          this.admin.main();
+          break;
+        case "createGroup":
+          throw new Error("TODO: not implemented");
+          break;
+        case "deleteFriends":
+          throw new Error("TODO: not implemented");
+          break;
+        case "deleteGroups":
+          throw new Error("TODO: not implemented");
           break;
         case "exit":
           return;
+        case "joinGroup":
+          throw new Error("TODO: not implemented");
+          break;
+        case "logout":
+          this.session.logout();
+          break;
+        case "printGroups":
+          throw new Error("TODO: not implemented");
+          break;
+        case "printRoutes":
+          throw new Error("TODO: not implemented");
+          break;
+        case "printUsers":
+          throw new Error("TODO: not implemented");
+          break;
+        default:
+          throw new Error(`unexpected operation: ${operation}`);
       }
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      await ((this as any)[callable]())
     }
-  }
-
-  protected async addFriends(): Promise<void> {
-    throw new Error("TODO not implemented");
-  }
-  protected async deleteFriends(): Promise<void> {
-    throw new Error("TODO not implemented");
-  }
-  protected async deleteGroups(): Promise<void> {
-    throw new Error("TODO not implemented");
-  }
-
-  protected logout(): void {
-    this.session.logout()
-  }
-
-  protected async createGroup(): Promise<void> {
-    throw new Error("TODO not implemented");
-  }
-  protected async joinGroup(): Promise<void> {
-    throw new Error("TODO not implemented");
-  }
-  protected async printRoutes(): Promise<void> {
-    throw new Error("TODO not implemented");
-  }
-  protected async printGroups(): Promise<void> {
-    throw new Error("TODO not implemented");
-  }
-  protected async printUsers(): Promise<void> {
-    throw new Error("TODO not implemented");
   }
 }
