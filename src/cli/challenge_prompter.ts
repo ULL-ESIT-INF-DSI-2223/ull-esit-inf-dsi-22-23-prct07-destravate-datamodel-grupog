@@ -37,9 +37,7 @@ export default class ChallengePrompter extends BasePrompter {
           choices: challenges(this.db),
         },
       ])
-    ).challenges.forEach(
-      async (id: string) => await this.db.deleteChallenge(id)
-    );
+    ).challenges.forEach(async (id: string) => await this.db.deleteRoute(id));
   }
 
   /**
