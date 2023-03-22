@@ -77,12 +77,12 @@ export default class GroupPrompter extends Prompter {
       choices: [
         {name: "No", value: undefined},
         {name: "Nombre del grupo", value: (a: Group, b: Group) => compareStringsFirstIgnoringCase(a.name, b.name)},
-        // {name: "Estadisticas en Km semanales", value: (a: Group, b: Group) => a.statistics.totalKmWeekly - b.statistics.totalKmWeekly},
-        // {name: "Estadisticas en elevación semanales", value: (a: Group, b: Group) => a.statistics.totalElevationWeekly - b.statistics.totalElevationWeekly},
-        // {name: "Estadisticas en Km mensuales", value: (a: Group, b: Group) => a.statistics.totalKmMonthly - b.statistics.totalKmMonthly},
-        // {name: "Estadisticas en elevación mensuales", value: (a: Group, b: Group) => a.statistics.totalElevationMonthly - b.statistics.totalElevationMonthly},
-        // {name: "Estadisticas en Km anuales", value: (a: Group, b: Group) => a.statistics.totalKmYearly - b.statistics.totalKmYearly},
-        // {name: "Estadisticas en elevación anuales", value: (a: Group, b: Group) => a.statistics.totalElevationYearly - b.statistics.totalElevationYearly},
+        {name: "Estadisticas en Km semanales", value: (a: Group, b: Group) => a.weeklyGroupKmStatistics() - b.weeklyGroupKmStatistics()},
+        {name: "Estadisticas en elevación semanales", value: (a: Group, b: Group) => a.weeklyGroupSlopeStatistics() - b.weeklyGroupSlopeStatistics()},
+        {name: "Estadisticas en Km mensuales", value: (a: Group, b: Group) => a.monthlyGroupKmStatistics() - b.monthlyGroupKmStatistics()},
+        {name: "Estadisticas en elevación mensuales", value: (a: Group, b: Group) => a.monthlyGroupSlopeStatistics() - b.monthlyGroupSlopeStatistics()},
+        {name: "Estadisticas en Km anuales", value: (a: Group, b: Group) => a.yearlyGroupKmStatistics() - b.yearlyGroupKmStatistics()},
+        {name: "Estadisticas en elevación anuales", value: (a: Group, b: Group) => a.yearlyGroupSlopeStatistics() - b.yearlyGroupSlopeStatistics()},
         {name: "Creador", value: (a: Group, b: Group) => compareStringsFirstIgnoringCase(a.createdBy, b.createdBy)},
       ]
     }])
