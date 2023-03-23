@@ -130,73 +130,77 @@ export default class UserPrompter extends Prompter {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async dataPrompt(defaults?: any): Promise<User> {
+    const defaultWasNotDefined = !defaults
+    if (defaultWasNotDefined) {
+      defaults = {}
+    }
+
     const questions = [
       {
         type: "input",
         name: "name",
         message: "Defina el nombre del usuario:",
-        default: defaults?.name,
+        default: defaults.name,
         validate: (input: string) => input !== "" ? true : "El nombre no puede estar vacío"
       },
       {
         type: "checkbox",
         name: "friends",
         message: `Indique sus amigos en ${appName}:`,
-        default: defaults?.userIds,
+        default: defaults.userIds,
         choices: users(this.db)
       },
       {
         type: "checkbox",
         name: "groupFriends",
         message: `Indique sus grupos de amigos en ${appName}:`,
-        default: defaults?.groupFriends,
+        default: defaults.groupFriends,
         choices: groups(this.db)
       },
       {
         type: "checkbox",
         name: "favoriteRoutes",
         message: "Indique sus rutas favoritas:",
-        default: defaults?.favoriteRoutes,
+        default: defaults.favoriteRoutes,
         choices: routes(this.db)
       },
       {
         type: "checkbox",
         name: "activeChallenges",
         message: "Indique los retos que quieres activar: ",
-        default: defaults?.activeChallenges,
+        default: defaults.activeChallenges,
         choices: challenges(this.db)
       },
       {
         type: "list",
         name: "activity",
         message: "Seleccione el tipo de actividad que vas a realizar:",
-        default: defaults?.activityType,
+        default: defaults.activityType,
         choices: activityTypes()
       },
       {
         type: "password",
         name: "password",
-        message: `Introduzca una contraseña para el usuario${defaults?.passwordHash ? " (dejar en blanco para no modificar)" : ""}:`,
+        message: `Introduzca una contraseña para el usuario${defaults.passwordHash ? " (dejar en blanco para no modificar)" : ""}:`,
         mask: "*",
-        validate: (p: string) => defaults?.passwordHash || p !== ""
+        validate: (p: string) => defaults.passwordHash || p !== ""
       },
       {
         type: "confirm",
         name: "isAdmin",
         message: "¿Dar permisos de administración al usuario?",
-        default: defaults?.isAdmin
+        default: defaults.isAdmin
       },
       {
         type: "checkbox",
         name: "routeIDs",
         message: "Indica las rutas que has terminado:",
-        default: defaults?.routeHistory.map((rh: RouteHistory) => rh.routeId),
+        default: defaults.routeHistory?.map((rh: RouteHistory) => rh.routeId),
         choices: routes(this.db)
       }
     ] as unknown[]
 
-    if (!defaults) {
-      defaults = {}
+    if (defaultWasNotDefined) {
       questions.unshift({
         type: "input",
         name: "id",

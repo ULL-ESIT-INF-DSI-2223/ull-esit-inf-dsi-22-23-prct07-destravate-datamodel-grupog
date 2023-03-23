@@ -1,4 +1,3 @@
-import { randomUUID } from "crypto"
 import inquirer from "inquirer";
 import Database from "../db/database.js";
 import Group from "../group/group.js";
@@ -128,6 +127,9 @@ export default class GroupPrompter extends Prompter {
       defaults = {id: ""}
     }
 
+    const usersWithSystem = users(this.db)
+    usersWithSystem.push({name: "Sistema", value: ""})
+
     const questions = [
     // const input = await inquirer.prompt([
       {
@@ -155,7 +157,7 @@ export default class GroupPrompter extends Prompter {
         type: "checkbox",
         name: "routeIDs",
         message: "Indica las rutas que ha terminado el grupo:",
-        default: defaults?.routeHistory.map((rh: RouteHistoryGroup) => rh.routeId),
+        default: defaults.routeHistory?.map((rh: RouteHistoryGroup) => rh.routeId),
         choices: routes(this.db)
       },
       {
@@ -163,7 +165,7 @@ export default class GroupPrompter extends Prompter {
         name: "createdBy",
         message: "Indica el creador del grupo:",
         default: defaults.createdBy,
-        choices: users(this.db)
+        choices: usersWithSystem
       },
       {
         type: "list",
@@ -173,28 +175,6 @@ export default class GroupPrompter extends Prompter {
         choices: activityTypes()
       }
     ] as unknown[]
-
-    if (!defaults) {
-      defaults = {}
-      questions.unshift({
-        type: "input",
-        name: "id",
-        message: "Defina el ID del grupo:",
-        default: randomUUID(),
-        validate: (id: string) => {
-
-          if (id === "") {
-            return "El ID no puede estar vacío"
-          }
-
-          if (this.db.users().findIndex(user => user.id === id) >= 0) {
-            return "Ya existe un grupo con este ID"
-          }
-
-          return true
-        }
-      })
-    }
 
     const input = await inquirer.prompt(questions)
 
