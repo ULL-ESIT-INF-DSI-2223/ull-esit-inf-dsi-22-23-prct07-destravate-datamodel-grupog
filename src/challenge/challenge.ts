@@ -58,7 +58,7 @@ export default class Challenge {
       tableData.push([
         challenge.id,
         challenge.name,
-        challenge.routes,
+        challenge.routes.map(route => route.name).reduce((acc, val) => acc + val + "\n", ""),
         `${challenge.totalKm} km`,
         challenge.userIds,
         activityTypeToString(challenge.activity),

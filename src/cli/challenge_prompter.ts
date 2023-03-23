@@ -191,10 +191,10 @@ export default class ChallengePrompter extends Prompter {
       },
     ]);
 
-    return inputChallenge = new Challenge(
+    return new Challenge(
       defaults.id,
       input.name,
-      input.routes,
+      input.routes.map((routeID: string) => this.db.routes().find(route => route.id === routeID)),
       input.userIds,
       input.activityType
     );
