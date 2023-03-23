@@ -13,6 +13,7 @@ import User from "../user/user.js";
 import Challenge from "../challenge/challenge.js";
 import { UserData } from "../user/user_data.js";
 import { GroupData } from "../group/group_data.js";
+import { ChallengeData } from "../challenge/challenge_data.js";
 
 /**
  * Database class represents the storage of data of this program.
@@ -54,7 +55,7 @@ export default class Database {
    * @returns The new ID of the Group added.
    */
   async addGroup(g: Group): Promise<string> {
-    return this.add(Collection.GROUPS, g)
+    return this.add(Collection.GROUPS, g);
   }
 
   /**
@@ -63,7 +64,7 @@ export default class Database {
    * @param g Group to add to the collection.
    */
   async setGroup(g: Group): Promise<void> {
-    return this.set(Collection.GROUPS, g)
+    return this.set(Collection.GROUPS, g);
   }
 
   /**
@@ -73,9 +74,9 @@ export default class Database {
    */
   async deleteGroup(g: Group | string): Promise<void> {
     if (typeof g !== "string") {
-      g = g.id
+      g = g.id;
     }
-    return this.delete(Collection.GROUPS, g)
+    return this.delete(Collection.GROUPS, g);
   }
 
   /**
@@ -83,7 +84,7 @@ export default class Database {
    * @returns The list of groups in the database.
    */
   groups(): Group[] {
-    return this.groupData().map(data => Group.parse(data))
+    return this.groupData().map((data) => Group.parse(data));
   }
 
   /**
@@ -91,7 +92,7 @@ export default class Database {
    * @returns The list of raw groups in the database.
    */
   groupData(): GroupData[] {
-    return this._db.data!.groups
+    return this._db.data!.groups;
   }
 
   // Route
@@ -170,6 +171,14 @@ export default class Database {
    * @returns The list of challenges in the database.
    */
   challenges(): Challenge[] {
+    return this.challengeData().map((data) => Challenge.parse(data, this));
+  }
+
+  /**
+   * challengeData returns the list of challenges in the database without parsing.
+   * @returns The list of challenges in the database.
+   */
+  challengeData(): ChallengeData[] {
     return this._db.data!.challenges;
   }
 
@@ -180,7 +189,7 @@ export default class Database {
    * @returns The new ID of the User added.
    */
   async addUser(u: User): Promise<string> {
-    return this.add(Collection.USERS, u)
+    return this.add(Collection.USERS, u);
   }
 
   /**
@@ -189,7 +198,7 @@ export default class Database {
    * @param u User to add to the collection.
    */
   async setUser(u: User): Promise<void> {
-    return this.set(Collection.USERS, u)
+    return this.set(Collection.USERS, u);
   }
 
   /**
@@ -197,11 +206,11 @@ export default class Database {
    * it does not return error.
    * @param u Either the User to remove, or the ID of the User to remove.
    */
-  async deleteUser(u: User|string): Promise<void> {
+  async deleteUser(u: User | string): Promise<void> {
     if (typeof u !== "string") {
-      u = u.id
+      u = u.id;
     }
-    return this.delete(Collection.USERS, u)
+    return this.delete(Collection.USERS, u);
   }
 
   /**
@@ -209,7 +218,7 @@ export default class Database {
    * @returns The list of users in the database.
    */
   users(): User[] {
-    return this.userData().map(data => User.parse(data))
+    return this.userData().map((data) => User.parse(data));
   }
 
   /**
@@ -217,7 +226,7 @@ export default class Database {
    * @returns The list of raw users in the database.
    */
   userData(): UserData[] {
-    return this._db.data!.users
+    return this._db.data!.users;
   }
 
   //Generic
