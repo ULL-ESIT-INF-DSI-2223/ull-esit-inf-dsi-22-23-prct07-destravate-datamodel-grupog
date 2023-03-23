@@ -1,6 +1,9 @@
 import { ActivityType } from "../activity_type.js";
 import Database from "../db/database.js";
-import { compareStrings, compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
+import {
+  compareStrings,
+  compareStringsFirstIgnoringCase,
+} from "../utils/sort_func.js";
 
 /**
  * Choice type represents a generic choice for inquirer.js
