@@ -1,6 +1,9 @@
 import { ActivityType } from "../activity_type.js";
 import Database from "../db/database.js";
-import { compareStrings, compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
+import {
+  compareStrings,
+  compareStringsFirstIgnoringCase,
+} from "../utils/sort_func.js";
 
 /**
  * Choice type represents a generic choice for inquirer.js
@@ -37,7 +40,7 @@ export function routes(db: Database): Choice<string>[] {
     .routes()
     .reduce((acc, route) => {
       acc.push({
-        name: `${route.name} (${route.id})`,
+        name: route.name,
         value: route.id,
       });
       return acc;
@@ -55,7 +58,7 @@ export function challenges(db: Database): Choice<string>[] {
     .challenges()
     .reduce((acc, challenge) => {
       acc.push({
-        name: `${challenge.name} (${challenge.id})`,
+        name: challenge.name,
         value: challenge.id,
       });
       return acc;

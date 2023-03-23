@@ -2,13 +2,13 @@ import inquirer from "inquirer";
 import Database from "../db/database.js";
 import Challenge from "../challenge/challenge.js";
 import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
-import BasePrompter from "./prompter.js";
+import Prompter from "./prompter.js";
 import { activityTypes, challenges, routes, users } from "./choices.js";
 
 /**
  * ChallengePrompter creates a new Prompter object for the Challenges. It can manage user input related to this class.
  */
-export default class ChallengePrompter extends BasePrompter {
+export default class ChallengePrompter extends Prompter {
   /**
    * constructor creates a new prompter using the Database provided.
    * @param db Database for querying during prompts.
@@ -32,7 +32,7 @@ export default class ChallengePrompter extends BasePrompter {
       await inquirer.prompt([
         {
           type: "checkbox",
-          name: "challenge",
+          name: "challenges",
           message: "Seleccione los retos que desea borrar:",
           choices: challenges(this.db),
         },
@@ -194,7 +194,7 @@ export default class ChallengePrompter extends BasePrompter {
     return new Challenge(
       defaults.id,
       input.name,
-      input.routes,
+      input.routes.map((routeID: string) => this.db.routes().find(route => route.id === routeID)),
       input.userIds,
       input.activityType
     );
