@@ -2,15 +2,18 @@ import inquirer from "inquirer";
 import Database from "../../db/database.js";
 import { Choice } from "../choices.js";
 import AdminManager from "./admin_manager.js";
+import GroupManager from "./group_manager.js";
 import SessionManager from "./session_manager.js";
 
 export default class MainManager {
   private admin: AdminManager
+  private group: GroupManager
   private session: SessionManager
 
   constructor(db: Database) {
     this.session = new SessionManager(db)
     this.admin = new AdminManager(db, this.session)
+    this.group = new GroupManager(db, this.session)
   }
 
   async main(): Promise<void> {
@@ -40,13 +43,13 @@ export default class MainManager {
       }])
       switch (operation) {
         case "admin":
-          this.admin.main();
+          await this.admin.main();
           break;
         case "createGroup":
-          throw new Error("TODO: not implemented");
+          await this.group.create();
           break;
         case "deleteGroups":
-          throw new Error("TODO: not implemented");
+          await this.group.delete();
           break;
         case "editFriends":
           throw new Error("TODO: not implemented");
@@ -54,7 +57,7 @@ export default class MainManager {
         case "exit":
           return;
         case "joinGroup":
-          throw new Error("TODO: not implemented");
+          await this.group.join();
           break;
         case "logout":
           this.session.logout();
