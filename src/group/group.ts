@@ -57,16 +57,10 @@ export default class Group {
    * Function that returns the number of Km accumulated on a week by all the group
    */
   weeklyGroupKmStatistics(): number {
-    const todaysDate: Date = new Date();
+    const todaysDate = new Date();
     const oneWeekLess = new Date();
     oneWeekLess.setDate(todaysDate.getDate() - 7);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneWeekLess ? route.kms : 0), 0)
   }
 
   /**
@@ -147,6 +141,27 @@ export default class Group {
       }
     })
     return statistics
+  }
+
+  top3UsersByAccDistance(): string[] {
+    return this.top3UsersByField("kms")
+  }
+
+  top3UsersByAccSlope(): string[] {
+    return this.top3UsersByField("averageSlope")
+  }
+
+  top3UsersByField(field: string): string[] {
+    return Array.from(this.routeHistory.reduce((acc, val) => {
+      val.participants.forEach(userID => {
+        let userAcc = acc.get(userID);
+        if (!userAcc) {
+          userAcc = 0
+        }
+        acc.set(userID, userAcc + (val as never)[field]);
+      });
+      return acc
+    }, new Map<string, number>())).sort((a, b) => a[1] - b[1]).slice(0, 3).map(x => x[0]);
   }
 
   /**
