@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import inquirer from "inquirer";
 import Database from "../../db/database.js";
-import User from "../../user/user.js";
+import { UserData } from "../../user/user_data.js";
 import { passwordMatches } from "../../utils/password.js";
 import { users } from "../choices.js";
 
 export default class SessionManager {
   private db: Database
-  private user: User | null
+  private user: UserData | null
 
   constructor(db: Database) {
     this.db = db
@@ -40,7 +40,16 @@ export default class SessionManager {
     this.user = null
   }
 
-  protected async login(): Promise<User|null> {
+  refresh(): void {
+    if (!this.user) {
+      return
+    }
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const user = this.db.userData().find(user => user.id === this.user!.id)
+    this.user = user ? user : null
+  }
+
+  protected async login(): Promise<UserData|null> {
     const credentials = await inquirer.prompt([
       {
         type: "list",
@@ -56,8 +65,7 @@ export default class SessionManager {
       },
     ])
     
-    // TODO change for users
-    const user = this.db.users().find(user => user.id === credentials.user)
+    const user = this.db.userData().find(user => user.id === credentials.user)
     if (!user) {
       throw new Error(`somehow a non existing user ID (${credentials.user}) was chosen`);
     }
@@ -68,7 +76,7 @@ export default class SessionManager {
     return null
   }
 
-  protected async register(): Promise<User|null> {
+  protected async register(): Promise<UserData|null> {
     throw new Error("TODO: not implemented");
   }
 }
