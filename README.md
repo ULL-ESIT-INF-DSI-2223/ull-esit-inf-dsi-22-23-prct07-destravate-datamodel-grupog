@@ -19,3 +19,5 @@ TODO
 
 ## Conclusión
 TODO
+
+[![tests](https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupog/actions/workflows/testing.yml/badge.svg?branch=master)](https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupog/actions/workflows/testing.yml)
