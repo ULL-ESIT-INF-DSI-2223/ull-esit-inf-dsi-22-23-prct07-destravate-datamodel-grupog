@@ -32,7 +32,7 @@ export default class Group {
     this.participants = participants;
     this.favoriteRoutes = favoriteRoutes;
     this.routeHistory = routeHistory;
-    this.createdBy = "";
+    this.createdBy = createdBy;
     this.activity = activity;
   }
 

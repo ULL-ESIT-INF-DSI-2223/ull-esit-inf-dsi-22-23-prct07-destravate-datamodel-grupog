@@ -87,20 +87,21 @@ export function users(db: Database): Choice<string>[] {
 /**
  * routes function returns a list of choices for all users.
  * @param db Database to read the users from.
+ * @param ownerID ID of the owner to filter by.
  * @returns A list of all the user choices, using their ID as value.
  */
-export function groups(db: Database): Choice<string>[] {
-  // TODO: Change for groups when they are added.
-  return db
-    .groupData()
-    .reduce((acc, group) => {
-      acc.push({
-        name: `${group.name} (${group.id})`,
-        value: group.id,
-      });
-      return acc;
-    }, [] as Choice<string>[])
-    .sort(sortByNameThenValue);
+export function groups(db: Database, ownerID?: string): Choice<string>[] {
+  const groupList = db.groupData()
+  if (ownerID) {
+    groupList.filter(group => group.createdBy === ownerID)
+  }
+  return groupList.reduce((acc, group) => {
+    acc.push({
+      name: `${group.name} (${group.id})`,
+      value: group.id
+    })
+    return acc
+  }, [] as Choice<string>[]).sort(sortByNameThenValue)
 }
 
 /**
