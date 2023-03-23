@@ -14,15 +14,14 @@ export default class MainManager {
   }
 
   async main(): Promise<void> {
-    for (let exit = false; !exit;) {
+    for (;;) {
       await this.session.checkSession()
 
       const choices: Choice<string>[] = [
-        {name: "Añadir amigos", value: "addFriends"},
-        {name: "Borrar amigos", value: "deleteFriends"},
         {name: "Borrar grupos", value: "deleteGroups"},
         {name: "Cerrar sesión", value: "logout"},
         {name: "Crear un grupo", value: "createGroup"},
+        {name: "Editar amigos", value: "editFriends"},
         {name: "Salir del programa", value: "exit"},
         {name: "Unirse a un grupo", value: "joinGroup"},
         {name: "Ver todas las rutas", value: "printRoutes"},
@@ -40,19 +39,16 @@ export default class MainManager {
         choices
       }])
       switch (operation) {
-        case "addFriends":
-          throw new Error("TODO: not implemented");
-          break;
         case "admin":
           this.admin.main();
           break;
         case "createGroup":
           throw new Error("TODO: not implemented");
           break;
-        case "deleteFriends":
+        case "deleteGroups":
           throw new Error("TODO: not implemented");
           break;
-        case "deleteGroups":
+        case "editFriends":
           throw new Error("TODO: not implemented");
           break;
         case "exit":

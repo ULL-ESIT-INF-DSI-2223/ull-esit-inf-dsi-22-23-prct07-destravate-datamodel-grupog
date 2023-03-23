@@ -1,26 +1,167 @@
 import { ActivityType, activityTypeToString } from "../activity_type.js";
-import { Statistics } from "../statistics/statistics.js";
 import { getBorderCharacters, table } from "table";
+import { GroupData } from "./group_data.js";
+import RouteHistoryGroup from "./route_history_group.js";
 
+
+/**
+ * Class to represente a Group
+ */
 export default class Group {
   public id: string;
   public name: string;
   public participants: string[];
-  public statistics: Statistics;
   public favoriteRoutes: string[];
-  public routeHistory: string[];
+  public routeHistory: RouteHistoryGroup[];
   public createdBy: string;
   public activity: ActivityType;
 
-  constructor(id: string, name: string, participants: string[], statistics: Statistics, favoriteRoutes: string[], routeHistory: string[], activity: ActivityType) { 
+  /**
+   * Constructor of the object Group
+   * @param id 
+   * @param name 
+   * @param participants 
+   * @param favoriteRoutes 
+   * @param routeHistory 
+   * @param createdBy 
+   * @param activity 
+   */
+  constructor(id: string, name: string, participants: string[], favoriteRoutes: string[], routeHistory: RouteHistoryGroup[], createdBy: string, activity: ActivityType) { 
     this.id = id;
     this.name = name;
     this.participants = participants;
-    this.statistics = statistics
     this.favoriteRoutes = favoriteRoutes;
     this.routeHistory = routeHistory;
     this.createdBy = "";
     this.activity = activity;
+  }
+
+  /**
+   * Static method to parse the data from the db
+   * @param data 
+   * @returns 
+   */
+  static parse(data: GroupData): Group {
+    return new Group(
+      data.id,
+      data.name,
+      data.participants,
+      data.favoriteRoutes,
+      data.routeHistory,
+      data.createdBy,
+      data.activity
+    )
+  }
+
+  /**
+   * Function that returns the number of Km accumulated on a week by all the group
+   */
+  weeklyGroupKmStatistics(): number {
+    const todaysDate = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 7);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneWeekLess ? route.kms : 0), 0)
+  }
+
+  /**
+   * Function that returns the amount of slope accumulated on a week by all the group
+   */
+  weeklyGroupSlopeStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 7);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.averageSlope;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the number of Km accumulated on a month by all the group
+   */
+  monthlyGroupKmStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 30);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.kms;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the amount of slope accumulated on a month by all the group
+   */
+  monthlyGroupSlopeStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 30);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.averageSlope;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the number of Km accumulated on a year by all the group
+   */
+  yearlyGroupKmStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 365);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.kms;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the amount of slope accumulated on a year by all the group
+   */
+  yearlyGroupSlopeStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 365);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.averageSlope;
+      }
+    })
+    return statistics
+  }
+
+  top3UsersByAccDistance(): string[] {
+    return this.top3UsersByField("kms")
+  }
+
+  top3UsersByAccSlope(): string[] {
+    return this.top3UsersByField("averageSlope")
+  }
+
+  top3UsersByField(field: string): string[] {
+    return Array.from(this.routeHistory.reduce((acc, val) => {
+      val.participants.forEach(userID => {
+        let userAcc = acc.get(userID);
+        if (!userAcc) {
+          userAcc = 0
+        }
+        acc.set(userID, userAcc + (val as never)[field]);
+      });
+      return acc
+    }, new Map<string, number>())).sort((a, b) => a[1] - b[1]).slice(0, 3).map(x => x[0]);
   }
 
   /**
@@ -48,12 +189,12 @@ export default class Group {
       group.id,
       group.name,
       group.participants.map((participant) => participant),
-      group.statistics.totalKmWeekly,
-      group.statistics.totalKmMonthly,
-      group.statistics.totalKmYearly,
-      group.statistics.totalElevationWeekly,
-      group.statistics.totalElevationMonthly,
-      group.statistics.totalElevationYearly,
+      // group.statistics.totalKmWeekly,
+      // group.statistics.totalKmMonthly,
+      // group.statistics.totalKmYearly,
+      // group.statistics.totalElevationWeekly,
+      // group.statistics.totalElevationMonthly,
+      // group.statistics.totalElevationYearly,
       group.favoriteRoutes.map((route) => route),
       group.routeHistory.map((route) => route),
       group.createdBy,

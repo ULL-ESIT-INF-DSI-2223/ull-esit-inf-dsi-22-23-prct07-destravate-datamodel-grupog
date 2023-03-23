@@ -3,6 +3,9 @@ import { getBorderCharacters, table } from "table";
 import RouteHistory from "./route_history.js";
 import { UserData } from "./user_data.js";
 
+/**
+ * Class to represente a User
+ */
 export default class User {
   public id: string; 
   public name: string;
@@ -15,6 +18,19 @@ export default class User {
   public passwordHash: string;
   public isAdmin: boolean;
 
+  /**
+   * Constructor of the object User
+   * @param id 
+   * @param name 
+   * @param friends 
+   * @param groupFriends 
+   * @param favoriteRoutes 
+   * @param activeChallenges 
+   * @param routeHistory 
+   * @param activity 
+   * @param passwordHash 
+   * @param isAdmin 
+   */
   constructor(id: string, name: string, friends: string[], groupFriends: string[], favoriteRoutes: string[], activeChallenges: string[], routeHistory: RouteHistory[], activity: ActivityType, passwordHash: string, isAdmin: boolean) {
     this.id = id;
     this.name = name;
@@ -28,6 +44,11 @@ export default class User {
     this.isAdmin = isAdmin;
   }
 
+  /**
+   * Function to parse the data from the database
+   * @param data 
+   * @returns 
+   */
   static parse(data: UserData): User {
     return new User(
       data.id,
@@ -44,6 +65,102 @@ export default class User {
   }
 
   /**
+   * Function that returns the number of Km accumulated on a week by a user
+   */
+  weeklyKmStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 7);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.kms;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the amount of slope accumulated on a week by a user
+   */
+  weeklySlopeStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 7);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.averageSlope;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the number of Km accumulated on a month by a user
+   */
+  monthlyKmStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 30);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.kms;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the amount of slope accumulated on a month by a user
+   */
+  monthlySlopeStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 30);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.averageSlope;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the number of Km accumulated on a year by a user
+   */
+  yearlyKmStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 365);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.kms;
+      }
+    })
+    return statistics
+  }
+
+  /**
+   * Function that returns the amount of slope accumulated on a year by a user
+   */
+  yearlySlopeStatistics(): number {
+    const todaysDate: Date = new Date();
+    const oneWeekLess = new Date();
+    oneWeekLess.setDate(todaysDate.getDate() - 365);
+    let statistics = 0;
+    this.routeHistory.forEach((route) => {
+      if (route.date >= oneWeekLess) {
+        statistics += route.averageSlope;
+      }
+    })
+    return statistics
+  }
+
+  /**
    * printTable prints a table containing the list of users provided.
    * @param list List of users to print.
    */
@@ -53,12 +170,12 @@ export default class User {
       "Nombre",
       "Amigos",
       "Grupos de Amigos",
-      "Total Km Semanales",
-      "Total Km Mensuales",
-      "Total Km Anuales",
-      "Total de Elevacion semanal",
-      "Total de Elevacion mensual",
-      "Total de Elevacion anual",
+      "Km Semanales",
+      "Elevacion Semanal",
+      "Km Mensuales",
+      "Elevacion Mensual",
+      "Km Anuales",
+      "Elevacion Anual",
       "Rutas Favoritas",
       "Retos activos",
       "Historial de rutas",
@@ -70,9 +187,15 @@ export default class User {
       user.name,
       user.friends.map((friend) => friend),
       user.groupFriends.map((group) => group),
+      user.weeklyKmStatistics(),
+      user.weeklySlopeStatistics(),
+      user.monthlyKmStatistics(),
+      user.monthlySlopeStatistics(),
+      user.yearlyKmStatistics(),
+      user.yearlySlopeStatistics(),
       user.favoriteRoutes.map((route) => route),
       user.activeChallenges.map((challenge) => challenge),
-      user.routeHistory.map((route) => route),
+      user.routeHistory.map((route) => route.routeId),
       activityTypeToString(user.activity),
     ]))
 

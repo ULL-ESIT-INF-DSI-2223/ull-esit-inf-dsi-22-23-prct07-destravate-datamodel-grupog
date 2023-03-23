@@ -8,6 +8,7 @@ import { activityTypes, routes, users, groups, challenges } from "./choices.js";
 import { appName } from "../consts.js";
 import RouteHistory from "../user/route_history.js";
 import { hashPassword } from "../utils/password.js";
+import Route from "../route/route.js";
 
 /**
  * UserPrompter creates a new Prompter object for the User. It can manage user input related to this class.
@@ -82,17 +83,13 @@ export default class UserPrompter extends Prompter {
       choices: [
         {name: "No", value: undefined},
         {name: "Nombre", value: (a: User, b: User) => compareStringsFirstIgnoringCase(a.name, b.name)},
-        /*
-        TODO: FIX INVALID CODE
-
-        {name: "Estadisticas en Km semanales", value: (a: User, b: User) => a.statistics.totalKmWeekly - b.statistics.totalKmWeekly},
-        {name: "Estadisticas en elevación semanales", value: (a: User, b: User) => a.statistics.totalElevationWeekly - b.statistics.totalElevationWeekly},
-        {name: "Estadisticas en Km mensuales", value: (a: User, b: User) => a.statistics.totalKmMonthly - b.statistics.totalKmMonthly},
-        {name: "Estadisticas en elevación mensuales", value: (a: User, b: User) => a.statistics.totalElevationMonthly - b.statistics.totalElevationMonthly},
-        {name: "Estadisticas en Km anuales", value: (a: User, b: User) => a.statistics.totalKmYearly - b.statistics.totalKmYearly},
-        {name: "Estadisticas en elevación anuales", value: (a: User, b: User) => a.statistics.totalElevationYearly - b.statistics.totalElevationYearly},
+        {name: "Estadisticas en Km semanales", value: (a: User, b: User) => a.weeklyKmStatistics() - b.weeklyKmStatistics()},
+        {name: "Estadisticas en elevación semanales", value: (a: User, b: User) => a.weeklySlopeStatistics() - b.weeklySlopeStatistics()},
+        {name: "Estadisticas en Km mensuales", value: (a: User, b: User) => a.monthlyKmStatistics() - b.monthlyKmStatistics()},
+        {name: "Estadisticas en elevación mensuales", value: (a: User, b: User) => a.monthlySlopeStatistics() - b.monthlySlopeStatistics()},
+        {name: "Estadisticas en Km anuales", value: (a: User, b: User) => a.yearlyKmStatistics() - b.yearlyKmStatistics()},
+        {name: "Estadisticas en elevación anuales", value: (a: User, b: User) => a.yearlySlopeStatistics() - b.yearlySlopeStatistics()},
         {name: "Tipo de Actividad", value: (a: User, b: User) => a.activity - b.activity},
-        */
       ]
     }])
     
@@ -133,6 +130,11 @@ export default class UserPrompter extends Prompter {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async dataPrompt(defaults?: any): Promise<User> {
+    const defaultWasNotDefined = !defaults
+    if (defaultWasNotDefined) {
+      defaults = {}
+    }
+
     const questions = [
       {
         type: "input",
@@ -193,25 +195,27 @@ export default class UserPrompter extends Prompter {
         type: "checkbox",
         name: "routeIDs",
         message: "Indica las rutas que has terminado:",
-        default: defaults.routeHistory.map((rh: RouteHistory) => rh.routeId),
+        default: defaults.routeHistory?.map((rh: RouteHistory) => rh.routeId),
         choices: routes(this.db)
       }
     ] as unknown[]
 
-    if (!defaults) {
-      defaults = {}
+    if (defaultWasNotDefined) {
       questions.unshift({
         type: "input",
         name: "id",
         message: "Defina el ID del usuario:",
         default: randomUUID(),
         validate: (id: string) => {
+
           if (id === "") {
             return "El ID no puede estar vacío"
           }
+
           if (this.db.users().findIndex(user => user.id === id) >= 0) {
             return "Ya existe un usuario con este ID"
           }
+
           return true
         } 
       })
@@ -219,13 +223,15 @@ export default class UserPrompter extends Prompter {
 
     const input = await inquirer.prompt(questions)
 
-    input.routesHistory = await Promise.all(input.routeIDs.map(async (routeID: string) => {
+    const newRouteHistory = [] as RouteHistory[]
+    for (const routeID of input.routeIDs) {
       const originalDate = {
         year: undefined as (number|undefined),
         month: undefined as (number|undefined),
         day: undefined as (number|undefined)
       }
-      const originalRouteHistory = defaults.routeHistory.find((rh: RouteHistory) => rh.routeId === routeID)
+
+      const originalRouteHistory = input.routeHistory?.find((rh: RouteHistory) => rh.routeId === routeID)
       if (originalRouteHistory) {
         originalDate.year = originalRouteHistory.date.getFullYear()
         originalDate.month = originalRouteHistory.date.getMonth() + 1
@@ -257,8 +263,9 @@ export default class UserPrompter extends Prompter {
           validate: (d: number) => d >= 1 && d <= 31 ? true : "Día del mes inválido"
         }
       ])
-      return new RouteHistory(routeID, new Date(y, m-1, d, 0, 0, 0, 0), route.distanceKm, route.averageSlope)
-    }))
+      newRouteHistory.push(new RouteHistory(routeID, new Date(y, m-1, d, 0, 0, 0, 0), route.distanceKm, route.averageSlope))
+    }
+    input.routeHistory = newRouteHistory
     
     return new User(
       input.id,
