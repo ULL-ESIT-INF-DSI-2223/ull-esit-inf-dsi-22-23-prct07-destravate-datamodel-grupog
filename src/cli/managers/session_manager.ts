@@ -32,6 +32,10 @@ export default class SessionManager {
     }
   }
 
+  currentUserID(): string|null {
+    return this.user ? this.user.id : null
+  }
+
   isAdmin(): boolean {
     return (!!this.user) && this.user.isAdmin
   }
