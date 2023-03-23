@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { randomUUID } from "crypto"
 import inquirer from "inquirer";
 import Database from "../../db/database.js";
+import User from "../../user/user.js";
 import { UserData } from "../../user/user_data.js";
-import { passwordMatches } from "../../utils/password.js";
-import { users } from "../choices.js";
+import { hashPassword, passwordMatches } from "../../utils/password.js";
+import { activityTypes, users } from "../choices.js";
 
 export default class SessionManager {
   private db: Database
@@ -81,6 +83,56 @@ export default class SessionManager {
   }
 
   protected async register(): Promise<UserData|null> {
-    throw new Error("TODO: not implemented");
+    const { id, name, pass, activity } = await inquirer.prompt([
+      {
+        type: "input",
+        name: "id",
+        message: "Defina su ID de usuario:",
+        default: randomUUID(),
+        validate: (id: string) => {
+          if (id === "") {
+            return "El ID no puede estar vacío"
+          }
+          if (this.db.users().findIndex(user => user.id === id) >= 0) {
+            return "Ya existe un usuario con este ID"
+          }
+          return true
+        }
+      },
+      {
+        type: "input",
+        name: "name",
+        message: "Defina su nombre de usuario:",
+        validate: (input: string) => input !== "" ? true : "El nombre no puede estar vacío"
+      },
+      {
+        type: "password",
+        name: "pass",
+        message: "Introduzca su contraseña:",
+        mask: "*",
+        validate: (p: string) => p.length < 4 ? true : "La contraseña debe contener al menos 4 carácteres"
+      },
+      {
+        type: "list",
+        name: "activity",
+        message: "Seleccione el tipo de actividad que va a realizar:",
+        choices: activityTypes()
+      },
+    ])
+
+    const data: UserData = {
+      id,
+      name,
+      activity,
+      isAdmin: false,
+      passwordHash: hashPassword(pass),
+      friends: [],
+      groupFriends: [],
+      favoriteRoutes: [],
+      activeChallenges: [],
+      routeHistory: []
+    }
+    this.db.addUser(User.parse(data))
+    return data
   }
 }
