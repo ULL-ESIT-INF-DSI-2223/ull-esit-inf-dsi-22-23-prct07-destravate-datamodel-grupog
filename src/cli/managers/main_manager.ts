@@ -14,7 +14,7 @@ export default class MainManager {
   }
 
   async main(): Promise<void> {
-    for (let exit = false; !exit;) {
+    for (;;) {
       await this.session.checkSession()
 
       const choices: Choice<string>[] = [
