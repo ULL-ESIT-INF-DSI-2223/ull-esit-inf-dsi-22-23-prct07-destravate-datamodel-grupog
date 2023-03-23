@@ -5,6 +5,7 @@ import { compareStringsFirstIgnoringCase } from "../utils/sort_func.js";
 import Prompter from "./prompter.js";
 import { activityTypes, routes, users, groups } from "./choices.js";
 import RouteHistoryGroup from "../group/route_history_group.js";
+import { promptForRouteHistoryGroup } from "./route_history_helper.js";
 
 /**
  * GroupPrompter creates a new Prompter object for the Group. It can manage Group input related to this class.
@@ -178,64 +179,12 @@ export default class GroupPrompter extends Prompter {
 
     const input = await inquirer.prompt(questions)
 
-    input.routeHistory = await Promise.all(input.routeIDs.map(async (routeID: string) => {
-      const originalDate = {
-        year: undefined as (number|undefined),
-        month: undefined as (number|undefined),
-        day: undefined as (number|undefined)
-      }
-      
-      const originalRouteHistory = input.routeHistory?.find((rh: RouteHistoryGroup) => rh.routeId === routeID)
-      if (originalRouteHistory) {
-        originalDate.year = originalRouteHistory.date.getFullYear()
-        originalDate.month = originalRouteHistory.date.getMonth() + 1
-        originalDate.day = originalRouteHistory.date.getDate()
-      }
-
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const route = this.db.routes().find(r => r.id === routeID)!;
-      const {y, m, d} = await inquirer.prompt([
-        {
-          type: "number",
-          name: "y",
-          message: `Indique el año en el que ha realizado la ruta ${route.name}:`,
-          default: originalDate.year,
-          validate: (y: number) => y >= 1979 && y <= new Date().getFullYear() ? true : "El año debe estar entre 1970 y el actual"
-        },
-        {
-          type: "number",
-          name: "m",
-          message: `Indique (con número) el mes en el que ha realizado la ruta ${route.name}:`,
-          default: originalDate.month,
-          validate: (m: number) => m >= 1 && m <= 12 ? true : "Mes inválido"
-        },
-        {
-          type: "number",
-          name: "d",
-          message: `Indique el día del mes en el que ha realizado la ruta ${route.name}:`,
-          default: originalDate.day,
-          validate: (d: number) => d >= 1 && d <= 31 ? true : "Día del mes inválido"
-        }
-      ])
-
-      const participants: string[] = await inquirer.prompt([
-        {
-          type: "checkbox",
-          name: "participants",
-          message: `Indique los usuarios que han participado en la ruta ${route.name}:`,
-          default: defaults.participants,
-          choices: users(this.db)
-        }
-      ])
-      return new RouteHistoryGroup(routeID, new Date(y, m-1, d, 0, 0, 0, 0), route.distanceKm, route.averageSlope, participants)
-    }))
-
     return new Group(
       defaults.id,
       input.name,
       input.participants,
       input.favoriteRoutes,
-      input.routeHistory,
+      await promptForRouteHistoryGroup(this.db, input.routeIDs, input.routeHistory),
       input.createdBy,
       input.activity
     )

@@ -8,7 +8,7 @@ import { activityTypes, routes, users, groups, challenges } from "./choices.js";
 import { appName } from "../consts.js";
 import RouteHistory from "../user/route_history.js";
 import { hashPassword } from "../utils/password.js";
-import Route from "../route/route.js";
+import { promptForRouteHistory } from "./route_history_helper.js";
 
 /**
  * UserPrompter creates a new Prompter object for the User. It can manage user input related to this class.
@@ -222,50 +222,6 @@ export default class UserPrompter extends Prompter {
     }
 
     const input = await inquirer.prompt(questions)
-
-    const newRouteHistory = [] as RouteHistory[]
-    for (const routeID of input.routeIDs) {
-      const originalDate = {
-        year: undefined as (number|undefined),
-        month: undefined as (number|undefined),
-        day: undefined as (number|undefined)
-      }
-
-      const originalRouteHistory = input.routeHistory?.find((rh: RouteHistory) => rh.routeId === routeID)
-      if (originalRouteHistory) {
-        originalDate.year = originalRouteHistory.date.getFullYear()
-        originalDate.month = originalRouteHistory.date.getMonth() + 1
-        originalDate.day = originalRouteHistory.date.getDate()
-      }
-
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const route = this.db.routes().find(r => r.id === routeID)!;
-      const {y, m, d} = await inquirer.prompt([
-        {
-          type: "number",
-          name: "y",
-          message: `Indique el año en el que ha realizado la ruta ${route.name}:`,
-          default: originalDate.year,
-          validate: (y: number) => y >= 1979 && y <= new Date().getFullYear() ? true : "El año debe estar entre 1970 y el actual"
-        },
-        {
-          type: "number",
-          name: "m",
-          message: `Indique (con número) el mes en el que ha realizado la ruta ${route.name}:`,
-          default: originalDate.month,
-          validate: (m: number) => m >= 1 && m <= 12 ? true : "Mes inválido"
-        },
-        {
-          type: "number",
-          name: "d",
-          message: `Indique el día del mes en el que ha realizado la ruta ${route.name}:`,
-          default: originalDate.day,
-          validate: (d: number) => d >= 1 && d <= 31 ? true : "Día del mes inválido"
-        }
-      ])
-      newRouteHistory.push(new RouteHistory(routeID, new Date(y, m-1, d, 0, 0, 0, 0), route.distanceKm, route.averageSlope))
-    }
-    input.routeHistory = newRouteHistory
     
     return new User(
       input.id,
@@ -274,7 +230,7 @@ export default class UserPrompter extends Prompter {
       input.groupFriends,
       input.favoriteRoutes,
       input.activeChallenges,
-      input.routeHistory,
+      await promptForRouteHistory(this.db, input.routeIDs, input.routeHistory),
       input.activity,
       input.password === "" ? defaults.passwordHash : hashPassword(input.password),
       input.isAdmin

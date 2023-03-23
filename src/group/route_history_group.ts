@@ -1,3 +1,5 @@
+import RouteHistory, { RouteHistoryData } from "../user/route_history.js";
+
 /**
  * Class to represent the information of a route it contains:
  *  - The ID of the route
@@ -6,11 +8,7 @@
  *  - The average slope of the route
  *  - The users that participated on the route
  */
-export default class RouteHistoryGroup {
-  public routeId: string;
-  public date: Date;
-  public kms: number;
-  public averageSlope: number;
+export default class RouteHistoryGroup extends RouteHistory {
   public participants: string[];
 
   /**
@@ -22,10 +20,7 @@ export default class RouteHistoryGroup {
    * @param participants 
    */
   constructor(routeId: string, date: Date, kms: number, averageSlope: number, participants: string[]) {
-    this.routeId = routeId;
-    this.date = date;
-    this.kms = kms;
-    this.averageSlope = averageSlope;
+    super(routeId, date, kms, averageSlope);
     this.participants = participants;
   }
   
@@ -48,10 +43,6 @@ export default class RouteHistoryGroup {
 /**
  * Interface made to known the data of a route that will be read from the db
  */
-export interface RouteHistoryGroupData {
-  routeId: string
-  date: string
-  kms: number
-  averageSlope: number
+export interface RouteHistoryGroupData extends RouteHistoryData {
   participants: string[]
 }
