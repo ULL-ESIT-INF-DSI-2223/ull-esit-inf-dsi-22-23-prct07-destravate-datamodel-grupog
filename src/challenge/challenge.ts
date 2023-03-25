@@ -65,14 +65,14 @@ export default class Challenge {
     );
   }
 
-  toJSON(): string {
-    return JSON.stringify({
+  toJSON(): ChallengeData {
+    return {
       id: this.id,
       name: this.name,
       routes: this.routes.map((route) => route.id),
       userIds: this.userIds,
       activity: this.activity,
-    });
+    };
   }
 
   /**
