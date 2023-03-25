@@ -1,69 +1,5 @@
 {
-  "challenges": [
-    {
-      "id": "033feeef-f9f8-4fde-b0e9-0cd99c77ed47",
-      "name": "reto1",
-      "routes": [],
-      "userIds": [
-        "7164e098-0081-4616-82df-1dfb1116d293"
-      ],
-      "activity": 0
-    },
-    {
-      "id": "7e6bf729-566e-4bab-8665-6a1cdc1cc08b",
-      "name": "reto2",
-      "routes": [
-        "ace47fe0-d927-439c-afce-1647c4c64f21",
-        "80ba8d14-057e-4c5d-abb7-92346bc4722c",
-        "fd549425-1869-4397-87f0-4a11b99dffbc"
-      ],
-      "userIds": [],
-      "activity": 0
-    },
-    {
-      "id": "33f90390-bee3-4f73-86b8-63fc051ac3d8",
-      "name": "reto3",
-      "routes": [
-        "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
-        "80ba8d14-057e-4c5d-abb7-92346bc4722c",
-        "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be"
-      ],
-      "userIds": [],
-      "activity": 1
-    },
-    {
-      "id": "deff3076-ad78-4851-9de0-a287a44f049a",
-      "name": "reto1",
-      "routes": [
-        "5a42602c-21bb-42d6-930c-c32c54317a9c",
-        "8f0d841c-786c-40e4-b4ed-0698ff4e2acc"
-      ],
-      "userIds": [],
-      "activity": 0
-    },
-    {
-      "id": "3eb667b2-bc28-4059-8b65-21d9f2cf6ce1",
-      "name": "reto1",
-      "routes": [
-        "5a42602c-21bb-42d6-930c-c32c54317a9c",
-        "8f0d841c-786c-40e4-b4ed-0698ff4e2acc"
-      ],
-      "userIds": [],
-      "activity": 0
-    },
-    {
-      "id": "8e8ff361-a6da-4f3e-a173-e5ab214e7467",
-      "name": "reto1retp",
-      "routes": [
-        "5a42602c-21bb-42d6-930c-c32c54317a9c",
-        "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
-        "2efedfb3-5888-4dc1-94ff-cc8500010056",
-        "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86"
-      ],
-      "userIds": [],
-      "activity": 0
-    }
-  ],
+  "challenges": [],
   "groups": [],
   "routes": [
     {
@@ -257,29 +193,5 @@
       "averageScore": 8
     }
   ],
-  "users": [
-    {
-      "id": "7164e098-0081-4616-82df-1dfb1116d293",
-      "name": "Pepe",
-      "friends": [],
-      "groupFriends": [],
-      "favoriteRoutes": [
-        "5a42602c-21bb-42d6-930c-c32c54317a9c",
-        "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
-        "2efedfb3-5888-4dc1-94ff-cc8500010056"
-      ],
-      "activeChallenges": [],
-      "routeHistory": [
-        {
-          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
-          "date": "2020-12-12T00:00:00.000Z",
-          "kms": 15.56,
-          "averageSlope": 25
-        }
-      ],
-      "activity": 0,
-      "passwordHash": "$2b$12$Vv0yPWIPniEZrXdM4gTwA.KhzXor/pFixwfFSeLvHmOvY0Ap2N1B6",
-      "isAdmin": false
-    }
-  ]
+  "users": []
 }

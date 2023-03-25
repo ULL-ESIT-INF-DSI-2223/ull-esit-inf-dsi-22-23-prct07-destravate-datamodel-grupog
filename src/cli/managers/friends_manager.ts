@@ -10,16 +10,28 @@ export default class FriendsManager {
     if (!uid) {
       return;
     }
-
-    const question = await inquirer.prompt([
+    let defaults: string[] = [];
+    this.db.users().map((user) => {
+      if (user.id === uid) {
+        defaults = user.friends;
+      }
+    });
+    const input = await inquirer.prompt([
       {
         type: "checkbox",
         name: "friends",
         message: `Selecione los amigos a añadir o eliminar:`,
+        default: defaults,
         choices: users(this.db),
       },
     ]);
 
-    const input = await inquirer.prompt(question);
+    const u = this.db.users().find((u) => u.id === uid);
+    if (!u) {
+      throw new Error(`somehow a non existing user ID (${uid}) was chosen`);
+    }
+    u.friends = input.friends;
+
+    this.db.setUser(u);
   }
 }
