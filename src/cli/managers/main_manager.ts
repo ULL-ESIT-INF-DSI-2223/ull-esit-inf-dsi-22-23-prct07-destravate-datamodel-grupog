@@ -3,17 +3,20 @@ import Database from "../../db/database.js";
 import { Choice } from "../choices.js";
 import AdminManager from "./admin_manager.js";
 import GroupManager from "./group_manager.js";
+import PrintManager from "./print_manager.js";
 import SessionManager from "./session_manager.js";
 
 export default class MainManager {
   private admin: AdminManager
   private group: GroupManager
   private session: SessionManager
+  private print: PrintManager
 
   constructor(db: Database) {
     this.session = new SessionManager(db)
     this.admin = new AdminManager(db, this.session)
     this.group = new GroupManager(db, this.session)
+    this.print = new PrintManager(db, this.session)
   }
 
   async main(): Promise<void> {
@@ -30,6 +33,8 @@ export default class MainManager {
         {name: "Ver todas las rutas", value: "printRoutes"},
         {name: "Ver todos los grupos", value: "printGroups"},
         {name: "Ver todos los usuarios", value: "printUsers"},
+        {name: "Ver Top 3 usuarios Km", value: "printTop3UsersKm"},
+        {name: "Ver Top 3 usuarios Elevacion", value: "printTop3UsersSlope"}
       ]
       if (this.session.isAdmin()) {
         choices.push({name: "Administración", value: "admin"})
@@ -63,13 +68,19 @@ export default class MainManager {
           this.session.logout();
           break;
         case "printGroups":
-          throw new Error("TODO: not implemented");
+          this.print.printGroups();
           break;
         case "printRoutes":
-          throw new Error("TODO: not implemented");
+          this.print.printRoutes();
           break;
         case "printUsers":
-          throw new Error("TODO: not implemented");
+          this.print.printUsers()
+          break;
+        case "printTop3UsersKm":
+          this.print.printTop3UsersKm()
+          break;
+        case "printTop3UsersSlope":
+          this.print.printTop3UsersSlope()
           break;
         default:
           throw new Error(`unexpected operation: ${operation}`);

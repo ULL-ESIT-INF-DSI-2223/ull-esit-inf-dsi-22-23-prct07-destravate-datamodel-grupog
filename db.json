@@ -193,5 +193,18 @@
       "averageScore": 8
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": "a19b978b-d66f-48e0-a98d-2c4925f1716c",
+      "name": "ale",
+      "friends": [],
+      "groupFriends": [],
+      "favoriteRoutes": [],
+      "activeChallenges": [],
+      "routeHistory": [],
+      "activity": 0,
+      "passwordHash": "$2b$12$cx80rwGsbLhKZSmMyNtgJevmoQAniv6OQMxWWtVg6nDsYo0..d0aW",
+      "isAdmin": false
+    }
+  ]
 }

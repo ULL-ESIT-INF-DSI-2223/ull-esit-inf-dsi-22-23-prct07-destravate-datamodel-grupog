@@ -71,13 +71,7 @@ export default class User {
     const todaysDate: Date = new Date();
     const oneWeekLess = new Date();
     oneWeekLess.setDate(todaysDate.getDate() - 7);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneWeekLess ? route.kms : 0), 0)
   }
 
   /**
@@ -87,13 +81,7 @@ export default class User {
     const todaysDate: Date = new Date();
     const oneWeekLess = new Date();
     oneWeekLess.setDate(todaysDate.getDate() - 7);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneWeekLess ? route.averageSlope : 0), 0)
   }
 
   /**
@@ -101,15 +89,9 @@ export default class User {
    */
   monthlyKmStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 30);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    const oneMonthLess = new Date();
+    oneMonthLess.setDate(todaysDate.getDate() - 30);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneMonthLess ? route.kms : 0), 0)
   }
 
   /**
@@ -117,15 +99,9 @@ export default class User {
    */
   monthlySlopeStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 30);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    const oneMonthLess = new Date();
+    oneMonthLess.setDate(todaysDate.getDate() - 30);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneMonthLess ? route.averageSlope : 0), 0)
   }
 
   /**
@@ -133,15 +109,9 @@ export default class User {
    */
   yearlyKmStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 365);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    const oneYearLess = new Date();
+    oneYearLess.setDate(todaysDate.getDate() - 365);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneYearLess ? route.kms : 0), 0)
   }
 
   /**
@@ -149,15 +119,9 @@ export default class User {
    */
   yearlySlopeStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 365);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    const oneYearLess = new Date();
+    oneYearLess.setDate(todaysDate.getDate() - 365);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneYearLess ? route.averageSlope : 0), 0)
   }
 
   /**
@@ -193,6 +157,40 @@ export default class User {
       user.monthlySlopeStatistics(),
       user.yearlyKmStatistics(),
       user.yearlySlopeStatistics(),
+      user.favoriteRoutes.map((route) => route),
+      user.activeChallenges.map((challenge) => challenge),
+      user.routeHistory.map((route) => route.routeId),
+      activityTypeToString(user.activity),
+    ]))
+
+    console.log(table(tableData, {
+      border: getBorderCharacters("norc"),
+      columnDefault: {alignment: "center"},
+      drawHorizontalLine: (lineIndex: number, rowCount: number) => lineIndex < 2 || lineIndex === rowCount
+    }))
+  }
+
+  /**
+   * printTableLessInfo is a method that prints a new table only with basic information
+   * of the groups that are provided
+   * @param list List of users to print.
+   */
+  static printTableLessInfo(list: User[]): void {
+    const tableData = [[
+      "Identificador",
+      "Nombre",
+      "Amigos",
+      "Grupos de Amigos",
+      "Retos activos",
+      "Historial de rutas",
+      "Actividad",
+    ]] as unknown[][]
+
+    list.forEach(user => tableData.push([
+      user.id,
+      user.name,
+      user.friends.map((friend) => friend),
+      user.groupFriends.map((group) => group),
       user.favoriteRoutes.map((route) => route),
       user.activeChallenges.map((challenge) => challenge),
       user.routeHistory.map((route) => route.routeId),

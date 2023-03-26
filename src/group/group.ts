@@ -67,16 +67,10 @@ export default class Group {
    * Function that returns the amount of slope accumulated on a week by all the group
    */
   weeklyGroupSlopeStatistics(): number {
-    const todaysDate: Date = new Date();
+    const todaysDate = new Date();
     const oneWeekLess = new Date();
     oneWeekLess.setDate(todaysDate.getDate() - 7);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneWeekLess ? route.averageSlope : 0), 0)
   }
 
   /**
@@ -84,15 +78,9 @@ export default class Group {
    */
   monthlyGroupKmStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 30);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    const oneMonthLess = new Date();
+    oneMonthLess.setDate(todaysDate.getDate() - 30);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneMonthLess ? route.kms : 0), 0)
   }
 
   /**
@@ -100,15 +88,9 @@ export default class Group {
    */
   monthlyGroupSlopeStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 30);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    const oneMonthLess = new Date();
+    oneMonthLess.setDate(todaysDate.getDate() - 30);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneMonthLess ? route.averageSlope : 0), 0)
   }
 
   /**
@@ -116,15 +98,9 @@ export default class Group {
    */
   yearlyGroupKmStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 365);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    const oneYearLess = new Date();
+    oneYearLess.setDate(todaysDate.getDate() - 365);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneYearLess ? route.kms : 0), 0)
   }
 
   /**
@@ -132,25 +108,32 @@ export default class Group {
    */
   yearlyGroupSlopeStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 365);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    const oneYearLess = new Date();
+    oneYearLess.setDate(todaysDate.getDate() - 365);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneYearLess ? route.averageSlope : 0), 0)
   }
 
+  /**
+   * Funcion that return the TOP 3 users from a group using the kms accumulated
+   */
   top3UsersByAccDistance(): string[] {
     return this.top3UsersByField("kms")
   }
 
+  /**
+   * Funcion that return the TOP 3 users from a group using the slope accumulated
+   */
   top3UsersByAccSlope(): string[] {
     return this.top3UsersByField("averageSlope")
   }
 
+  /**
+   * Generic function made to get the TOP 3 users using a field that can be:
+   *  - kms
+   *  - averageSlope
+   * @param field 
+   * @returns 
+   */
   top3UsersByField(field: string): string[] {
     return Array.from(this.routeHistory.reduce((acc, val) => {
       val.participants.forEach(userID => {
@@ -165,8 +148,8 @@ export default class Group {
   }
 
   /**
-   * printTable prints a table containing the list of routes provided.
-   * @param list List of routes to print.
+   * printTable prints a table containing the list of groups provided.
+   * @param list List of groups to print.
    */
   static printTable(list: Group[]): void {
     const tableData = [[
@@ -189,12 +172,45 @@ export default class Group {
       group.id,
       group.name,
       group.participants.map((participant) => participant),
-      // group.statistics.totalKmWeekly,
-      // group.statistics.totalKmMonthly,
-      // group.statistics.totalKmYearly,
-      // group.statistics.totalElevationWeekly,
-      // group.statistics.totalElevationMonthly,
-      // group.statistics.totalElevationYearly,
+      group.weeklyGroupKmStatistics(),
+      group.weeklyGroupSlopeStatistics(),
+      group.monthlyGroupKmStatistics(),
+      group.monthlyGroupSlopeStatistics(),
+      group.yearlyGroupKmStatistics(),
+      group.yearlyGroupSlopeStatistics(),
+      group.favoriteRoutes.map((route) => route),
+      group.routeHistory.map((route) => route),
+      group.createdBy,
+      activityTypeToString(group.activity),
+    ]))
+
+    console.log(table(tableData, {
+      border: getBorderCharacters("norc"),
+      columnDefault: {alignment: "center"},
+      drawHorizontalLine: (lineIndex: number, rowCount: number) => lineIndex < 2 || lineIndex === rowCount
+    }))
+  }
+
+  /**
+   * printTableLessInfo is a method that prints a new table only with basic information
+   * of the groups that are provided
+   * @param list List of groups to print.
+   */
+  static printTableLessInfo(list: Group[]): void {
+    const tableData = [[
+      "Identificador",
+      "Nombre",
+      "Participantes",
+      "Rutas Favoritas",
+      "Historial de rutas",
+      "Creador",
+      "Actividad",
+    ]] as unknown[][]
+  
+    list.forEach(group => tableData.push([
+      group.id,
+      group.name,
+      group.participants.map((participant) => participant),
       group.favoriteRoutes.map((route) => route),
       group.routeHistory.map((route) => route),
       group.createdBy,
