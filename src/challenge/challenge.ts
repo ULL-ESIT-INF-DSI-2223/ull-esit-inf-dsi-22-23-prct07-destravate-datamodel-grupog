@@ -4,6 +4,9 @@ import { ChallengeData } from "./challenge_data.js";
 import Route from "../route/route.js";
 import Database from "../db/database.js";
 
+/**
+ * Challenge class represents the challenges inside the app.
+ */
 export default class Challenge {
   public id: string;
   public name: string;
@@ -41,9 +44,9 @@ export default class Challenge {
   }
 
   /**
-   * Function to parse the data from the database
-   * @param data
-   * @returns Challenge
+   * Function to parse the data from the database.
+   * @param data Data from the database.
+   * @returns Challenge parsed from the data provided.
    */
   static parse(data: ChallengeData, db: Database): Challenge {
     const routes: Route[] = [];
@@ -67,8 +70,8 @@ export default class Challenge {
 
   /**
    *
-   * Function to prepare the Challenge object and insert it into the JSON
-   * @returns ChallengeData
+   * Function to prepare the Challenge object for insertion in the Database
+   * @returns ChallengeData to insert in the database.
    */
   toJSON(): ChallengeData {
     return {
