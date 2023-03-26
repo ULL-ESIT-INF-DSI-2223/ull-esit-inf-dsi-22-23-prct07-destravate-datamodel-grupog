@@ -181,6 +181,7 @@ export default class User {
       "Nombre",
       "Amigos",
       "Grupos de Amigos",
+      "Rutas Favoritas",
       "Retos activos",
       "Historial de rutas",
       "Actividad",

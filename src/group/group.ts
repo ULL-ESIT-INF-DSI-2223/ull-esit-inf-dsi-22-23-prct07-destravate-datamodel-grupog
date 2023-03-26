@@ -144,7 +144,7 @@ export default class Group {
         acc.set(userID, userAcc + (val as never)[field]);
       });
       return acc
-    }, new Map<string, number>())).sort((a, b) => a[1] - b[1]).slice(0, 3).map(x => x[0]);
+    }, new Map<string, number>())).sort((a, b) => b[1] - a[1]).slice(0, 3).map(x => x[0]);
   }
 
   /**
@@ -179,7 +179,7 @@ export default class Group {
       group.yearlyGroupKmStatistics(),
       group.yearlyGroupSlopeStatistics(),
       group.favoriteRoutes.map((route) => route),
-      group.routeHistory.map((route) => route),
+      group.routeHistory.map((route) => route.routeId),
       group.createdBy,
       activityTypeToString(group.activity),
     ]))
@@ -212,7 +212,7 @@ export default class Group {
       group.name,
       group.participants.map((participant) => participant),
       group.favoriteRoutes.map((route) => route),
-      group.routeHistory.map((route) => route),
+      group.routeHistory.map((route) => route.routeId),
       group.createdBy,
       activityTypeToString(group.activity),
     ]))
