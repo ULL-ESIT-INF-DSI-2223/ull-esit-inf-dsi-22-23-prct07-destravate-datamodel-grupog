@@ -18,15 +18,9 @@ Destravate es un aplicación por consola en la que podremos crearnos un usuario 
 - Caminata
 - Ruta en bicicleta
 
-El programa cuenta con una base de datos en formato JSON en la que se guardara de manera local toda la información que vayamos creando en el programa. En el siguiente apartado del informe se detallaran las distintas clases, interfaces y ficheros que podemos encontrar en el directorio de trabajo y en los dos últimos apartados se detallaran las distintas dificultades encontradas asi como una conclusión en la que se dara in cierre a todo el trabajo asi como se explicara como se ha organizado todo el trabajo.
+El programa cuenta con una base de datos en formato JSON en la que se guardara de manera local toda la información que vayamos creando en el programa. En el siguiente apartado del informe se detallaran las distintas clases, interfaces y ficheros que podemos encontrar en el directorio de trabajo y en los dos últimos apartados se detallaran las distintas dificultades encontradas asi como una conclusión en la que se dará in cierre a todo el trabajo asi como se explicara como se ha organizado todo el trabajo.
 
 # Contenido
-
-El contenido de la práctica se distribuye en distintos ficheros que siguen la siguiente estructura:
-
-```
-
-```
 
 A continuación dejamos una explicación del porque y de la conexión de cada clase/interfaz/fichero que se encuentra en el directorio de trabajo:
 
@@ -154,21 +148,54 @@ Para cumplir con esto, los atributos de la clase user serán los siguientes:
   public isAdmin: boolean;
 ```
 
-Esta clase tendrá 8 métodos y se explicarán a continuación.
+Esta clase tendrá varios métodos y se explicarán a continuación.
 
-> > > Completar la información de los métodos
+Para los usuarios hará falta dar información sobre las estadísticas, es por eso que tiene los siguientes métodos:
+
+- **weeklyKmStatistics**: devuelve la suma de kms de las rutas realizadas por el usuario en los últimos 7 días.
+- **weeklySlopeStatistics**: devuelve la suma de desnivel en las rutas realizadas por el usuario en los últimos 7 días.
+- **monthlyKmStatistics**: devuelve la suma de kms de las rutas realizadas por el usuario en los últimos 30 días.
+- **monthlySlopeStatistics**: devuelve la suma de desnivel en las rutas realizadas por el usuario en los últimos 30 días
+- **yearlyKmStatistics**: devuelve la suma de kms de las rutas realizadas por el usuario en los últimos 365 días.
+- **yearlySlopeStatistics**: devuelve la suma de desnivel en las rutas realizadas por el usuario en los últimos 365 días.
+
+Además tendrá el método **printTable**: este método servirá para imprimir la información relativa a los usuarios, mostrando por pantalla todos los usuarios de una lista que se pasa en los parámetros de la función.
+
+Estará también el método **printTableLessInfo()** que no muestra la información sensible sobre el usuario.
 
 ## _User Data_
 
-> > > Completar la información
+Esta interfaz servirá para especificar qué datos sobre el **user** son los que se leerán de la base de datos.
+
+```ts
+  id: string;
+  name: string;
+  friends: string[];
+  groupFriends: string[]
+  favoriteRoutes: string[];
+  activeChallenges: string[];
+  routeHistory: RouteHistoryData[];
+  activity: ActivityType;
+  passwordHash: string;
+  isAdmin: boolean;
+```
 
 ## _Route History_
 
-> > > Completar la información
+Esta clase implementará la interfaz que se explica en el siguiente apartado.
+La clase representa un histórico de rutas.
+Tendrá un método **parse** que crea un devuelve un objeto **RouteHistory** a partir de un objeto que cumple la interfaz **Route History Data**.
 
 ## _Route History Data_
 
-> > > Completar la información
+Interfaz hecha para conocer los datos de una ruta que se leerá de la db.
+
+```ts
+routeId: string;
+date: string;
+kms: number;
+averageSlope: number;
+```
 
 ## _Grupos_
 
@@ -197,7 +224,9 @@ Para cumplir con esto, los atributos de la clase group serán los siguientes:
   public activity: ActivityType;
 ```
 
-> > > Completar la info de los métodos
+En cuanto a los métodos, serán similares a los de la clase **User** es decir, serán métodos que servirán para calcular la suma de estadísticas de los grupos y además se añaden 3 nuevos métodos que servirán para devolver el top 3 de: usuarios del grupo ordenados por mayor número de kms, usuarios del grupo ordenados por pendiente más acumulada y usuarios del grupo ordenados por el campo proporcionado (descendente).
+
+Por último, también estarán los métodos print para mostrar tanto la tabla de usuario con la información completa como la tabla con la información sensible oculta.
 
 ## _Group Data_:
 
@@ -215,11 +244,18 @@ Esta interfaz servirá para especificar qué datos sobre el **group** son los qu
 
 ## _Route History Group_:
 
-> > > Completar la información
+Esta clase implementará la interfaz que se explica en el siguiente apartado.
+La clase representa un histórico de rutas pero añadiendo en este caso los participantes del grupo. Tendrá un método **parse** que crea un devuelve un objeto **RouteHistoryGroup** a partir de un objeto que cumple la interfaz **RouteHistoryGroupData**.
 
 ## _Route History Group Data_:
 
-> > > Completar la información
+Esta interfaz extiende la Route History Data explicada en el usuario anteriormente y lo que añade es un array de strings correspondiente al id de los participantes del grupo.
+
+```ts
+export interface RouteHistoryGroupData extends RouteHistoryData {
+  participants: string[];
+}
+```
 
 ## _Reto_:
 
@@ -386,11 +422,7 @@ Existe un método para el inicio de sesión, **login()** que le pedirá al usuar
 
 Por otro lado, para registrarse se llama a la función **register()** que lo que hará es crear un usuario pidiéndole lo datos necesarios, lo hará usando los **prompters** explicados anteriormente.
 
-El método **currentUser** devolverá el usuario que iniciado la sesión actual.
-
-Por otro lado, **isAdmin** comprobará si el usuario tiene el rol de administrador o no.
-
-La función **logout** servirá para cerrar la sesión del usuario actual
+El método **currentUser** devolverá el usuario que iniciado la sesión actual. Por otro lado, **isAdmin** comprobará si el usuario tiene el rol de administrador o no. La función **logout** servirá para cerrar la sesión del usuario actual
 
 A continuación se explicará el contenido de cada clase.
 
@@ -435,11 +467,15 @@ eliminar, añadir, editar o mostrar usuarios, grupos, retos o rutas.
 
 Para esto se hará uso de los métodos de las clases **prompter** que se han nombrado anteriormente
 
+## _Otras herramientas_
+
+Por último, indicar que se han usado otros ficheros que hemos creado para facilitar el desarrollo del programa. Entre estos ficheros tenemos varias funciones para ordenar y comparar (estas funciones se usan dentro de los métodos para mostrar información ordenada de la manera que elija el usuario) y otras funciones relacionadas con las contraseñas para comprobar que sean válidas.
+
 # Dificultades encontradas
 
-Las distintas dificultades encontradas a lo largo de la práctica han sido las siguientes:
+Las principal dificultad ha surgido al momento de realizar los test en un principio, al ser casi todo por consola no sabíamos bien que testear ni como realizar los test de una clase de una manera sencilla sin hacer uso de los datos de las bases de datos que podrían ir variando.
 
-- Problemas en los momentos de realizar los test en un principio, al ser casi todo por consola no sabíamos bien que testear ni como realizar los test de una clase de una manera sencilla sin hacer uso de los datos de las bases de datos.
+Por otro lado, en los test de la base de datos relativos a los challenges, hay un error que no hemos conseguido solucionar del todo finalmente.
 
 # Conclusión
 
@@ -449,6 +485,6 @@ El trabajo se ha organizado haciendo uso de las ramas de Git para no tocar el c�
 
 En esta práctica en grupo se han tocado aspectos con funciones asíncronas, trabajo colaborativo haciendo uso de Git y GitHub, así como aprendido a como usar una base de datos en nuestros programas y a como realizar una pequeña aplicación de consola.
 
-Para concluir, en el equipo coincidimos que esta práctica ha sido entretenida de realizar pero ha contado con un gran apartado no solo de gran esfuerzo para poder llevarla a cabo si no también de organización y con momentos de tener que poner toda la atención de los tres integrantes en un único fichero en busca de un error que no se veía a simple vista.
+Para concluir, en el equipo coincidimos que esta práctica, a pesar de la alta carga de trabajo que conlleva, nos ayuda a trabajar de forma colaborativa, algo a lo que nos tendremos que enfrentar cada vez más a menudo y también en el mundo laboral.
 
 [![tests](https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupog/actions/workflows/testing.yml/badge.svg?branch=master)](https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupog/actions/workflows/testing.yml)
