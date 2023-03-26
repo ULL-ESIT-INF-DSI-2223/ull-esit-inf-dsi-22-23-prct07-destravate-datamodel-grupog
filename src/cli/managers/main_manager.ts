@@ -6,12 +6,19 @@ import GroupManager from "./group_manager.js";
 import PrintManager from "./print_manager.js";
 import SessionManager from "./session_manager.js";
 
+/**
+ * Class to manage all the things relate with the main application
+ */
 export default class MainManager {
   private admin: AdminManager
   private group: GroupManager
   private session: SessionManager
   private print: PrintManager
 
+  /**
+   * Constructor of the manager
+   * @param db 
+   */
   constructor(db: Database) {
     this.session = new SessionManager(db)
     this.admin = new AdminManager(db, this.session)
@@ -19,6 +26,10 @@ export default class MainManager {
     this.print = new PrintManager(db, this.session)
   }
 
+  /**
+   * Main menu of the program
+   * @returns 
+   */
   async main(): Promise<void> {
     for (;;) {
       await this.session.checkSession()

@@ -3,7 +3,6 @@ import { getBorderCharacters, table } from "table";
 import { GroupData } from "./group_data.js";
 import RouteHistoryGroup from "./route_history_group.js";
 
-
 /**
  * Class to represente a Group
  */
