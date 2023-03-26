@@ -197,7 +197,7 @@ export default class Database {
    * in the database, a new one is created.
    * @param u User to add to the collection.
    */
-  async setUser(u: User): Promise<void> {
+  async setUser(u: User|UserData): Promise<void> {
     return this.set(Collection.USERS, u);
   }
 

@@ -165,8 +165,20 @@ export default class ChallengePrompter extends Prompter {
         name: "name",
         message: "Defina el nombre del reto:",
         default: defaults.name,
-        validate: (input: string) =>
-          input !== "" ? true : "El nombre no puede estar vacío",
+        validate: (input: string) => {
+          if (input === "") {
+            return "El nombre no puede estar vacío";
+          }
+          if (
+            this.db
+              .challenges()
+              .findIndex((challenge) => challenge.name === input) >= 0
+          ) {
+            return "Ya existe un reto con este nombre";
+          } else {
+            return true;
+          }
+        },
       },
       {
         type: "checkbox",
@@ -194,7 +206,9 @@ export default class ChallengePrompter extends Prompter {
     return new Challenge(
       defaults.id,
       input.name,
-      input.routes.map((routeID: string) => this.db.routes().find(route => route.id === routeID)),
+      input.routes.map((routeID: string) =>
+        this.db.routes().find((route) => route.id === routeID)
+      ),
       input.userIds,
       input.activityType
     );

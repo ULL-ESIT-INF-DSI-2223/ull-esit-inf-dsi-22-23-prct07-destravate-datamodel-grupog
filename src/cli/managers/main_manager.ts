@@ -2,45 +2,50 @@ import inquirer from "inquirer";
 import Database from "../../db/database.js";
 import { Choice } from "../choices.js";
 import AdminManager from "./admin_manager.js";
+import FriendsManager from "./friends_manager.js";
 import GroupManager from "./group_manager.js";
 import SessionManager from "./session_manager.js";
 
 export default class MainManager {
-  private admin: AdminManager
-  private group: GroupManager
-  private session: SessionManager
+  private admin: AdminManager;
+  private group: GroupManager;
+  private session: SessionManager;
+  private user: FriendsManager;
 
   constructor(db: Database) {
-    this.session = new SessionManager(db)
-    this.admin = new AdminManager(db, this.session)
-    this.group = new GroupManager(db, this.session)
+    this.session = new SessionManager(db);
+    this.admin = new AdminManager(db, this.session);
+    this.group = new GroupManager(db, this.session);
+    this.user = new FriendsManager(db, this.session);
   }
 
   async main(): Promise<void> {
     for (;;) {
-      await this.session.checkSession()
+      await this.session.checkSession();
 
       const choices: Choice<string>[] = [
-        {name: "Borrar grupos", value: "deleteGroups"},
-        {name: "Cerrar sesión", value: "logout"},
-        {name: "Crear un grupo", value: "createGroup"},
-        {name: "Editar amigos", value: "editFriends"},
-        {name: "Salir del programa", value: "exit"},
-        {name: "Unirse a un grupo", value: "joinGroup"},
-        {name: "Ver todas las rutas", value: "printRoutes"},
-        {name: "Ver todos los grupos", value: "printGroups"},
-        {name: "Ver todos los usuarios", value: "printUsers"},
-      ]
+        { name: "Borrar grupos", value: "deleteGroups" },
+        { name: "Cerrar sesión", value: "logout" },
+        { name: "Crear un grupo", value: "createGroup" },
+        { name: "Editar amigos", value: "editFriends" },
+        { name: "Salir del programa", value: "exit" },
+        { name: "Unirse a un grupo", value: "joinGroup" },
+        { name: "Ver todas las rutas", value: "printRoutes" },
+        { name: "Ver todos los grupos", value: "printGroups" },
+        { name: "Ver todos los usuarios", value: "printUsers" },
+      ];
       if (this.session.isAdmin()) {
-        choices.push({name: "Administración", value: "admin"})
+        choices.push({ name: "Administración", value: "admin" });
       }
 
-      const { operation } = await inquirer.prompt([{
-        type: "list",
-        name: "operation",
-        message: "Menú principal",
-        choices
-      }])
+      const { operation } = await inquirer.prompt([
+        {
+          type: "list",
+          name: "operation",
+          message: "Menú principal",
+          choices,
+        },
+      ]);
       switch (operation) {
         case "admin":
           await this.admin.main();
@@ -52,7 +57,7 @@ export default class MainManager {
           await this.group.delete();
           break;
         case "editFriends":
-          throw new Error("TODO: not implemented");
+          await this.user.edit();
           break;
         case "exit":
           return;

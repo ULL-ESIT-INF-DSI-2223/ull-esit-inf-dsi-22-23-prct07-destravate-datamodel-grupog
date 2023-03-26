@@ -34,8 +34,8 @@ export default class SessionManager {
     }
   }
 
-  currentUserID(): string|null {
-    return this.user ? this.user.id : null
+  currentUser(): UserData|null {
+    return this.user ? this.user : null
   }
 
   isAdmin(): boolean {
