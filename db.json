@@ -56,7 +56,12 @@
     {
       "id": "e0a17f71-a7c3-4856-9cd9-679ceb5fa005",
       "name": "Montañistas",
-      "participants": [],
+      "participants": [
+        "dcalvet",
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "rfrutos",
+        "diriarte"
+      ],
       "favoriteRoutes": [],
       "routeHistory": [],
       "createdBy": "",
@@ -65,7 +70,11 @@
     {
       "id": "13b0c61d-5698-4a6e-889a-ffdb18372a41",
       "name": "Acampadas Tenerife",
-      "participants": [],
+      "participants": [
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "svidal",
+        "rfrutos"
+      ],
       "favoriteRoutes": [],
       "routeHistory": [],
       "createdBy": "",
@@ -74,7 +83,17 @@
     {
       "id": "8e0a0243-35fc-4729-b96a-7c58aec0b3ce",
       "name": "Senderistas de Anaga",
-      "participants": [],
+      "participants": [
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "diriarte",
+        "edc90911-48fd-4eb2-a45c-b785314662b3",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+        "egallego",
+        "esegredo",
+        "rfrutos",
+        "agarcia",
+        "8887efe1-7739-4e97-a564-dd06e5d24252"
+      ],
       "favoriteRoutes": [],
       "routeHistory": [],
       "createdBy": "",
@@ -83,7 +102,16 @@
     {
       "id": "275de20b-4a86-4476-acf6-7530595244e1",
       "name": "Los Caminantes",
-      "participants": [],
+      "participants": [
+        "lperez",
+        "svidal",
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "mdorta",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "esegredo",
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "mbpuig"
+      ],
       "favoriteRoutes": [],
       "routeHistory": [],
       "createdBy": "",
@@ -92,7 +120,18 @@
     {
       "id": "4bdf204c-11df-4895-b037-0074de1bb7b7",
       "name": "Xtreme Hiking Inc",
-      "participants": [],
+      "participants": [
+        "5cbdc53c-325e-4db2-a212-eca0a465a4da",
+        "egallego",
+        "lperez",
+        "afigueroa",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "diriarte",
+        "esegredo",
+        "rfrutos",
+        "dcalvet"
+      ],
       "favoriteRoutes": [],
       "routeHistory": [],
       "createdBy": "",
