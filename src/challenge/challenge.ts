@@ -43,7 +43,7 @@ export default class Challenge {
   /**
    * Function to parse the data from the database
    * @param data
-   * @returns
+   * @returns Challenge
    */
   static parse(data: ChallengeData, db: Database): Challenge {
     const routes: Route[] = [];
@@ -65,6 +65,11 @@ export default class Challenge {
     );
   }
 
+  /**
+   *
+   * Function to prepare the Challenge object and insert it into the JSON
+   * @returns ChallengeData
+   */
   toJSON(): ChallengeData {
     return {
       id: this.id,
