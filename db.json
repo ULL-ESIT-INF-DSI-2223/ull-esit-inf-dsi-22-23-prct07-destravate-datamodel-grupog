@@ -265,8 +265,20 @@
     {
       "id": "mdorta",
       "name": "Miguel Dorta",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "dcalvet",
+        "egallego",
+        "agranados",
+        "diriarte"
+      ],
+      "groupFriends": [
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "dcalvet",
+        "egallego"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -277,8 +289,21 @@
     {
       "id": "lperez",
       "name": "Lucas Pérez",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+        "diriarte",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "edc90911-48fd-4eb2-a45c-b785314662b3",
+        "dcalvet"
+      ],
+      "groupFriends": [
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+        "diriarte",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "edc90911-48fd-4eb2-a45c-b785314662b3"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -289,7 +314,10 @@
     {
       "id": "agarcia",
       "name": "Alejandro García",
-      "friends": [],
+      "friends": [
+        "afigueroa",
+        "diriarte"
+      ],
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
@@ -301,8 +329,15 @@
     {
       "id": "esegredo",
       "name": "Eduardo Segredo",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "rfrutos",
+        "agranados",
+        "8887efe1-7739-4e97-a564-dd06e5d24252"
+      ],
+      "groupFriends": [
+        "rfrutos",
+        "agranados"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -313,8 +348,16 @@
     {
       "id": "8887efe1-7739-4e97-a564-dd06e5d24252",
       "name": "Delia Cardona",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "lperez",
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "esegredo",
+        "rfrutos",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64"
+      ],
+      "groupFriends": [
+        "lperez"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -325,8 +368,17 @@
     {
       "id": "dcalvet",
       "name": "Darío Calvet",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "svidal",
+        "mdorta",
+        "lperez"
+      ],
+      "groupFriends": [
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -337,8 +389,14 @@
     {
       "id": "egallego",
       "name": "Eric Gallego",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "agranados",
+        "mdorta",
+        "afigueroa"
+      ],
+      "groupFriends": [
+        "agranados"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -349,8 +407,13 @@
     {
       "id": "mbpuig",
       "name": "María Belén Puig",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "edc90911-48fd-4eb2-a45c-b785314662b3",
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10"
+      ],
+      "groupFriends": [
+        "edc90911-48fd-4eb2-a45c-b785314662b3"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -361,8 +424,13 @@
     {
       "id": "svidal",
       "name": "Seve Vidal",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "dcalvet",
+        "afigueroa"
+      ],
+      "groupFriends": [
+        "dcalvet"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -373,8 +441,17 @@
     {
       "id": "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
       "name": "Maura Río",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "mdorta",
+        "agranados",
+        "fcobos",
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "mbpuig",
+        "afigueroa"
+      ],
+      "groupFriends": [
+        "mdorta"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -385,8 +462,18 @@
     {
       "id": "afigueroa",
       "name": "Adriana Figueroa",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "agarcia",
+        "rfrutos",
+        "svidal",
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "egallego"
+      ],
+      "groupFriends": [
+        "agarcia",
+        "rfrutos",
+        "svidal"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -397,8 +484,13 @@
     {
       "id": "5cbdc53c-325e-4db2-a212-eca0a465a4da",
       "name": "Alicia Gutierrez",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "rfrutos",
+        "diriarte"
+      ],
+      "groupFriends": [
+        "rfrutos"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -409,7 +501,11 @@
     {
       "id": "edc90911-48fd-4eb2-a45c-b785314662b3",
       "name": "Abraham Echevarría",
-      "friends": [],
+      "friends": [
+        "mbpuig",
+        "lperez",
+        "fcobos"
+      ],
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
@@ -421,8 +517,15 @@
     {
       "id": "fcobos",
       "name": "Feliciano Cobos",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "edc90911-48fd-4eb2-a45c-b785314662b3",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "rfrutos"
+      ],
+      "groupFriends": [
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -433,8 +536,19 @@
     {
       "id": "bc649959-a3c7-4025-af52-ed0fe6997f64",
       "name": "Bartolomé Chico",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "dcalvet",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "mdorta",
+        "lperez",
+        "8887efe1-7739-4e97-a564-dd06e5d24252"
+      ],
+      "groupFriends": [
+        "dcalvet",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "mdorta",
+        "lperez"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -445,7 +559,13 @@
     {
       "id": "diriarte",
       "name": "Demetrio Iriarte",
-      "friends": [],
+      "friends": [
+        "lperez",
+        "agarcia",
+        "rfrutos",
+        "mdorta",
+        "5cbdc53c-325e-4db2-a212-eca0a465a4da"
+      ],
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
@@ -457,8 +577,20 @@
     {
       "id": "rfrutos",
       "name": "Ricardo Frutos",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+        "esegredo",
+        "5cbdc53c-325e-4db2-a212-eca0a465a4da",
+        "afigueroa",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "diriarte",
+        "fcobos",
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "agranados"
+      ],
+      "groupFriends": [
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
@@ -469,7 +601,13 @@
     {
       "id": "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
       "name": "Manuelita Llano",
-      "friends": [],
+      "friends": [
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "dcalvet",
+        "rfrutos",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+        "fcobos"
+      ],
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
@@ -481,7 +619,14 @@
     {
       "id": "agranados",
       "name": "Armando Granados",
-      "friends": [],
+      "friends": [
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "egallego",
+        "esegredo",
+        "mdorta",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+        "rfrutos"
+      ],
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
@@ -493,8 +638,15 @@
     {
       "id": "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
       "name": "Conrado Villanueva",
-      "friends": [],
-      "groupFriends": [],
+      "friends": [
+        "rfrutos",
+        "lperez",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "agranados"
+      ],
+      "groupFriends": [
+        "rfrutos"
+      ],
       "favoriteRoutes": [],
       "activeChallenges": [],
       "routeHistory": [],
