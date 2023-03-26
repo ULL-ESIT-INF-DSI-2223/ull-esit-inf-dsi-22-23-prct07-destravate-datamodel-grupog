@@ -86,6 +86,4 @@ describe("Database", () => {
     const challenges3 = database.challenges();
     expect(challenges3.length).to.deep.equal(0);
   });
-
-
 });
