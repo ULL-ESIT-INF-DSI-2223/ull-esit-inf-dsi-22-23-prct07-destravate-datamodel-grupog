@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "coverage": "c8 npm test && c8 report --reporter=text-lcov | coveralls",
+    "coverage": "c8 npm test && c8 report --reporter=text-lcov > coverage/lcov.info",
     "doc": "typedoc && cp assets/list-method-dependencies.jpg docs/",
     "start": "tsc-watch --onSuccess 'node dist/index.js'",
     "test": "rm -f db_testing.json db_testing2.json db_testing3.json db_testing4.json | NODE_ENV=test mocha",
