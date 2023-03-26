@@ -1,0 +1,505 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>practica07</title><meta name="description" content="Documentation for practica07"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">practica07</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<h2>practica07</h2></div>
+<div class="tsd-panel tsd-typography">
+<a href="#práctica-7---destravate" id="práctica-7---destravate" style="color: inherit; text-decoration: none;">
+  <h1>Práctica 7 - Destravate</h1>
+</a>
+<ul>
+<li>Grupo G<ul>
+<li>Alejandro García Bautista</li>
+<li>Lucas Pérez Rosario</li>
+<li>Miguel Dorta Rodríguez</li>
+</ul>
+</li>
+<li>Domingo 26 de marzo de 2023</li>
+<li>Desarrollo de Sistemas Informáticos</li>
+<li>Grado en Ingeniería Informática</li>
+<li>Universidad de La Laguna</li>
+</ul>
+
+<a href="#introducción" id="introducción" style="color: inherit; text-decoration: none;">
+  <h1>Introducción</h1>
+</a>
+<p>En esta primera práctica en grupo se nos ha pedido que realicemos el ejercicio que se ha llamado Destravate.</p>
+<p>Destravate es un aplicación por consola en la que podremos crearnos un usuario para poder registrar nuestras distintas rutas realizadas ya sea una:</p>
+<ul>
+<li>Caminata</li>
+<li>Ruta en bicicleta</li>
+</ul>
+<p>El programa cuenta con una base de datos en formato JSON en la que se guardara de manera local toda la información que vayamos creando en el programa. En el siguiente apartado del informe se detallaran las distintas clases, interfaces y ficheros que podemos encontrar en el directorio de trabajo y en los dos últimos apartados se detallaran las distintas dificultades encontradas asi como una conclusión en la que se dará in cierre a todo el trabajo asi como se explicara como se ha organizado todo el trabajo.</p>
+
+<a href="#contenido" id="contenido" style="color: inherit; text-decoration: none;">
+  <h1>Contenido</h1>
+</a>
+<p>A continuación dejamos una explicación del porque y de la conexión de cada clase/interfaz/fichero que se encuentra en el directorio de trabajo:</p>
+<ul>
+<li><p>Route (<strong>carpeta</strong>)</p>
+<ul>
+<li>Route (<strong>clase</strong>): clase para representar una ruta</li>
+<li>Coordinates (<strong>clase</strong>): clase que se usará para representar uno de los atributos de una ruta.</li>
+</ul>
+</li>
+<li><p>User (<strong>carpeta</strong>)</p>
+<ul>
+<li>User (<strong>clase</strong>): clase que nos permite representar a un usuario de nuestro programa</li>
+<li>UserData (<strong>interfaz</strong>): esta interfaz representa la información que se leerá de un usuario desde la base de datos</li>
+<li>Route History (<strong>clase</strong>): clase que servirá para representar las rutas y sus datos más relevantes.</li>
+<li>Route History Data (<strong>interfaz</strong>): interfaz que representa la información que se leerá de un histórico de rutas desde la base de datos.</li>
+</ul>
+</li>
+<li><p>Group (<strong>carpeta</strong>)</p>
+<ul>
+<li>Group (<strong>clase</strong>): clase que nos permite representar a un grupo de usuarios en nuestro programa</li>
+<li>Group Data (<strong>interfaz</strong>): esta interfaz representa la información que se leerá de un grupo desde la base de datos</li>
+<li>Route History Group (<strong>clase</strong>): clase que servirá para representar las rutas y sus datos más relevantes y además muestra los participantes de la ruta. Extiende Route History</li>
+<li>Route History Group Data (<strong>interfaz</strong>): interfaz que representa la información que se leerá de un histórico de rutas del grupo desde la base de datos.</li>
+</ul>
+</li>
+<li><p>Challenge (<strong>carpeta</strong>)</p>
+<ul>
+<li>Challenge (<strong>clase</strong>): clase para representar retos dentro del programa</li>
+<li>Challenge Data(<strong>interfaz</strong>): esta interfaz representa la información que se leerá de un reto desde la base de datos</li>
+</ul>
+</li>
+<li><p>Interfaz de línea de comandos, CLI (carpeta): esta carpeta tendrá aquellos ficheros que se usarán para los <em>Prompters</em> y además tendrá una carpeta <em>managers</em> con los ficheros para la gestión de la información del sistema.</p>
+<ul>
+<li>Managers (<strong>carpeta</strong>)</li>
+<li>Admin Managers (<strong>clase</strong>)</li>
+<li>Group Managers (<strong>clase</strong>)</li>
+<li>Main Managers (<strong>clase</strong>)</li>
+<li>Print Managers (<strong>clase</strong>)</li>
+<li>Session Managers (<strong>clase</strong>)</li>
+<li>Friends Managers (<strong>clase</strong>)</li>
+</ul>
+</li>
+<li><p>DataBase (<strong>carpeta</strong>): tendrá una clase, un tipo personalizado, un enumerado y una interfaz, todo esto servirá para implementar la base de datos del sistema de manera correcta.</p>
+</li>
+<li><p>Utils (<strong>carpeta</strong>): tendrá ficheros que nos darán cierta facilidad para poder realizar el programa, varias clases usarán estas herramientas.</p>
+</li>
+<li><p>Activity Type (<strong>fichero</strong>): contiene un enumerado y una función para mostrar el tipo de actividad que se realizará, correr o bicicleta.</p>
+</li>
+<li><p>Const (<strong>fichero</strong>): este fichero tendrá una constante que simplemente será el nombre del sistema <em>Destravate</em></p>
+</li>
+</ul>
+
+<a href="#desarrollo" id="desarrollo" style="color: inherit; text-decoration: none;">
+  <h1>Desarrollo</h1>
+</a>
+
+<a href="#rutas" id="rutas" style="color: inherit; text-decoration: none;">
+  <h2><em>Rutas</em></h2>
+</a>
+<p>La clase <strong>Route</strong> representa una ruta dentro de la información del sistema. Una ruta tiene ciertos datos asociados, estos son:</p>
+<ul>
+<li>ID único de la ruta.</li>
+<li>Nombre de la ruta.</li>
+<li>Geolocalización del inicio (coordenadas).</li>
+<li>Geolocalización del final de la ruta (coordenadas).</li>
+<li>Longitud de la ruta en kilómetros.</li>
+<li>Desnivel medio de la ruta.</li>
+<li>Usuarios que han realizado la ruta (IDs).</li>
+<li>Tipo de actividad: Indicador si la ruta se puede realizar en bicicleta o corriendo.</li>
+<li>Calificación media de la ruta.</li>
+</ul>
+<p>Para cumplir con esto, los atributos de la clase route serán los siguientes:</p>
+<pre><code class="language-ts"><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">id</span><span class="hl-0">: </span><span class="hl-1">string</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">name</span><span class="hl-0">: </span><span class="hl-1">string</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">start</span><span class="hl-0">: </span><span class="hl-1">Coordinates</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">end</span><span class="hl-0">: </span><span class="hl-1">Coordinates</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">distanceKm</span><span class="hl-0">: </span><span class="hl-1">number</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">averageSlope</span><span class="hl-0">: </span><span class="hl-1">number</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">userIds</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[]</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">activity</span><span class="hl-0">: </span><span class="hl-1">ActivityType</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">averageScore</span><span class="hl-0">: </span><span class="hl-1">number</span>
+</code></pre>
+<p>Donde lo más important a tener en cuenta serán las coordenadas (<strong>coordinates</strong>) y el tipo de actividad (<strong>ActivityType</strong>) y lo explicaremos a continuación.</p>
+<p>En el constructor se harán ciertas comprobaciones para asegurar que los datos que se dan a los atributos son correctos según unos parámetros.</p>
+<p>Esta clase solo tendrá un método,
+<strong>printTable</strong>. Este método servirá para imprimir la información relativa a las rutas, mostrando por pantalla todos los de una lista que se pasa en los parámetros de la función.</p>
+
+<a href="#coordenadas" id="coordenadas" style="color: inherit; text-decoration: none;">
+  <h2><em>Coordenadas</em></h2>
+</a>
+<p><strong>Coordinate</strong> es la clase que usa en las rutas para representar la <em>geolocalización del inicio</em> y la <em>geolocalización del final de la ruta</em>.</p>
+<p>Esta clase tiene como atributos <em>latitude</em> (latitud), <em>longitude</em> (longitud) y <em>mosl</em> (metros sobre el nivel del mar) para identificar correctamente las coordenadas necesarias en cada caso.</p>
+<p>La clase tendrá dos métodos que serán los siguientes:</p>
+<ul>
+<li><p><strong>parse()</strong>: La función crea un nuevo objeto Coordenadas a partir de las coordenadas contenidas en la cadena proporcionada que tendrá un formato diferente al de latitud, longitud y mosl.</p>
+</li>
+<li><p><strong>toString()</strong>: Devuelve una representación de cadena del objeto Coordenadas dado.</p>
+</li>
+</ul>
+
+<a href="#activity-type" id="activity-type" style="color: inherit; text-decoration: none;">
+  <h2><em>Activity Type</em></h2>
+</a>
+<p>Activity será un enumerado con el que podremos representar de una mejor manera los tipos de actividades que serán Correr o Bicicleta.</p>
+<pre><code class="language-ts"><span class="hl-3">export</span><span class="hl-0"> </span><span class="hl-4">enum</span><span class="hl-0"> </span><span class="hl-5">ActivityType</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-6">RUNNING</span><span class="hl-0">, </span><span class="hl-7">//Representará la actividad Correr</span><br/><span class="hl-0">  </span><span class="hl-6">BICYCLE</span><span class="hl-0">, </span><span class="hl-7">//Representará la actividad Bicicleta</span><br/><span class="hl-0">}</span>
+</code></pre>
+<p>Este enumerado se usará en la mayoría de las clases principales del programa.</p>
+
+<a href="#usuarios" id="usuarios" style="color: inherit; text-decoration: none;">
+  <h2><em>Usuarios</em></h2>
+</a>
+<p>La clase <strong>User</strong> representa un usuario dentro del sistema de información que estamos desarrollando</p>
+<p>Un usuario tiene ciertos datos asociados, estos son:</p>
+<ul>
+<li><p>ID único del usuario (puede ser un username creado por el usuario en el registro o un valor generado automáticamente por el sistema).</p>
+</li>
+<li><p>Nombre del usuario.</p>
+</li>
+<li><p>Actividades que realiza: Correr o bicicleta.</p>
+</li>
+<li><p>Amigos en la aplicación: Colección de IDs de usuarios con los que interacciona.</p>
+</li>
+<li><p>Grupos de amigos: Diferentes colecciones de IDs de usuarios con los que suele realizar rutas.</p>
+</li>
+<li><p>Estadísticas de entrenamiento: Cantidad de km y desnivel total acumulados en la semana, mes y año.</p>
+</li>
+<li><p>Rutas favoritas: IDs de las rutas que el usuario ha realizado con mayor frecuencia.</p>
+</li>
+<li><p>Retos activos: IDs de los retos que el usuario está realizando actualmente.</p>
+</li>
+<li><p>Histórico de rutas: Los usuarios deben almacenar el historial de rutas realizadas desde que se registraron en el sistema. La información almacenada en esta estructura de datos deberá contener la información de la fecha y el ID de la ruta realizada. Nótese que un usuario puede realizar más de una ruta al día y está decisión puede afectar al tipo de estructura en el que se almacena la información.</p>
+</li>
+</ul>
+<p>Para cumplir con esto, los atributos de la clase user serán los siguientes:</p>
+<pre><code class="language-ts"><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">id</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">name</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">friends</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">groupFriends</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[]</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">favoriteRoutes</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">activeChallenges</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">routeHistory</span><span class="hl-0">: </span><span class="hl-1">RouteHistory</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">activity</span><span class="hl-0">: </span><span class="hl-1">ActivityType</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">passwordHash</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">isAdmin</span><span class="hl-0">: </span><span class="hl-1">boolean</span><span class="hl-0">;</span>
+</code></pre>
+<p>Esta clase tendrá varios métodos y se explicarán a continuación.</p>
+<p>Para los usuarios hará falta dar información sobre las estadísticas, es por eso que tiene los siguientes métodos:</p>
+<ul>
+<li><strong>weeklyKmStatistics</strong>: devuelve la suma de kms de las rutas realizadas por el usuario en los últimos 7 días.</li>
+<li><strong>weeklySlopeStatistics</strong>: devuelve la suma de desnivel en las rutas realizadas por el usuario en los últimos 7 días.</li>
+<li><strong>monthlyKmStatistics</strong>: devuelve la suma de kms de las rutas realizadas por el usuario en los últimos 30 días.</li>
+<li><strong>monthlySlopeStatistics</strong>: devuelve la suma de desnivel en las rutas realizadas por el usuario en los últimos 30 días</li>
+<li><strong>yearlyKmStatistics</strong>: devuelve la suma de kms de las rutas realizadas por el usuario en los últimos 365 días.</li>
+<li><strong>yearlySlopeStatistics</strong>: devuelve la suma de desnivel en las rutas realizadas por el usuario en los últimos 365 días.</li>
+</ul>
+<p>Además tendrá el método <strong>printTable</strong>: este método servirá para imprimir la información relativa a los usuarios, mostrando por pantalla todos los usuarios de una lista que se pasa en los parámetros de la función.</p>
+<p>Estará también el método <strong>printTableLessInfo()</strong> que no muestra la información sensible sobre el usuario.</p>
+
+<a href="#user-data" id="user-data" style="color: inherit; text-decoration: none;">
+  <h2><em>User Data</em></h2>
+</a>
+<p>Esta interfaz servirá para especificar qué datos sobre el <strong>user</strong> son los que se leerán de la base de datos.</p>
+<pre><code class="language-ts"><span class="hl-0">  </span><span class="hl-2">id</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">name</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">friends</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">groupFriends</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[]</span><br/><span class="hl-0">  </span><span class="hl-2">favoriteRoutes</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">activeChallenges</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">routeHistory</span><span class="hl-0">: </span><span class="hl-1">RouteHistoryData</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">activity</span><span class="hl-0">: </span><span class="hl-1">ActivityType</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">passwordHash</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">isAdmin</span><span class="hl-0">: </span><span class="hl-1">boolean</span><span class="hl-0">;</span>
+</code></pre>
+
+<a href="#route-history" id="route-history" style="color: inherit; text-decoration: none;">
+  <h2><em>Route History</em></h2>
+</a>
+<p>Esta clase implementará la interfaz que se explica en el siguiente apartado.
+La clase representa un histórico de rutas.
+Tendrá un método <strong>parse</strong> que crea un devuelve un objeto <strong>RouteHistory</strong> a partir de un objeto que cumple la interfaz <strong>Route History Data</strong>.</p>
+
+<a href="#route-history-data" id="route-history-data" style="color: inherit; text-decoration: none;">
+  <h2><em>Route History Data</em></h2>
+</a>
+<p>Interfaz hecha para conocer los datos de una ruta que se leerá de la db.</p>
+<pre><code class="language-ts"><span class="hl-2">routeId</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-2">date</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-2">kms</span><span class="hl-0">: </span><span class="hl-1">number</span><span class="hl-0">;</span><br/><span class="hl-2">averageSlope</span><span class="hl-0">: </span><span class="hl-1">number</span><span class="hl-0">;</span>
+</code></pre>
+
+<a href="#grupos" id="grupos" style="color: inherit; text-decoration: none;">
+  <h2><em>Grupos</em></h2>
+</a>
+<p>La clase <strong>Group</strong> representa un grupo dentro del sistema de información que estamos desarrollando</p>
+<p>Un grupo tiene ciertos datos asociados, estos son:</p>
+<ul>
+<li><p>ID único del grupo.</p>
+</li>
+<li><p>Nombre del grupo.</p>
+</li>
+<li><p>Participantes: IDs de los miembros del grupo.</p>
+</li>
+<li><p>Estadísticas de entrenamiento grupal: Cantidad de km y desnivel total acumulados de manera grupal en la semana, mes y año</p>
+</li>
+<li><p>Clasificación de los usuarios: Ranking de los usuarios que más entrenamientos han realizado históricamente dentro del grupo, es decir, ordenar los usuarios por la cantidad de km totales o desnivel total que han acumulado.</p>
+</li>
+<li><p>Rutas favoritas del grupo: Rutas que los usuarios del grupo han realizado con mayor frecuencia en sus salidas conjuntas.</p>
+</li>
+<li><p>Histórico de rutas realizadas por el grupo: Información similar que almacenan los usuarios pero en este caso referente a los grupos. Nótese que un usuario puede realizar rutas con un grupo y/o de manera individual el mismo día. Es decir, a modo de simplificación, asumimos que todos los usuarios de un grupo realizan la actividad cuando se planifica. Aunque, también pueden realizar otras actividades de manera individual.</p>
+</li>
+</ul>
+<p>Para cumplir con esto, los atributos de la clase group serán los siguientes:</p>
+<pre><code class="language-ts"><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">id</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">name</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">participants</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">favoriteRoutes</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">routeHistory</span><span class="hl-0">: </span><span class="hl-1">RouteHistoryGroup</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">createdBy</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">activity</span><span class="hl-0">: </span><span class="hl-1">ActivityType</span><span class="hl-0">;</span>
+</code></pre>
+<p>En cuanto a los métodos, serán similares a los de la clase <strong>User</strong> es decir, serán métodos que servirán para calcular la suma de estadísticas de los grupos y además se añaden 3 nuevos métodos que servirán para devolver el top 3 de: usuarios del grupo ordenados por mayor número de kms, usuarios del grupo ordenados por pendiente más acumulada y usuarios del grupo ordenados por el campo proporcionado (descendente).</p>
+<p>Por último, también estarán los métodos print para mostrar tanto la tabla de usuario con la información completa como la tabla con la información sensible oculta.</p>
+
+<a href="#group-data" id="group-data" style="color: inherit; text-decoration: none;">
+  <h2><em>Group Data</em>:</h2>
+</a>
+<p>Esta interfaz servirá para especificar qué datos sobre el <strong>group</strong> son los que se leerán de la base de datos</p>
+<pre><code class="language-ts"><span class="hl-0">  </span><span class="hl-2">id</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">name</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">participants</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">favoriteRoutes</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">routeHistory</span><span class="hl-0">: </span><span class="hl-1">RouteHistoryGroup</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">createdBy</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">activity</span><span class="hl-0">: </span><span class="hl-1">ActivityType</span><span class="hl-0">;</span>
+</code></pre>
+
+<a href="#route-history-group" id="route-history-group" style="color: inherit; text-decoration: none;">
+  <h2><em>Route History Group</em>:</h2>
+</a>
+<p>Esta clase implementará la interfaz que se explica en el siguiente apartado.
+La clase representa un histórico de rutas pero añadiendo en este caso los participantes del grupo. Tendrá un método <strong>parse</strong> que crea un devuelve un objeto <strong>RouteHistoryGroup</strong> a partir de un objeto que cumple la interfaz <strong>RouteHistoryGroupData</strong>.</p>
+
+<a href="#route-history-group-data" id="route-history-group-data" style="color: inherit; text-decoration: none;">
+  <h2><em>Route History Group Data</em>:</h2>
+</a>
+<p>Esta interfaz extiende la Route History Data explicada en el usuario anteriormente y lo que añade es un array de strings correspondiente al id de los participantes del grupo.</p>
+<pre><code class="language-ts"><span class="hl-3">export</span><span class="hl-0"> </span><span class="hl-4">interface</span><span class="hl-0"> </span><span class="hl-5">RouteHistoryGroupData</span><span class="hl-0"> </span><span class="hl-4">extends</span><span class="hl-0"> </span><span class="hl-5">RouteHistoryData</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">participants</span><span class="hl-0">: </span><span class="hl-5">string</span><span class="hl-0">[];</span><br/><span class="hl-0">}</span>
+</code></pre>
+
+<a href="#reto" id="reto" style="color: inherit; text-decoration: none;">
+  <h2><em>Reto</em>:</h2>
+</a>
+<p>La clase Challenge representa un <strong>Reto</strong> dentro del sistema de almacenamiento de registros de actividades deportivas.</p>
+<p>Un reto tiene ciertos datos asociados, estos son:</p>
+<ul>
+<li>ID del reto (único)</li>
+<li>Nombre del reto</li>
+<li>Rutas que forman parte del reto</li>
+<li>Tipo de actividad de reto: bicicleta o correr (usará el enumerado ActivityType)</li>
+<li>Km totales (será la suma de los kilómetros de todas las rutas del reto)</li>
+<li>Usuarios que están realizando el reto</li>
+</ul>
+<p>Para cumplir con esto, los atributos de la clase challenge serán los siguientes:</p>
+<pre><code class="language-ts"><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">id</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">name</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">routes</span><span class="hl-0">: </span><span class="hl-1">Route</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">totalKm</span><span class="hl-0">: </span><span class="hl-1">number</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">userIds</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">public</span><span class="hl-0"> </span><span class="hl-2">activity</span><span class="hl-0">: </span><span class="hl-1">ActivityType</span><span class="hl-0">;</span><br/>
+</code></pre>
+<p>Donde lo más importante a destacar es que el atributo <strong>totalKm</strong> no será pasado al constructor, si no que se calculará a partir de las rutas de esta manera.</p>
+<pre><code class="language-ts"><span class="hl-4">this</span><span class="hl-0">.</span><span class="hl-1">totalKm</span><span class="hl-0"> = </span><span class="hl-1">routes</span><span class="hl-0">.</span><span class="hl-8">reduce</span><span class="hl-0">((</span><span class="hl-1">acc</span><span class="hl-0">, </span><span class="hl-1">r</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> </span><span class="hl-1">acc</span><span class="hl-0"> + </span><span class="hl-1">r</span><span class="hl-0">.</span><span class="hl-1">distanceKm</span><span class="hl-0">, </span><span class="hl-9">0</span><span class="hl-0">);</span>
+</code></pre>
+<p>Ahora en cuanto a los métodos, esta clase tiene 3 diferentes.</p>
+<ul>
+<li><p><strong>printTable</strong>: este método servirá para imprimir la información relativa a los retos, mostrando por pantalla todos los retos de una lista que se pasa en los parámetros de la función.</p>
+</li>
+<li><p><strong>parse</strong>: este será un método para analizar los datos de la base de datos. Lo que se hará es dado un objeto con la interfaz <strong>ChallengeData</strong> y una base de datos, devolverá un objeto <strong>Challenge</strong> con la información correspondiente al reto de la base de datos. Esta función es necesaria porque en la base de datos, a la hora de introducir las rutas del reto, solo se introducen los ID`s del reto y para analizar el reto necesitamos la información completa de la ruta, entonces con esta función obtenemos dicha información.</p>
+</li>
+<li><p><strong>toJSON</strong>: esta función hará lo inverso al método anterior, en este caso se devolverá un objeto que implementará la interfaz <strong>ChallengeData</strong> cuyo array correspondiente a las rutas será un arrays con los ID’s y este será el objeto a introducir en el JSON.</p>
+</li>
+</ul>
+
+<a href="#challenge-data" id="challenge-data" style="color: inherit; text-decoration: none;">
+  <h2><em>Challenge Data</em>:</h2>
+</a>
+<p>Esta interfaz servirá para especificar qué datos sobre el <strong>challenge</strong> son los que se leerán de la base de datos</p>
+<pre><code class="language-ts"><span class="hl-0">  </span><span class="hl-2">id</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">name</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">routes</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">userIds</span><span class="hl-0">: </span><span class="hl-1">string</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-2">activity</span><span class="hl-0">: </span><span class="hl-1">ActivityType</span><span class="hl-0">;</span>
+</code></pre>
+<p>En este caso comprobamos que routes es un array de strings, que corresponderá con con un array con los ID’s de las rutas.</p>
+
+<a href="#database" id="database" style="color: inherit; text-decoration: none;">
+  <h2><em>Database</em></h2>
+</a>
+<p>Para comprobar el funcionamiento de nuestro diseño hemos creado una base de datos en la que hacemos el almacenamiento de lo necesario nombrado anteriormente (rutas, retos, usuarios y grupos)</p>
+<p>Tenemos una clase <strong>Database</strong> que seguirá la estructura del tipo personalizado DatabaseStructure.</p>
+<pre><code class="language-ts"><span class="hl-4">type</span><span class="hl-0"> </span><span class="hl-5">DatabaseStructure</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-1">challenges</span><span class="hl-0">: </span><span class="hl-5">ChallengeData</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">groups</span><span class="hl-0">: </span><span class="hl-5">GroupData</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">routes</span><span class="hl-0">: </span><span class="hl-5">Route</span><span class="hl-0">[];</span><br/><span class="hl-0">  </span><span class="hl-1">users</span><span class="hl-0">: </span><span class="hl-5">UserData</span><span class="hl-0">[];</span><br/><span class="hl-0">};</span>
+</code></pre>
+<p>Lo primero a comentar es que tiene una función <strong>load</strong> que lee la base de datos del disco y carga su contenido. Si no existe, se inicializa uno nuevo.</p>
+<p>A partir de aquí tenemos varios métodos para eliminar o añadir elementos en la base de datos.
+Están los métodos generales como <strong>add</strong>, <strong>set</strong> y <strong>delete</strong>.</p>
+<p>El método <strong>add</strong> agrega un nuevo objeto a la base de datos. El ID del objeto se ignora y se asigna uno nuevo.</p>
+<p>El método <strong>set</strong> establece el objeto proporcionado con el correspondiente (mismo ID) en la base de datos. Si no hay ningún objeto con el mismo ID.</p>
+<p>El método <strong>delete</strong> elimina el objeto con el ID proporcionado de la colección proporcionada. Si no hay ningún objeto con ID coincidente</p>
+<p>Otros métodos más generales podemos decir que son los que devuelven las listas de la base de datos, estos son:</p>
+<ul>
+<li><p><strong>routes()</strong>: devuelve la lista de rutas en la base de datos.</p>
+</li>
+<li><p><strong>challenges()</strong>: devuelve la lista de retos en la base de datos.</p>
+</li>
+<li><p><strong>challengeData()</strong>: devuelve la lista de retos en la base de datos sin aplicarle el <em>parse</em>.</p>
+</li>
+<li><p><strong>users()</strong>: devuelve la lista de usuarios en la base de datos.</p>
+</li>
+<li><p><strong>usersData()</strong>: devuelve la lista de usuarios en la base de datos sin aplicarle el <em>parse</em>.</p>
+</li>
+<li><p><strong>groups()</strong>: devuelve la lista de grupos en la base de datos.</p>
+</li>
+<li><p><strong>groupData()</strong>: devuelve la lista de grupos en la base de datos sin aplicarle el <em>parse</em>.</p>
+</li>
+</ul>
+<p>A parte de estos, para cada uno de los objetos (rutas, retos, usuarios y grupos), en el fichero habrá métodos para añadir (add), eliminar (delete) y hacer el set de cada objeto en la base de datos.</p>
+
+<a href="#interfaz-de-línea-de-comandos-cli" id="interfaz-de-línea-de-comandos-cli" style="color: inherit; text-decoration: none;">
+  <h2><em>Interfaz de línea de comandos, CLI</em></h2>
+</a>
+<p>El usuario que utilice esta aplicación deberá, mediante la gestión por línea de comandos interactiva, deberá poder añadir, borrar, modificar y mostrar rutas, usuarios, grupos y retos.</p>
+<p>Para esto utilizamos la clase prompter. <strong>Prompter</strong> será una clase abstracta en la que se tendrán los métodos <strong>add</strong>, <strong>delete</strong>, <strong>edit</strong> y <strong>print</strong>, todos estos métodos abstractos que se sobrescribirán en las clases hijas, que será una para cada objeto (rutas, retos, usuarios y grupos).</p>
+<p>Cada objeto tiene una clase (<strong>&lt; objeto &gt;Prompter</strong>) que extiende la clase <strong>Prompter</strong> e implementa métodos <em>add()</em>, <em>delete()</em>, <em>edit()</em>, <em>print()</em> y <em>dataPrompt()</em>.</p>
+<p><strong><em>Aclaración</em></strong>: la palabra <em>objeto</em> será sustituida por rutas, usuarios, grupos o retos en cada caso.</p>
+<p>Los métodos harán lo siguiente para cada clase:</p>
+<ul>
+<li><p><strong>add()</strong> creará un nuevo <em>objeto</em> con la entrada del usuario y se añadirá a la base de datos. Hará uso del método <strong>add&lt; Objeto &gt;()</strong> que se encuentra en la clase <strong>DataBase</strong></p>
+</li>
+<li><p><strong>delete()</strong> servirá para eliminar <em>objetos</em> de la base de datos. Cuando se ejecute esta función aparecerá una lista con los <em>objetos</em> incluidos en la base de datos y el usuario podrá seleccionar aquellos que quiere eliminar.</p>
+</li>
+<li><p><strong>edit()</strong> modifica un <em>objeto</em> de la base de datos, aquel que el usuario seleccione de una lista que se le mostrará por pantalla. Al <em>objeto</em> que se elija se le podrá modificar todos los atributos y una vez editado se actualizará la base de datos.</p>
+</li>
+<li><p><strong>print()</strong> muestra por pantalla todos los <em>objetos</em> de la base de datos y además dará la opción de ordenar de varias formas.</p>
+</li>
+</ul>
+<p>En este caso es necesario aclarar qué forma de ordenar tendrá cada <em>objeto</em>:</p>
+<p><strong>Rutas</strong>:</p>
+<ul>
+<li>Alfabéticamente por nombre de la ruta, ascendente y descendente.</li>
+<li>Cantidad de usuarios que realizan las rutas, ascendente y descendente.</li>
+<li>Por longitud de la ruta, ascendente y descendente.</li>
+<li>Por la calificación media de la ruta, ascendente y descendente.</li>
+<li>Ordenar por actividad: correr o ciclismo.</li>
+</ul>
+<p><strong>Usuarios</strong>:</p>
+<ul>
+<li>Por nombre del usuario, ascendente y descendente.</li>
+<li>Por cantidad de km realizados (ascendente y descendentemente) en función de la semana actual, mes o año.</li>
+</ul>
+<p><strong>Grupos</strong>:</p>
+<ul>
+<li>Por nombre de la grupo, ascendente y descendente.</li>
+<li>Por cantidad de km realizados conjuntamente (ascendente y descendentemente) en función de la semana actual, mes o año.</li>
+<li>Por cantidad de miembros que lo componen, ascendente y descendente.</li>
+</ul>
+<p><strong>Retos</strong>:</p>
+<ul>
+<li><p>Por nombre del reto, ascendente y descendente.</p>
+</li>
+<li><p>Por cantidad de km, ascendente y descendente.</p>
+</li>
+<li><p>Por cantidad de usuarios que lo están realizando, ascendente y descendente.</p>
+</li>
+<li><p><strong>dataPrompter()</strong> solicita al usuario los datos de un <em>objeto</em>, utilizando los valores predeterminados, si se proporcionan. Servirá para que el usuario introduzca los datos relativos al <em>objeto</em>.</p>
+</li>
+</ul>
+<p>Estos métodos, como ya se ha dicho, estarán en cada clase correspondiente a cada objeto.</p>
+<p>Por último, hemos creado una serie de clases que servirán para representar un Manager, que permita gestionar el tratamiento de la información del sistema.</p>
+
+<a href="#main-manager" id="main-manager" style="color: inherit; text-decoration: none;">
+  <h3><em>Main Manager</em></h3>
+</a>
+<p><strong>Main Manager</strong> será la clase principal que se englobará todos los métodos para la gestión general de la información del sistema. Las operaciones que se podrán hacer serán las siguientes y de dividirán en las siguientes clases para hacer un mejor diseño:</p>
+<ul>
+<li>Borrar grupos (<strong>group_manager</strong>)</li>
+<li>Cerrar sesión (<strong>main_manager</strong>)</li>
+<li>Crear un grupo (<strong>group_manager</strong>)</li>
+<li>Editar amigos (<strong>friends_manager</strong>)</li>
+<li>Salir del programa (<strong>main_manager</strong>)</li>
+<li>Unirse a un grupo (<strong>group_manager</strong>)</li>
+<li>Ver todas las rutas (<strong>print_manager</strong>)</li>
+<li>Ver todos los grupos (<strong>print_manager</strong>)</li>
+<li>Ver todos los usuarios (<strong>print_manager</strong>)</li>
+<li>Ver Top 3 usuarios Km (<strong>print_manager</strong>)</li>
+<li>Ver Top 3 usuarios Elevación (<strong>print_manager</strong>)</li>
+</ul>
+<p>Primero indicar que existe una clase <strong>session_manager</strong> que representa al usuario que iniciará sesión.</p>
+<p>Con un método <strong>checkSession()</strong> se podrá elegir la acción entre registrarse o iniciar sesión.
+Existe un método para el inicio de sesión, <strong>login()</strong> que le pedirá al usuario su contraseña y con la función <strong>passwordMatches</strong> comprobará que es correcta.</p>
+<p>Por otro lado, para registrarse se llama a la función <strong>register()</strong> que lo que hará es crear un usuario pidiéndole lo datos necesarios, lo hará usando los <strong>prompters</strong> explicados anteriormente.</p>
+<p>El método <strong>currentUser</strong> devolverá el usuario que iniciado la sesión actual. Por otro lado, <strong>isAdmin</strong> comprobará si el usuario tiene el rol de administrador o no. La función <strong>logout</strong> servirá para cerrar la sesión del usuario actual</p>
+<p>A continuación se explicará el contenido de cada clase.</p>
+<p><strong>Groupmanager</strong></p>
+<p>El constructor recibirá una base de datos y una sesión de la clase <em>SessionManager</em>.</p>
+<p>Tendrá 3 métodos y serán los que se nombrarán a continuación.</p>
+<ul>
+<li><p><strong>create()</strong>: El usuario podrá crear un grupo, para esto lo primero que se hará es guardar cuál es el usuario que ha iniciado sesión. A continuación, usando el prompter (explicado anteriormente) se pide al usuario, mediante la interfaz por línea de comando, que introduzca los campos correspondientes al nuevo grupo. Por último, usando los métodos para crear grupos de la clase <strong>DataBase</strong>, se crea el grupo con la información de entrada y se añade a la base de datos indicando cuál ha sido el usuario que ha creado el grupo (el que se había guardado al inicio).</p>
+</li>
+<li><p><strong>delete()</strong>: El usuario podrá eliminar un grupo, para esto lo primero que se hará es guardar cuál es el usuario que ha iniciado sesión porque solo podrá eliminar aquellos grupos que hayan sido creados por él. A continuación, usando el prompter (explicado anteriormente) se pide al usuario, mediante la interfaz por línea de comando, que seleccione los grupos a borrar de entre los que se muestran por pantalla (aquellos creados por él). Por último, usando los métodos para eliminar grupos de la clase <strong>DataBase</strong>, se eliminan los grupos que indique el usuario.</p>
+</li>
+<li><p><strong>join()</strong>: El usuario podrá seleccionar uno de los grupos a los que desee unirse de los que ya estén creados en el sistema.</p>
+</li>
+</ul>
+<p><strong>Friendsmanager</strong></p>
+<p>El constructor recibirá una base de datos y una sesión de la clase <em>SessionManager</em>.</p>
+<p>El método que tendrá la clase será <strong>edit</strong>, un método para editar la lista de amigos que hemos dicho anteriormente. Lo que se hará en esta función será lo siguiente: obtener el usuario que ha hecho el inicio de la sesión con el método <em>currentUser()</em> del objeto correspondiente con <em>session</em>.
+Después de esto, se pedirá al usuario la entrada de datos modificando la lista de amigos.
+La lista de los posibles usuarios tendrá como valores por defecto aquellos usuarios que ya son amigos del usuario de la sesión, de esta forma el usuario puede marcar o desmarcar los amigos que quiere tener.</p>
+<p>Y finalmente lo que se hará es asignarle al usuario la nueva lista de amigos haciendo uso del método <strong>setUser</strong> de la clase Database.</p>
+<p><strong>Printmanager</strong></p>
+<p>El constructor recibirá unicamente una base de datos.
+Los métodos de esta clase son sencillos, será simplemente utilizar el print correspondiente en cada caso para mostrar lo necesario:</p>
+<ul>
+<li><strong>printGroups</strong>: muestra los grupos</li>
+<li><strong>printRoutes</strong>: muestra las rutas</li>
+<li><strong>printUsers</strong>: muestra los usuarios</li>
+<li><strong>printTop3UsersKm</strong>: muestra el top 3 usuarios según los Km</li>
+<li><strong>printTop3UsersSlope</strong>: muestra el top 3 usuarios según la Elevación</li>
+</ul>
+<p><strong>Adminmanager</strong></p>
+<p>Esta clase se encargará de gestionar todo aquello que un usuario administrador puede gestionar.
+Es decir, los usuario con la característica especial administrador, podrán:
+eliminar, añadir, editar o mostrar usuarios, grupos, retos o rutas.</p>
+<p>Para esto se hará uso de los métodos de las clases <strong>prompter</strong> que se han nombrado anteriormente</p>
+
+<a href="#otras-herramientas" id="otras-herramientas" style="color: inherit; text-decoration: none;">
+  <h2><em>Otras herramientas</em></h2>
+</a>
+<p>Por último, indicar que se han usado otros ficheros que hemos creado para facilitar el desarrollo del programa. Entre estos ficheros tenemos varias funciones para ordenar y comparar (estas funciones se usan dentro de los métodos para mostrar información ordenada de la manera que elija el usuario) y otras funciones relacionadas con las contraseñas para comprobar que sean válidas.</p>
+
+<a href="#dificultades-encontradas" id="dificultades-encontradas" style="color: inherit; text-decoration: none;">
+  <h1>Dificultades encontradas</h1>
+</a>
+<p>Las principal dificultad ha surgido al momento de realizar los test en un principio, al ser casi todo por consola no sabíamos bien que testear ni como realizar los test de una clase de una manera sencilla sin hacer uso de los datos de las bases de datos que podrían ir variando.</p>
+<p>Por otro lado, en los test de la base de datos relativos a los challenges, hay un error que no hemos conseguido solucionar del todo finalmente.</p>
+
+<a href="#conclusión" id="conclusión" style="color: inherit; text-decoration: none;">
+  <h1>Conclusión</h1>
+</a>
+<p>Todo el trabajo se ha realizado de manera colaborativa, realizando varias sesiones todos los integrantes del grupo pero con una gran carga de trabajo autónomo para poder avanzar por nuestra cuenta dentro de lo posible el trabajo que nos habíamos asignado.</p>
+<p>El trabajo se ha organizado haciendo uso de las ramas de Git para no tocar el código de los demás compañeros ademas se realizo por motivos de seguridad una configuración de la rama master para que no se pudiera <strong><em>pushear</em></strong> código por error corriendo el riesgo de generar problemas y que más adelante no se encontrara el error.</p>
+<p>En esta práctica en grupo se han tocado aspectos con funciones asíncronas, trabajo colaborativo haciendo uso de Git y GitHub, así como aprendido a como usar una base de datos en nuestros programas y a como realizar una pequeña aplicación de consola.</p>
+<p>Para concluir, en el equipo coincidimos que esta práctica, a pesar de la alta carga de trabajo que conlleva, nos ayuda a trabajar de forma colaborativa, algo a lo que nos tendremos que enfrentar cada vez más a menudo y también en el mundo laboral.</p>
+<p><a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupog/actions/workflows/testing.yml"><img src="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupog/actions/workflows/testing.yml/badge.svg?branch=master" alt="tests"></a></p>
+</div></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current selected"><a href="modules.html">practica07</a>
+<ul>
+<li class="tsd-kind-module"><a href="modules/activity_type.html">activity_<wbr/>type</a></li>
+<li class="tsd-kind-module"><a href="modules/challenge_challenge.html">challenge/challenge</a></li>
+<li class="tsd-kind-module"><a href="modules/challenge_challenge_data.html">challenge/challenge_<wbr/>data</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_challenge_prompter.html">cli/challenge_<wbr/>prompter</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_choices.html">cli/choices</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_group_prompter.html">cli/group_<wbr/>prompter</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_managers_admin_manager.html">cli/managers/admin_<wbr/>manager</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_managers_friends_manager.html">cli/managers/friends_<wbr/>manager</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_managers_group_manager.html">cli/managers/group_<wbr/>manager</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_managers_main_manager.html">cli/managers/main_<wbr/>manager</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_managers_print_manager.html">cli/managers/print_<wbr/>manager</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_managers_session_manager.html">cli/managers/session_<wbr/>manager</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_prompter.html">cli/prompter</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_route_history_helper.html">cli/route_<wbr/>history_<wbr/>helper</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_route_prompter.html">cli/route_<wbr/>prompter</a></li>
+<li class="tsd-kind-module"><a href="modules/cli_user_prompter.html">cli/user_<wbr/>prompter</a></li>
+<li class="tsd-kind-module"><a href="modules/consts.html">consts</a></li>
+<li class="tsd-kind-module"><a href="modules/db_database.html">db/database</a></li>
+<li class="tsd-kind-module"><a href="modules/db_identifiable.html">db/identifiable</a></li>
+<li class="tsd-kind-module"><a href="modules/db_structure.html">db/structure</a></li>
+<li class="tsd-kind-module"><a href="modules/group_group.html">group/group</a></li>
+<li class="tsd-kind-module"><a href="modules/group_group_data.html">group/group_<wbr/>data</a></li>
+<li class="tsd-kind-module"><a href="modules/group_route_history_group.html">group/route_<wbr/>history_<wbr/>group</a></li>
+<li class="tsd-kind-module"><a href="modules/index.html">index</a></li>
+<li class="tsd-kind-module"><a href="modules/route_coordinates.html">route/coordinates</a></li>
+<li class="tsd-kind-module"><a href="modules/route_route.html">route/route</a></li>
+<li class="tsd-kind-module"><a href="modules/user_route_history.html">user/route_<wbr/>history</a></li>
+<li class="tsd-kind-module"><a href="modules/user_user.html">user/user</a></li>
+<li class="tsd-kind-module"><a href="modules/user_user_data.html">user/user_<wbr/>data</a></li>
+<li class="tsd-kind-module"><a href="modules/utils_password.html">utils/password</a></li>
+<li class="tsd-kind-module"><a href="modules/utils_sort_func.html">utils/sort_<wbr/>func</a></li></ul></li></ul></div></details></nav></div></div>
+<div class="container tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="assets/main.js"></script></body></html>
