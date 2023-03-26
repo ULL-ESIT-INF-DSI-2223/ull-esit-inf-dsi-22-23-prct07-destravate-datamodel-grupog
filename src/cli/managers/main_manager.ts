@@ -46,6 +46,8 @@ export default class MainManager {
         { name: "Ver todas las rutas", value: "printRoutes" },
         { name: "Ver todos los grupos", value: "printGroups" },
         { name: "Ver todos los usuarios", value: "printUsers" },
+        { name: "Ver Top 3 usuarios Km", value: "printTop3UsersKm" },
+        { name: "Ver Top 3 usuarios Elevacion", value: "printTop3UsersSlope" }
       ];
       if (this.session.isAdmin()) {
         choices.push({ name: "Administración", value: "admin" });
