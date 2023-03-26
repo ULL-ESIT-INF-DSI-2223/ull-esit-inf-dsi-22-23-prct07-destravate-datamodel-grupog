@@ -55,7 +55,7 @@ export function routes(db: Database): Choice<string>[] {
  */
 export function challenges(db: Database): Choice<string>[] {
   return db
-    .challenges()
+    .challengeData()
     .reduce((acc, challenge) => {
       acc.push({
         name: challenge.name,
@@ -72,13 +72,16 @@ export function challenges(db: Database): Choice<string>[] {
  * @returns A list of all the user choices, using their ID as value.
  */
 export function users(db: Database): Choice<string>[] {
-  return db.userData().reduce((acc, user) => {
-    acc.push({
-      name: `${user.name} (${user.id})`,
-      value: user.id
-    })
-    return acc
-  }, [] as Choice<string>[]).sort(sortByNameThenValue)
+  return db
+    .userData()
+    .reduce((acc, user) => {
+      acc.push({
+        name: `${user.name} (${user.id})`,
+        value: user.id,
+      });
+      return acc;
+    }, [] as Choice<string>[])
+    .sort(sortByNameThenValue);
 }
 
 /**
@@ -88,7 +91,7 @@ export function users(db: Database): Choice<string>[] {
  * @returns A list of all the user choices, using their ID as value.
  */
 export function groups(db: Database, ownerID?: string): Choice<string>[] {
-  const groupList = db.groups()
+  const groupList = db.groupData()
   if (ownerID) {
     groupList.filter(group => group.createdBy === ownerID)
   }

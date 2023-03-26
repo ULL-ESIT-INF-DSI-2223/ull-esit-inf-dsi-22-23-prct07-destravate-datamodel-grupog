@@ -2,6 +2,7 @@ import inquirer from "inquirer";
 import Database from "../../db/database.js";
 import { Choice } from "../choices.js";
 import AdminManager from "./admin_manager.js";
+import FriendsManager from "./friends_manager.js";
 import GroupManager from "./group_manager.js";
 import PrintManager from "./print_manager.js";
 import SessionManager from "./session_manager.js";
@@ -10,20 +11,22 @@ import SessionManager from "./session_manager.js";
  * MainManager class "manages" the main manager of the application. Managers offer functionality to the CLI.
  */
 export default class MainManager {
-  private admin: AdminManager
-  private group: GroupManager
-  private session: SessionManager
-  private print: PrintManager
+  private admin: AdminManager;
+  private friends: FriendsManager;
+  private group: GroupManager;
+  private print: PrintManager;
+  private session: SessionManager;
 
   /**
    * Creates a new MainManager using the Database provided.
    * @param db Database to use.
    */
   constructor(db: Database) {
-    this.session = new SessionManager(db)
-    this.admin = new AdminManager(db, this.session)
-    this.group = new GroupManager(db, this.session)
-    this.print = new PrintManager(db)
+    this.print = new PrintManager(db);
+    this.session = new SessionManager(db);
+    this.admin = new AdminManager(db, this.session);
+    this.group = new GroupManager(db, this.session);
+    this.friends = new FriendsManager(db, this.session);
   }
 
   /**
@@ -31,31 +34,31 @@ export default class MainManager {
    */
   async main(): Promise<void> {
     for (;;) {
-      await this.session.checkSession()
+      await this.session.checkSession();
 
       const choices: Choice<string>[] = [
-        {name: "Borrar grupos", value: "deleteGroups"},
-        {name: "Cerrar sesión", value: "logout"},
-        {name: "Crear un grupo", value: "createGroup"},
-        {name: "Editar amigos", value: "editFriends"},
-        {name: "Salir del programa", value: "exit"},
-        {name: "Unirse a un grupo", value: "joinGroup"},
-        {name: "Ver todas las rutas", value: "printRoutes"},
-        {name: "Ver todos los grupos", value: "printGroups"},
-        {name: "Ver todos los usuarios", value: "printUsers"},
-        {name: "Ver Top 3 usuarios Km", value: "printTop3UsersKm"},
-        {name: "Ver Top 3 usuarios Elevacion", value: "printTop3UsersSlope"}
-      ]
+        { name: "Borrar grupos", value: "deleteGroups" },
+        { name: "Cerrar sesión", value: "logout" },
+        { name: "Crear un grupo", value: "createGroup" },
+        { name: "Editar amigos", value: "editFriends" },
+        { name: "Salir del programa", value: "exit" },
+        { name: "Unirse a un grupo", value: "joinGroup" },
+        { name: "Ver todas las rutas", value: "printRoutes" },
+        { name: "Ver todos los grupos", value: "printGroups" },
+        { name: "Ver todos los usuarios", value: "printUsers" },
+      ];
       if (this.session.isAdmin()) {
-        choices.push({name: "Administración", value: "admin"})
+        choices.push({ name: "Administración", value: "admin" });
       }
 
-      const { operation } = await inquirer.prompt([{
-        type: "list",
-        name: "operation",
-        message: "Menú principal",
-        choices
-      }])
+      const { operation } = await inquirer.prompt([
+        {
+          type: "list",
+          name: "operation",
+          message: "Menú principal",
+          choices,
+        },
+      ]);
       switch (operation) {
         case "admin":
           await this.admin.main();
@@ -67,7 +70,7 @@ export default class MainManager {
           await this.group.delete();
           break;
         case "editFriends":
-          throw new Error("TODO: not implemented");
+          await this.friends.edit();
           break;
         case "exit":
           return;

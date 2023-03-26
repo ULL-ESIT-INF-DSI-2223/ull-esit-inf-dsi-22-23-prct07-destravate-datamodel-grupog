@@ -9,8 +9,8 @@ export default class GroupManager {
   constructor(private db: Database, private session: SessionManager) {}
 
   async create(): Promise<void> {
-    const uid = this.session.currentUserID()
-    if (!uid) {
+    const user = this.session.currentUser()
+    if (!user) {
       return
     }
 
@@ -53,21 +53,21 @@ export default class GroupManager {
       input.participants,
       input.favoriteRoutes,
       await promptForRouteHistoryGroup(this.db, input.routeIDs),
-      uid,
+      user.id,
       input.activity
     ));
   }
 
   async delete(): Promise<void> {
-    const uid = this.session.currentUserID()
-    if (!uid) {
+    const user = this.session.currentUser()
+    if (!user) {
       return
     }
     const { groupIDs } = await inquirer.prompt([{
       type: "checkbox",
       name: "groupIDs",
       message: "Seleccione los grupos que desea borrar:",
-      choices: groups(this.db, uid)
+      choices: groups(this.db, user.id)
     }])
     for (const gid of groupIDs) {
       await this.db.deleteGroup(gid)
@@ -75,26 +75,26 @@ export default class GroupManager {
   }
 
   async join(): Promise<void> {
-    const uid = this.session.currentUserID()
-    if (!uid) {
+    const user = this.session.currentUser()
+    if (!user) {
       return
     }
     const { groupIDs } = await inquirer.prompt([{
       type: "checkbox",
       name: "groupIDs",
       message: "Seleccione los grupos a los que desea estar unido:",
-      default: this.db.groups().filter(group => group.participants.includes(uid)).map(group => group.id),
-      choices: groups(this.db, uid)
+      default: this.db.groups().filter(group => group.participants.includes(user.id)).map(group => group.id),
+      choices: groups(this.db, user.id)
     }])
     for (const gid of groupIDs) {
       const g = this.db.groups().find(group => group.id === gid)
       if (!g) {
         throw new Error(`somehow a non existing group ID (${gid}) was chosen`);
       }
-      if (g.participants.includes(uid)) {
+      if (g.participants.includes(user.id)) {
         continue
       }
-      g.participants.push(uid)
+      g.participants.push(user.id)
       await this.db.setGroup(g)
     }
   }
