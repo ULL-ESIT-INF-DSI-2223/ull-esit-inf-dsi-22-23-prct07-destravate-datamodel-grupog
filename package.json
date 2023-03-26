@@ -8,7 +8,7 @@
     "coverage": "c8 npm test && c8 report --reporter=text-lcov | coveralls",
     "doc": "typedoc && cp assets/list-method-dependencies.jpg docs/",
     "start": "tsc-watch --onSuccess 'node dist/index.js'",
-    "test": "rm -f db_testing.json db_testing2.json | NODE_ENV=test mocha",
+    "test": "rm -f db_testing.json db_testing2.json db_testing3.json | NODE_ENV=test mocha",
     "watch": "NODE_ENV=test mocha --watch --watch-extensions ts"
   },
   "repository": {
