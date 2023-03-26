@@ -85,7 +85,13 @@
       },
       "distanceKm": 9.17,
       "averageSlope": 15,
-      "userIds": [],
+      "userIds": [
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "mbpuig",
+        "afigueroa",
+        "fcobos",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64"
+      ],
       "activity": 1,
       "averageScore": 9
     },
@@ -104,7 +110,13 @@
       },
       "distanceKm": 20.59,
       "averageSlope": 38,
-      "userIds": [],
+      "userIds": [
+        "esegredo",
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "fcobos",
+        "agranados",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb"
+      ],
       "activity": 1,
       "averageScore": 4
     },
@@ -123,7 +135,12 @@
       },
       "distanceKm": 7.69,
       "averageSlope": 32,
-      "userIds": [],
+      "userIds": [
+        "lperez",
+        "esegredo",
+        "dcalvet",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb"
+      ],
       "activity": 1,
       "averageScore": 6
     },
@@ -142,7 +159,17 @@
       },
       "distanceKm": 22.9,
       "averageSlope": 23,
-      "userIds": [],
+      "userIds": [
+        "lperez",
+        "agarcia",
+        "mbpuig",
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "5cbdc53c-325e-4db2-a212-eca0a465a4da",
+        "fcobos",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "agranados"
+      ],
       "activity": 0,
       "averageScore": 3
     },
@@ -161,7 +188,16 @@
       },
       "distanceKm": 15.56,
       "averageSlope": 25,
-      "userIds": [],
+      "userIds": [
+        "agarcia",
+        "esegredo",
+        "dcalvet",
+        "mbpuig",
+        "afigueroa",
+        "diriarte",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb"
+      ],
       "activity": 1,
       "averageScore": 5
     },
@@ -180,7 +216,14 @@
       },
       "distanceKm": 20.6,
       "averageSlope": 25,
-      "userIds": [],
+      "userIds": [
+        "agarcia",
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "dcalvet",
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "5cbdc53c-325e-4db2-a212-eca0a465a4da",
+        "fcobos"
+      ],
       "activity": 1,
       "averageScore": 3
     },
@@ -199,7 +242,18 @@
       },
       "distanceKm": 1.31,
       "averageSlope": 17,
-      "userIds": [],
+      "userIds": [
+        "lperez",
+        "agarcia",
+        "esegredo",
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "mbpuig",
+        "svidal",
+        "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+        "afigueroa",
+        "diriarte",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384"
+      ],
       "activity": 0,
       "averageScore": 10
     },
@@ -218,7 +272,13 @@
       },
       "distanceKm": 20.25,
       "averageSlope": 11,
-      "userIds": [],
+      "userIds": [
+        "dcalvet",
+        "5cbdc53c-325e-4db2-a212-eca0a465a4da",
+        "fcobos",
+        "diriarte",
+        "agranados"
+      ],
       "activity": 0,
       "averageScore": 5
     },
@@ -237,7 +297,14 @@
       },
       "distanceKm": 21.15,
       "averageSlope": 7,
-      "userIds": [],
+      "userIds": [
+        "agarcia",
+        "esegredo",
+        "8887efe1-7739-4e97-a564-dd06e5d24252",
+        "afigueroa",
+        "fcobos",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb"
+      ],
       "activity": 1,
       "averageScore": 7
     },
@@ -256,7 +323,17 @@
       },
       "distanceKm": 16.7,
       "averageSlope": 1,
-      "userIds": [],
+      "userIds": [
+        "lperez",
+        "esegredo",
+        "egallego",
+        "mbpuig",
+        "afigueroa",
+        "5cbdc53c-325e-4db2-a212-eca0a465a4da",
+        "fcobos",
+        "diriarte",
+        "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb"
+      ],
       "activity": 1,
       "averageScore": 8
     }
@@ -306,7 +383,56 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2021-08-01T05:22:25.135Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2014-03-04T05:32:41.985Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2001-04-07T00:13:54.037Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2009-03-11T21:25:51.311Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2013-11-06T05:24:11.219Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2006-07-08T17:45:19.615Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2006-01-03T13:42:57.670Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2000-04-10T09:03:30.124Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$sYhqQZQZ1cEjAltE/ObNw.u84NrZf2Zjq.23F.7SnNWqJUlYlOy16",
       "isAdmin": true
@@ -321,7 +447,38 @@
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2022-12-22T14:37:29.472Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2009-05-30T11:37:54.049Z",
+          "kms": 20.6,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2022-11-19T01:35:50.616Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        },
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2001-06-02T03:30:24.912Z",
+          "kms": 21.15,
+          "averageSlope": 7
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2016-09-05T05:51:17.781Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$YwBFoP.LYR94wJcoQftRDuqueTDHepA9I1EeeGl5Nd.uc/y4xSaMG",
       "isAdmin": true
@@ -340,7 +497,50 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2021-04-05T02:59:56.126Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2021-05-08T13:45:09.818Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        },
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2017-08-24T11:46:55.892Z",
+          "kms": 20.59,
+          "averageSlope": 38
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2012-10-20T18:57:25.315Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2003-03-03T15:16:53.717Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        },
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2015-10-27T14:14:12.492Z",
+          "kms": 21.15,
+          "averageSlope": 7
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2018-01-02T21:46:10.227Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        }
+      ],
       "activity": 0,
       "passwordHash": "$2b$12$sM69CmGDllbvTHW6gbTo/ev/hNEu2TeOkYerEmVolSoyAu4//2ZVq",
       "isAdmin": true
@@ -360,7 +560,44 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2016-08-11T00:52:16.250Z",
+          "kms": 21.15,
+          "averageSlope": 7
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2015-07-09T18:54:37.796Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        },
+        {
+          "routeId": "fd549425-1869-4397-87f0-4a11b99dffbc",
+          "date": "2021-11-02T04:30:17.499Z",
+          "kms": 9.17,
+          "averageSlope": 15
+        },
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2012-04-11T20:59:42.078Z",
+          "kms": 20.6,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2001-04-05T06:43:20.409Z",
+          "kms": 20.59,
+          "averageSlope": 38
+        },
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2005-08-04T20:22:29.267Z",
+          "kms": 20.6,
+          "averageSlope": 25
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$BM.Qajw6tjxDgYStUlooeugNuMsOuwCOWbBC0GCuxKiKDLb3IpjEm",
       "isAdmin": false
@@ -381,7 +618,50 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2011-07-25T06:57:01.187Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2008-08-24T05:20:08.120Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2021-01-12T02:41:40.871Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2000-05-30T04:13:58.456Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        },
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2002-08-08T08:26:46.719Z",
+          "kms": 20.6,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2015-09-09T17:02:03.342Z",
+          "kms": 20.25,
+          "averageSlope": 11
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2021-04-28T12:20:33.595Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$OHs0bQSSXX1IJYlKG5GuweX3Z95ZClo.Gt4fNPiR/xSsISHWt.4ya",
       "isAdmin": false
@@ -399,7 +679,14 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2017-06-02T17:55:24.110Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        }
+      ],
       "activity": 0,
       "passwordHash": "$2b$12$YZTKQVuch/JXXzvNyOmB0OZH0Td9ch0Afy8amxG/WInLO1zG0E3FW",
       "isAdmin": false
@@ -416,7 +703,38 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2002-07-19T06:42:27.653Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2012-08-31T22:12:15.083Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2001-05-27T12:22:08.268Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        },
+        {
+          "routeId": "fd549425-1869-4397-87f0-4a11b99dffbc",
+          "date": "2016-01-25T04:46:18.663Z",
+          "kms": 9.17,
+          "averageSlope": 15
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2000-04-04T20:04:51.027Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$d8eZ42OgW9sb2C586mdJD.pWkPxTlIyHIi2.R4Wa0wgkxsc25QE7K",
       "isAdmin": false
@@ -433,7 +751,14 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2022-06-27T23:01:13.312Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        }
+      ],
       "activity": 0,
       "passwordHash": "$2b$12$BJmw6SQGiJPSM1QXAO1Je.prJ0Hxk2CaDFArrmJ/o4J00snMvHgx2",
       "isAdmin": false
@@ -454,7 +779,26 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2012-09-22T06:01:14.084Z",
+          "kms": 20.6,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2012-01-26T01:20:27.068Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2000-09-15T02:36:15.444Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$MZKTP06tVjZDPUbIcb2zEOhhjQf7KslsSCG41A1fABlcZV4O7656S",
       "isAdmin": false
@@ -476,7 +820,56 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2019-10-20T10:38:22.392Z",
+          "kms": 21.15,
+          "averageSlope": 7
+        },
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2021-03-11T12:55:43.468Z",
+          "kms": 21.15,
+          "averageSlope": 7
+        },
+        {
+          "routeId": "fd549425-1869-4397-87f0-4a11b99dffbc",
+          "date": "2010-12-06T01:44:11.815Z",
+          "kms": 9.17,
+          "averageSlope": 15
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2014-08-03T05:44:58.464Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2019-05-08T00:49:14.341Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2018-07-02T06:21:40.850Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2016-09-01T04:48:59.065Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2021-10-20T09:07:50.060Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        }
+      ],
       "activity": 0,
       "passwordHash": "$2b$12$DcnlS8yw6RDD/vXMrVsmcudN/CcNB42IB/lkiz3CsJTpMi5HbrK4O",
       "isAdmin": false
@@ -493,7 +886,44 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2009-03-01T09:38:35.639Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        },
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2011-07-07T04:18:40.817Z",
+          "kms": 20.25,
+          "averageSlope": 11
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2008-03-17T05:27:12.346Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2010-11-20T15:37:10.985Z",
+          "kms": 20.25,
+          "averageSlope": 11
+        },
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2004-02-16T12:27:58.513Z",
+          "kms": 20.6,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2004-09-21T03:26:36.937Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$bkJPBc2y03wAprgUD7AO3.yaB/MmZuEUZSLZjwz6olFRDFm/QJjCW",
       "isAdmin": false
@@ -528,7 +958,62 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2005-02-07T18:41:00.204Z",
+          "kms": 21.15,
+          "averageSlope": 7
+        },
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2012-04-10T10:51:18.247Z",
+          "kms": 20.25,
+          "averageSlope": 11
+        },
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2019-09-17T14:33:54.979Z",
+          "kms": 20.6,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2007-10-25T22:12:11.610Z",
+          "kms": 20.59,
+          "averageSlope": 38
+        },
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2009-08-22T07:47:00.869Z",
+          "kms": 20.6,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2019-02-09T09:38:52.945Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "fd549425-1869-4397-87f0-4a11b99dffbc",
+          "date": "2007-10-17T05:14:54.826Z",
+          "kms": 9.17,
+          "averageSlope": 15
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2008-05-09T15:09:39.738Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        },
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2009-05-18T01:29:24.670Z",
+          "kms": 21.15,
+          "averageSlope": 7
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$PrvnvKO60jD8MbcU2Tk31OHWr.3XGKzn3z2.clb4/zoNdXwRqBxvW",
       "isAdmin": false
@@ -551,7 +1036,32 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2017-11-23T16:44:13.619Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2007-08-17T08:30:12.399Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "fd549425-1869-4397-87f0-4a11b99dffbc",
+          "date": "2005-02-07T14:08:36.181Z",
+          "kms": 9.17,
+          "averageSlope": 15
+        },
+        {
+          "routeId": "fd549425-1869-4397-87f0-4a11b99dffbc",
+          "date": "2010-02-22T03:37:11.859Z",
+          "kms": 9.17,
+          "averageSlope": 15
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$X23iq.KQKKC0/ASW7QnqLOaguQUeh9kfhwr7qXK5jZ6G6b9FyrT3G",
       "isAdmin": false
@@ -569,7 +1079,38 @@
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2016-11-16T20:46:37.610Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2009-03-11T21:41:26.932Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2006-03-18T20:47:17.845Z",
+          "kms": 20.25,
+          "averageSlope": 11
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2020-09-02T07:05:45.491Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        },
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2005-12-17T23:18:38.805Z",
+          "kms": 20.25,
+          "averageSlope": 11
+        }
+      ],
       "activity": 0,
       "passwordHash": "$2b$12$NvPaT1MNPL3KJWXHBLgGK.lScbF4WBtecNkQ3hLBRLAfUHxCQJgam",
       "isAdmin": false
@@ -611,7 +1152,32 @@
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2004-12-05T03:26:40.730Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2013-11-27T13:25:18.627Z",
+          "kms": 1.31,
+          "averageSlope": 17
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2012-09-13T02:44:02.386Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2008-03-17T18:27:45.632Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$RGZnydmPVji2waHPsoDPwOpMQD7up52uE6frA0CL9c4P9zowpOKsa",
       "isAdmin": false
@@ -630,7 +1196,38 @@
       "groupFriends": [],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2014-06-08T04:14:08.849Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2014-11-10T03:05:10.098Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        },
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2019-10-03T03:57:49.804Z",
+          "kms": 20.59,
+          "averageSlope": 38
+        },
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2022-06-13T09:00:04.215Z",
+          "kms": 20.25,
+          "averageSlope": 11
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2017-11-15T00:36:12.000Z",
+          "kms": 22.9,
+          "averageSlope": 23
+        }
+      ],
       "activity": 0,
       "passwordHash": "$2b$12$RhYnnAmoA/vc6yYGl1CEMOE4cuurlNPoOvtX9njQv5S6RzgDGCUgK",
       "isAdmin": false
@@ -649,7 +1246,38 @@
       ],
       "favoriteRoutes": [],
       "activeChallenges": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2012-05-02T08:37:57.307Z",
+          "kms": 15.56,
+          "averageSlope": 25
+        },
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2018-09-18T03:27:21.539Z",
+          "kms": 21.15,
+          "averageSlope": 7
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2006-05-12T02:24:37.191Z",
+          "kms": 16.7,
+          "averageSlope": 1
+        },
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2012-04-26T14:31:38.314Z",
+          "kms": 20.59,
+          "averageSlope": 38
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2011-03-21T01:49:46.317Z",
+          "kms": 7.69,
+          "averageSlope": 32
+        }
+      ],
       "activity": 1,
       "passwordHash": "$2b$12$w.OD9HkfDGI3RWTN7/RZpuJv8MRyOPESglsdC0I.1Bl5CDStZWFTy",
       "isAdmin": false
