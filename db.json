@@ -10,7 +10,9 @@
         "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
         "80edccc7-a314-465d-9d84-2e55f71e088e"
       ],
-      "userIds": [],
+      "userIds": [
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384"
+      ],
       "activity": 1
     },
     {
@@ -22,7 +24,14 @@
         "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
         "fd549425-1869-4397-87f0-4a11b99dffbc"
       ],
-      "userIds": [],
+      "userIds": [
+        "agarcia",
+        "mbpuig",
+        "dcalvet",
+        "bc649959-a3c7-4025-af52-ed0fe6997f64",
+        "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+        "diriarte"
+      ],
       "activity": 1
     },
     {
@@ -33,7 +42,13 @@
         "5a42602c-21bb-42d6-930c-c32c54317a9c",
         "ace47fe0-d927-439c-afce-1647c4c64f21"
       ],
-      "userIds": [],
+      "userIds": [
+        "dcalvet",
+        "mbpuig",
+        "mdorta",
+        "rfrutos",
+        "egallego"
+      ],
       "activity": 1
     }
   ],
@@ -372,7 +387,9 @@
         "egallego"
       ],
       "favoriteRoutes": [],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "a47a99a8-e931-4ca3-b778-aa3afd6ed25e"
+      ],
       "routeHistory": [],
       "activity": 1,
       "passwordHash": "$2b$12$i7sKo9ar1OQqthMZ20yPiuNVg4bAuKYSgNjgseB7kTNGuEjZ0oev2",
@@ -464,7 +481,9 @@
       ],
       "groupFriends": [],
       "favoriteRoutes": [],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "d011545d-9032-40d0-8466-06f1fab20bd6"
+      ],
       "routeHistory": [
         {
           "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
@@ -644,7 +663,10 @@
         "5a42602c-21bb-42d6-930c-c32c54317a9c",
         "28397fef-7fd6-452c-b1ac-51cf149a202b"
       ],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "d011545d-9032-40d0-8466-06f1fab20bd6",
+        "a47a99a8-e931-4ca3-b778-aa3afd6ed25e"
+      ],
       "routeHistory": [
         {
           "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
@@ -705,7 +727,9 @@
         "agranados"
       ],
       "favoriteRoutes": [],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "a47a99a8-e931-4ca3-b778-aa3afd6ed25e"
+      ],
       "routeHistory": [
         {
           "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
@@ -731,7 +755,10 @@
       "favoriteRoutes": [
         "8f0d841c-786c-40e4-b4ed-0698ff4e2acc"
       ],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "d011545d-9032-40d0-8466-06f1fab20bd6",
+        "a47a99a8-e931-4ca3-b778-aa3afd6ed25e"
+      ],
       "routeHistory": [
         {
           "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
@@ -1075,7 +1102,9 @@
         "lperez"
       ],
       "favoriteRoutes": [],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "d011545d-9032-40d0-8466-06f1fab20bd6"
+      ],
       "routeHistory": [
         {
           "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
@@ -1123,7 +1152,9 @@
         "2efedfb3-5888-4dc1-94ff-cc8500010056",
         "ace47fe0-d927-439c-afce-1647c4c64f21"
       ],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "d011545d-9032-40d0-8466-06f1fab20bd6"
+      ],
       "routeHistory": [
         {
           "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
@@ -1178,7 +1209,9 @@
         "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb"
       ],
       "favoriteRoutes": [],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "a47a99a8-e931-4ca3-b778-aa3afd6ed25e"
+      ],
       "routeHistory": [],
       "activity": 1,
       "passwordHash": "$2b$12$QnfVYOFzmERDSbMaynhtreNiz5W/f.C26n.xprh1QF5VOD9k5Z0Zi",
@@ -1196,7 +1229,10 @@
       ],
       "groupFriends": [],
       "favoriteRoutes": [],
-      "activeChallenges": [],
+      "activeChallenges": [
+        "39e1e779-d8a6-4eca-83e3-8444215381c4",
+        "d011545d-9032-40d0-8466-06f1fab20bd6"
+      ],
       "routeHistory": [
         {
           "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
