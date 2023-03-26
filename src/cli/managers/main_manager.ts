@@ -7,7 +7,7 @@ import PrintManager from "./print_manager.js";
 import SessionManager from "./session_manager.js";
 
 /**
- * Class to manage all the things relate with the main application
+ * MainManager class "manages" the main manager of the application. Managers offer functionality to the CLI.
  */
 export default class MainManager {
   private admin: AdminManager
@@ -16,19 +16,18 @@ export default class MainManager {
   private print: PrintManager
 
   /**
-   * Constructor of the manager
-   * @param db 
+   * Creates a new MainManager using the Database provided.
+   * @param db Database to use.
    */
   constructor(db: Database) {
     this.session = new SessionManager(db)
     this.admin = new AdminManager(db, this.session)
     this.group = new GroupManager(db, this.session)
-    this.print = new PrintManager(db, this.session)
+    this.print = new PrintManager(db)
   }
 
   /**
    * Main menu of the program
-   * @returns 
    */
   async main(): Promise<void> {
     for (;;) {
