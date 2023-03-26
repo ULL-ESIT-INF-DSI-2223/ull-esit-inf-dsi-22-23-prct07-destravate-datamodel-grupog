@@ -1,6 +1,52 @@
 {
   "challenges": [],
-  "groups": [],
+  "groups": [
+    {
+      "id": "e0a17f71-a7c3-4856-9cd9-679ceb5fa005",
+      "name": "Montañistas",
+      "participants": [],
+      "favoriteRoutes": [],
+      "routeHistory": [],
+      "createdBy": "",
+      "activity": 0
+    },
+    {
+      "id": "13b0c61d-5698-4a6e-889a-ffdb18372a41",
+      "name": "Acampadas Tenerife",
+      "participants": [],
+      "favoriteRoutes": [],
+      "routeHistory": [],
+      "createdBy": "",
+      "activity": 0
+    },
+    {
+      "id": "8e0a0243-35fc-4729-b96a-7c58aec0b3ce",
+      "name": "Senderistas de Anaga",
+      "participants": [],
+      "favoriteRoutes": [],
+      "routeHistory": [],
+      "createdBy": "",
+      "activity": 1
+    },
+    {
+      "id": "275de20b-4a86-4476-acf6-7530595244e1",
+      "name": "Los Caminantes",
+      "participants": [],
+      "favoriteRoutes": [],
+      "routeHistory": [],
+      "createdBy": "",
+      "activity": 1
+    },
+    {
+      "id": "4bdf204c-11df-4895-b037-0074de1bb7b7",
+      "name": "Xtreme Hiking Inc",
+      "participants": [],
+      "favoriteRoutes": [],
+      "routeHistory": [],
+      "createdBy": "",
+      "activity": 0
+    }
+  ],
   "routes": [
     {
       "id": "fd549425-1869-4397-87f0-4a11b99dffbc",
