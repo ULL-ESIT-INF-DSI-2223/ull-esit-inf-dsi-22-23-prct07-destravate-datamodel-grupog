@@ -3,7 +3,6 @@ import { ActivityType } from "../../src/activity_type.js"
 import Coordinates  from "../../src/route/coordinates.js"
 import  Route  from "../../src/route/route.js"
 import Challenge from "../../src/challenge/challenge.js"
-import { ChallengeData } from "../../src/challenge/challenge_data.js"
 import Database from "../../src/db/database.js"
 
 const db = new Database();
