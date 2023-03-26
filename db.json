@@ -62,8 +62,22 @@
         "rfrutos",
         "diriarte"
       ],
-      "favoriteRoutes": [],
-      "routeHistory": [],
+      "favoriteRoutes": [
+        "fd549425-1869-4397-87f0-4a11b99dffbc"
+      ],
+      "routeHistory": [
+        {
+          "routeId": "fd549425-1869-4397-87f0-4a11b99dffbc",
+          "date": "2006-08-11T01:30:55.638Z",
+          "kms": 9.17,
+          "averageSlope": 15,
+          "participants": [
+            "dcalvet",
+            "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+            "rfrutos"
+          ]
+        }
+      ],
       "createdBy": "",
       "activity": 0
     },
@@ -75,8 +89,73 @@
         "svidal",
         "rfrutos"
       ],
-      "favoriteRoutes": [],
-      "routeHistory": [],
+      "favoriteRoutes": [
+        "ace47fe0-d927-439c-afce-1647c4c64f21",
+        "5a42602c-21bb-42d6-930c-c32c54317a9c",
+        "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86"
+      ],
+      "routeHistory": [
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2017-06-04T10:39:40.525Z",
+          "kms": 21.15,
+          "averageSlope": 7,
+          "participants": [
+            "8887efe1-7739-4e97-a564-dd06e5d24252"
+          ]
+        },
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2004-12-26T17:49:31.192Z",
+          "kms": 20.25,
+          "averageSlope": 11,
+          "participants": []
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2013-04-25T08:05:24.788Z",
+          "kms": 15.56,
+          "averageSlope": 25,
+          "participants": []
+        },
+        {
+          "routeId": "ace47fe0-d927-439c-afce-1647c4c64f21",
+          "date": "2014-07-28T17:33:42.570Z",
+          "kms": 16.7,
+          "averageSlope": 1,
+          "participants": []
+        },
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2007-05-27T19:11:18.803Z",
+          "kms": 20.59,
+          "averageSlope": 38,
+          "participants": []
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2001-02-12T06:23:14.945Z",
+          "kms": 15.56,
+          "averageSlope": 25,
+          "participants": []
+        },
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2021-07-04T21:46:24.045Z",
+          "kms": 20.59,
+          "averageSlope": 38,
+          "participants": [
+            "8887efe1-7739-4e97-a564-dd06e5d24252"
+          ]
+        },
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2011-02-21T09:37:10.153Z",
+          "kms": 20.59,
+          "averageSlope": 38,
+          "participants": []
+        }
+      ],
       "createdBy": "",
       "activity": 0
     },
@@ -94,8 +173,66 @@
         "agarcia",
         "8887efe1-7739-4e97-a564-dd06e5d24252"
       ],
-      "favoriteRoutes": [],
-      "routeHistory": [],
+      "favoriteRoutes": [
+        "2efedfb3-5888-4dc1-94ff-cc8500010056",
+        "8f0d841c-786c-40e4-b4ed-0698ff4e2acc"
+      ],
+      "routeHistory": [
+        {
+          "routeId": "2efedfb3-5888-4dc1-94ff-cc8500010056",
+          "date": "2008-05-22T15:41:08.064Z",
+          "kms": 20.25,
+          "averageSlope": 11,
+          "participants": [
+            "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+            "diriarte",
+            "edc90911-48fd-4eb2-a45c-b785314662b3",
+            "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+            "egallego",
+            "esegredo",
+            "rfrutos",
+            "agarcia"
+          ]
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2008-08-12T16:11:40.402Z",
+          "kms": 1.31,
+          "averageSlope": 17,
+          "participants": [
+            "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+            "diriarte",
+            "edc90911-48fd-4eb2-a45c-b785314662b3",
+            "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+            "egallego",
+            "esegredo",
+            "rfrutos",
+            "agarcia"
+          ]
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2019-01-26T23:10:16.016Z",
+          "kms": 1.31,
+          "averageSlope": 17,
+          "participants": []
+        },
+        {
+          "routeId": "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+          "date": "2014-12-14T13:55:21.644Z",
+          "kms": 22.9,
+          "averageSlope": 23,
+          "participants": [
+            "a9f3395d-9253-4b96-ab6a-ac0fd4eb8384",
+            "diriarte",
+            "edc90911-48fd-4eb2-a45c-b785314662b3",
+            "5d3f4894-b9b9-4387-b1f7-46fb6ec912eb",
+            "egallego",
+            "esegredo",
+            "rfrutos"
+          ]
+        }
+      ],
       "createdBy": "",
       "activity": 1
     },
@@ -112,8 +249,95 @@
         "8887efe1-7739-4e97-a564-dd06e5d24252",
         "mbpuig"
       ],
-      "favoriteRoutes": [],
-      "routeHistory": [],
+      "favoriteRoutes": [
+        "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+        "80edccc7-a314-465d-9d84-2e55f71e088e"
+      ],
+      "routeHistory": [
+        {
+          "routeId": "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+          "date": "2007-05-30T19:03:06.562Z",
+          "kms": 20.59,
+          "averageSlope": 38,
+          "participants": [
+            "lperez",
+            "svidal"
+          ]
+        },
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2017-07-26T20:29:42.557Z",
+          "kms": 21.15,
+          "averageSlope": 7,
+          "participants": [
+            "lperez",
+            "svidal",
+            "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+            "mdorta",
+            "bc649959-a3c7-4025-af52-ed0fe6997f64",
+            "esegredo",
+            "8887efe1-7739-4e97-a564-dd06e5d24252"
+          ]
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2014-03-05T12:56:22.680Z",
+          "kms": 15.56,
+          "averageSlope": 25,
+          "participants": [
+            "lperez",
+            "svidal"
+          ]
+        },
+        {
+          "routeId": "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+          "date": "2010-04-30T12:32:58.077Z",
+          "kms": 1.31,
+          "averageSlope": 17,
+          "participants": [
+            "lperez",
+            "svidal"
+          ]
+        },
+        {
+          "routeId": "80edccc7-a314-465d-9d84-2e55f71e088e",
+          "date": "2004-10-20T22:14:08.386Z",
+          "kms": 21.15,
+          "averageSlope": 7,
+          "participants": [
+            "lperez",
+            "svidal",
+            "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+            "mdorta",
+            "bc649959-a3c7-4025-af52-ed0fe6997f64"
+          ]
+        },
+        {
+          "routeId": "28397fef-7fd6-452c-b1ac-51cf149a202b",
+          "date": "2006-04-13T00:29:17.454Z",
+          "kms": 7.69,
+          "averageSlope": 32,
+          "participants": [
+            "lperez",
+            "svidal",
+            "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+            "mdorta",
+            "bc649959-a3c7-4025-af52-ed0fe6997f64"
+          ]
+        },
+        {
+          "routeId": "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "date": "2013-12-01T19:42:22.337Z",
+          "kms": 15.56,
+          "averageSlope": 25,
+          "participants": [
+            "lperez",
+            "svidal",
+            "70f4ba5c-76be-4991-a60e-7b27b8d75f10",
+            "mdorta"
+          ]
+        }
+      ],
       "createdBy": "",
       "activity": 1
     },
@@ -133,7 +357,20 @@
         "dcalvet"
       ],
       "favoriteRoutes": [],
-      "routeHistory": [],
+      "routeHistory": [
+        {
+          "routeId": "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "date": "2008-04-18T21:36:01.788Z",
+          "kms": 20.6,
+          "averageSlope": 25,
+          "participants": [
+            "5cbdc53c-325e-4db2-a212-eca0a465a4da",
+            "egallego",
+            "lperez",
+            "afigueroa"
+          ]
+        }
+      ],
       "createdBy": "",
       "activity": 0
     }
