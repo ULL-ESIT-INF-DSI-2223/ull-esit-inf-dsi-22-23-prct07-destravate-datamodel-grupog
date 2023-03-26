@@ -5,8 +5,11 @@ import  Route  from "../../src/route/route.js"
 import Challenge from "../../src/challenge/challenge.js"
 import Database from "../../src/db/database.js"
 
-const db = new Database();
-await db.load();
+// Init test db
+const db = new Database("/../../db_testing4.json");
+await db.load()
+await db.setRoute(new Route("5a42602c-21bb-42d6-930c-c32c54317a9c", "Barranco de Ruiz", new Coordinates(28.25608023, -16.20676622, 1204), new Coordinates(28.30095618, -16.28478967, 1720), 15.56, 25, [], ActivityType.BICYCLE, 5))
+await db.setRoute(new Route("80ba8d14-057e-4c5d-abb7-92346bc4722c", "Paisaje Lunar de Vilaflor", new Coordinates(28.30936985, -16.17865267, 1194), new Coordinates(28.46924575, -16.63499774, 2444), 20.6, 25, [], ActivityType.BICYCLE, 3))
 
 describe("Challenges", () => {
     const route1 = new Route("123", "Pico del Inglés", new Coordinates(1, 2, 3), new Coordinates(4,5,6), 12, 2, ["a", "b"], ActivityType.RUNNING, 4)
