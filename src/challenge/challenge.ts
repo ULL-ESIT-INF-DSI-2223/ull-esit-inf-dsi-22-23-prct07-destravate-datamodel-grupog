@@ -1,7 +1,12 @@
 import { getBorderCharacters, table } from "table";
 import { ActivityType, activityTypeToString } from "../activity_type.js";
+import { ChallengeData } from "./challenge_data.js";
 import Route from "../route/route.js";
+import Database from "../db/database.js";
 
+/**
+ * Challenge class represents the challenges inside the app.
+ */
 export default class Challenge {
   public id: string;
   public name: string;
@@ -39,6 +44,46 @@ export default class Challenge {
   }
 
   /**
+   * Function to parse the data from the database.
+   * @param data Data from the database.
+   * @returns Challenge parsed from the data provided.
+   */
+  static parse(data: ChallengeData, db: Database): Challenge {
+    const routes: Route[] = [];
+    data.routes.forEach((routeID) => {
+      const route = db.routes().find((route) => route.id === routeID);
+      if (!route) {
+        throw new Error(
+          `no route with matching ID (${routeID}) was found parsing Challenge`
+        );
+      }
+      routes.push(route);
+    });
+    return new Challenge(
+      data.id,
+      data.name,
+      routes,
+      data.userIds,
+      data.activity
+    );
+  }
+
+  /**
+   *
+   * Function to prepare the Challenge object for insertion in the Database
+   * @returns ChallengeData to insert in the database.
+   */
+  toJSON(): ChallengeData {
+    return {
+      id: this.id,
+      name: this.name,
+      routes: this.routes.map((route) => route.id),
+      userIds: this.userIds,
+      activity: this.activity,
+    };
+  }
+
+  /**
    * printTable prints a table containing the list of challenges provided.
    * @param list List of challenges to print.
    */
@@ -58,7 +103,9 @@ export default class Challenge {
       tableData.push([
         challenge.id,
         challenge.name,
-        challenge.routes.map(route => route.name).reduce((acc, val) => acc + val + "\n", ""),
+        challenge.routes
+          .map((route) => route.name)
+          .reduce((acc, val) => acc + val + "\n", ""),
         `${challenge.totalKm} km`,
         challenge.userIds,
         activityTypeToString(challenge.activity),

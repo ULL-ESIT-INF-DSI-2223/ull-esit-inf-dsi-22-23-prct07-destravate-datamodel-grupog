@@ -18,9 +18,9 @@ export default class AdminManager {
   protected user: Prompter
 
   /**
-   * Constructor of the admin manager
-   * @param db 
-   * @param session 
+   * Creates a new AdminManager using the DB and SessionManager provided.
+   * @param db Database to use.
+   * @param session SessionManager to use..
    */
   constructor(db: Database, session: SessionManager) {
     this.challenge = new ChallengePrompter(db)
@@ -31,8 +31,7 @@ export default class AdminManager {
   }
 
   /**
-   * Main admin manager menu
-   * @returns 
+   * main methods is the main menu provided by this manager.
    */
   async main(): Promise<void> {
     for (;;) {

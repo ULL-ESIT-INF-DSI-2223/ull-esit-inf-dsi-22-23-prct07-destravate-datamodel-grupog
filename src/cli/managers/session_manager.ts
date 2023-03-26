@@ -34,8 +34,8 @@ export default class SessionManager {
     }
   }
 
-  currentUserID(): string|null {
-    return this.user ? this.user.id : null
+  currentUser(): UserData|null {
+    return this.user ? this.user : null
   }
 
   isAdmin(): boolean {
@@ -110,16 +110,7 @@ export default class SessionManager {
         name: "pass",
         message: "Introduzca su contraseña:",
         mask: "*",
-        validate: (p: string) => p.length < 4 ? true : "La contraseña debe contener al menos 4 carácteres",
-        // validate: (p: string) => {
-        //   if (p.length < 4) {
-        //     console.log(`La contraseña ${p} tiene ${p.length} caracteres`)
-        //     return;
-        //   } else {
-        //     console.log("Contraseña valida")
-        //     return true;
-        //   }
-        // }
+        validate: (p: string) => p.length >= 4 ? true : "La contraseña debe contener al menos 4 carácteres",
       },
       {
         type: "list",

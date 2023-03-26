@@ -6,20 +6,19 @@ import User from "../../user/user.js";
 import { getBorderCharacters, table } from "table";
 
 /**
- * Class made to manage all the functionalities in which something must be printed on the screen
+ * Class made to manage all the functionalities in which something must be printed on the screen for regular users.
  */
 export default class PrintManager {
   /**
-   * Constructor of the manager
-   * @param db 
-   * @param session 
+   * Creates a new Manager using the database provided.
+   * @param db Database to use.
    */
-  constructor(private db: Database, private session: SessionManager) {}
+  constructor(private db: Database) {}
 
   /**
    * Method to print all the groups on the system
    */
-  printGroups() {
+  printGroups(): void {
     const groups = this.db.groups().slice();
     Group.printTableLessInfo(groups);
   }
@@ -27,7 +26,7 @@ export default class PrintManager {
   /**
    * Method to print all the routes on the system
    */
-  printRoutes() {
+  printRoutes(): void {
     const routes = this.db.routes().slice();
     Route.printTable(routes);
   }
@@ -35,7 +34,7 @@ export default class PrintManager {
   /**
    * Method to print all the users on the system
    */
-  printUsers() {
+  printUsers(): void {
     const users = this.db.users().slice();
     User.printTableLessInfo(users);
   }
@@ -44,7 +43,7 @@ export default class PrintManager {
    * Method to print from each group the TOP 3 user
    * using the km acumulated.
    */
-  printTop3UsersKm() {
+  printTop3UsersKm(): void {
     const groups = this.db.groups().slice();
     groups.forEach((group) => {
       const topUsers = group.top3UsersByAccDistance();
@@ -74,7 +73,7 @@ export default class PrintManager {
    * Method to print from each group the TOP 3 user
    * using the slope acumulated.
    */
-  printTop3UsersSlope() {
+  printTop3UsersSlope(): void {
     const groups = this.db.groups().slice();
     groups.forEach((group) => {
       const topUsers = group.top3UsersByAccSlope();

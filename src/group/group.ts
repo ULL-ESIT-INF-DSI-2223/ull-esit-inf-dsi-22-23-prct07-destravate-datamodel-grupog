@@ -4,7 +4,7 @@ import { GroupData } from "./group_data.js";
 import RouteHistoryGroup from "./route_history_group.js";
 
 /**
- * Class to represente a Group
+ * Group class represents a Group in the application.
  */
 export default class Group {
   public id: string;
@@ -16,14 +16,14 @@ export default class Group {
   public activity: ActivityType;
 
   /**
-   * Constructor of the object Group
-   * @param id 
-   * @param name 
-   * @param participants 
-   * @param favoriteRoutes 
-   * @param routeHistory 
-   * @param createdBy 
-   * @param activity 
+   * Creates a new Group object from the data provided.
+   * @param id Group ID.
+   * @param name Name of the group.
+   * @param participants List of participants of the group.
+   * @param favoriteRoutes List of favorite routes of the group.
+   * @param routeHistory Historic data of the routes done by the group.
+   * @param createdBy Owner ID.
+   * @param activity Activity type of the group.
    */
   constructor(id: string, name: string, participants: string[], favoriteRoutes: string[], routeHistory: RouteHistoryGroup[], createdBy: string, activity: ActivityType) { 
     this.id = id;
@@ -36,9 +36,9 @@ export default class Group {
   }
 
   /**
-   * Static method to parse the data from the db
-   * @param data 
-   * @returns 
+   * parse function parses a Group object from GroupData.
+   * @param data Data to parse into a Group object.
+   * @returns The group object generated using the data provided.
    */
   static parse(data: GroupData): Group {
     return new Group(
@@ -53,7 +53,8 @@ export default class Group {
   }
 
   /**
-   * Function that returns the number of Km accumulated on a week by all the group
+   * weeklyGroupKmStatistics return the sum of kms of the routes done by the group in the last 7 days.
+   * @returns Sum of kms done by the group in the last 7 days.
    */
   weeklyGroupKmStatistics(): number {
     const todaysDate = new Date();
@@ -63,7 +64,8 @@ export default class Group {
   }
 
   /**
-   * Function that returns the amount of slope accumulated on a week by all the group
+   * weeklyGroupSlopeStatistics return the sum of meters changed in the routes done by the group in the last 7 days.
+   * @returns Sum of meters changed by the group in the last 7 days.
    */
   weeklyGroupSlopeStatistics(): number {
     const todaysDate = new Date();
@@ -73,7 +75,8 @@ export default class Group {
   }
 
   /**
-   * Function that returns the number of Km accumulated on a month by all the group
+   * monthlyGroupKmStatistics return the sum of kms of the routes done by the group in the last 30 days.
+   * @returns Sum of kms done by the group in the last 30 days.
    */
   monthlyGroupKmStatistics(): number {
     const todaysDate: Date = new Date();
@@ -83,7 +86,8 @@ export default class Group {
   }
 
   /**
-   * Function that returns the amount of slope accumulated on a month by all the group
+   * monthlyGroupSlopeStatistics return the sum of meters changed in the routes done by the group in the last 30 days.
+   * @returns Sum of meters changed by the group in the last 30 days.
    */
   monthlyGroupSlopeStatistics(): number {
     const todaysDate: Date = new Date();
@@ -93,7 +97,8 @@ export default class Group {
   }
 
   /**
-   * Function that returns the number of Km accumulated on a year by all the group
+   * monthlyGroupKmStatistics return the sum of kms of the routes done by the group in the last 365 days.
+   * @returns Sum of kms done by the group in the last 365 days.
    */
   yearlyGroupKmStatistics(): number {
     const todaysDate: Date = new Date();
@@ -103,7 +108,8 @@ export default class Group {
   }
 
   /**
-   * Function that returns the amount of slope accumulated on a year by all the group
+   * monthlyGroupSlopeStatistics return the sum of meters changed in the routes done by the group in the last 365 days.
+   * @returns Sum of meters changed by the group in the last 365 days.
    */
   yearlyGroupSlopeStatistics(): number {
     const todaysDate: Date = new Date();
@@ -113,25 +119,24 @@ export default class Group {
   }
 
   /**
-   * Funcion that return the TOP 3 users from a group using the kms accumulated
+   * top3UsersByAccDistance returns the top 3 users of the group sorted by most kms.
+   * @returns Top 3 users of the group (based in kms)
    */
   top3UsersByAccDistance(): string[] {
     return this.top3UsersByField("kms")
   }
 
   /**
-   * Funcion that return the TOP 3 users from a group using the slope accumulated
+   * top3UsersByAccSlope returns the top 3 users of the group sorted by most accumulated slope.
+   * @returns Top 3 users of the group (based in accumulated slope)
    */
   top3UsersByAccSlope(): string[] {
     return this.top3UsersByField("averageSlope")
   }
 
   /**
-   * Generic function made to get the TOP 3 users using a field that can be:
-   *  - kms
-   *  - averageSlope
-   * @param field 
-   * @returns 
+   * top3UsersByField returns the top 3 users of the group sorted by the field provided (descending).
+   * @returns Top 3 users of the group (based in the field provided, descending)
    */
   top3UsersByField(field: string): string[] {
     return Array.from(this.routeHistory.reduce((acc, val) => {
