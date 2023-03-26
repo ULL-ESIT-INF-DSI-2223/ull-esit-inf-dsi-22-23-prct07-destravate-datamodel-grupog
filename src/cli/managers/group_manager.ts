@@ -7,7 +7,10 @@ import SessionManager from "./session_manager.js";
 
 export default class GroupManager {
   constructor(private db: Database, private session: SessionManager) {}
-
+  /**
+   * Creates a new group where the owner is the current user
+   * @returns 
+   */
   async create(): Promise<void> {
     const user = this.session.currentUser()
     if (!user) {
@@ -58,6 +61,10 @@ export default class GroupManager {
     ));
   }
 
+  /**
+   * The user can delete groups where he is the owner
+   * @returns 
+   */
   async delete(): Promise<void> {
     const user = this.session.currentUser()
     if (!user) {
@@ -74,6 +81,10 @@ export default class GroupManager {
     }
   }
 
+  /**
+   * Join a group in the database
+   * @returns 
+   */
   async join(): Promise<void> {
     const user = this.session.currentUser()
     if (!user) {

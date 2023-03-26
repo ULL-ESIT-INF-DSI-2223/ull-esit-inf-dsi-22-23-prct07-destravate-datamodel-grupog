@@ -10,12 +10,18 @@ import { activityTypes, users } from "../choices.js";
 export default class SessionManager {
   private db: Database
   private user: UserData | null
-
+  /**
+   * Creates a new SessionManager using the Database provided.
+   * @param db Database to use.
+   */
   constructor(db: Database) {
     this.db = db
     this.user = null
   }
 
+  /**
+   * 
+   */
   async checkSession(): Promise<void> {
     for (let firstTry = true; !this.user; firstTry = false) {
       if (!firstTry) {
@@ -33,15 +39,24 @@ export default class SessionManager {
       }])).callable]())
     }
   }
-
+  /**
+   * Returns the session's user
+   * @returns 
+   */
   currentUser(): UserData|null {
     return this.user ? this.user : null
   }
-
+  /**
+   * Checks if the sessions's user is Admin
+   * @returns 
+   */
   isAdmin(): boolean {
     return (!!this.user) && this.user.isAdmin
   }
 
+  /**
+   * Logout the session's user
+   */
   logout(): void {
     this.user = null
   }
@@ -55,6 +70,10 @@ export default class SessionManager {
     this.user = user ? user : null
   }
 
+  /**
+   * With this function you can log in as a user. You have to introduce your password
+   * @returns 
+   */
   protected async login(): Promise<UserData|null> {
     const credentials = await inquirer.prompt([
       {
@@ -82,6 +101,10 @@ export default class SessionManager {
     return null
   }
 
+  /**
+   * Function to register a user, create it and add it to the database
+   * @returns 
+   */
   protected async register(): Promise<UserData|null> {
     const { id, name, pass, activity } = await inquirer.prompt([
       {
