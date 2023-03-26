@@ -3,17 +3,161 @@ import { ActivityType } from "../../src/activity_type.js"
 import Coordinates  from "../../src/route/coordinates.js"
 import  Route  from "../../src/route/route.js"
 import Challenge from "../../src/challenge/challenge.js"
+import { ChallengeData } from "../../src/challenge/challenge_data.js"
+import Database from "../../src/db/database.js"
+
+const db = new Database();
+await db.load();
 
 describe("Challenges", () => {
     const route1 = new Route("123", "Pico del Inglés", new Coordinates(1, 2, 3), new Coordinates(4,5,6), 12, 2, ["a", "b"], ActivityType.RUNNING, 4)
-    const route2 = new Route("123", "Erjos a Las Portelas", new Coordinates(1, 2, 3), new Coordinates(4,5,6), 12, 2, ["a", "b"], ActivityType.RUNNING, 4)
+    const route2 = new Route("321", "Erjos a Las Portelas", new Coordinates(1, 2, 3), new Coordinates(4,5,6), 12, 2, ["a", "b"], ActivityType.RUNNING, 4)
+    const reto1 = new Challenge("123", "Reto1", [route2, route1], ["a", "b"],ActivityType.RUNNING)
+    const reto2 = new Challenge("123", "Reto2", [route1, route2], ["a", "b"],ActivityType.RUNNING)
   it("Constructor", () => {
     // Valid constructor
     expect(() => new Challenge("123", "Challenge", [route1, route2], ["a", "b"],ActivityType.RUNNING)).not.to.throw()
     // Invalid constructors
     expect(() => new Challenge("123", "", [route1, route2], ["a", "b"],ActivityType.RUNNING)).to.throw("invalid name")
-    //expect(() => new Challenge("123", "Challenge", [route1, route2], ["a", "b"],ActivityType.RUNNING)).to.throw("invalid distance in kilometers")
-    //expect(() => new Challenge("123", "Challenge", [route1, route2], ["a", "b"],ActivityType.RUNNING)).to.throw("invalid total distance in kilometers")
+
+  })
+
+  it("Parse function", () => {
+    expect(Challenge.parse(
+      {
+        id: "123",
+        name: "Reto2",
+        routes: [
+          "5a42602c-21bb-42d6-930c-c32c54317a9c",
+          "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+        ],
+        userIds: ["a", "b"],
+        activity: 0,
+      },
+      db
+    )).to.deep.equal({
+      id: '123',
+      name: 'Reto2',
+      routes: [
+        {
+          id: '5a42602c-21bb-42d6-930c-c32c54317a9c',
+          name: 'Barranco de Ruiz',
+          "start": {
+            "latitude": 28.25608023,
+            "longitude": -16.20676622,
+            "mosl": 1204
+          },
+          "end": {
+            "latitude": 28.30095618,
+            "longitude": -16.28478967,
+            "mosl": 1720
+          },
+          distanceKm: 15.56,
+          averageSlope: 25,
+          userIds: [],
+          activity: 1,
+          averageScore: 5
+        },
+        {
+          id: '80ba8d14-057e-4c5d-abb7-92346bc4722c',
+          name: 'Paisaje Lunar de Vilaflor',
+          "start": {
+            "latitude": 28.30936985,
+            "longitude": -16.17865267,
+            "mosl": 1194
+          },
+          "end": {
+            "latitude": 28.46924575,
+            "longitude": -16.63499774,
+            "mosl": 2444
+          },
+          distanceKm: 20.6,
+          averageSlope: 25,
+          userIds: [],
+          activity: 1,
+          averageScore: 3
+        }
+      ],
+      totalKm: 36.160000000000004,
+      userIds: [ 'a', 'b' ],
+      activity: 0
+    })
+    expect(Challenge.parse(
+      {
+        id: "321",
+        name: "Reto1",
+        routes: [
+          "80ba8d14-057e-4c5d-abb7-92346bc4722c",
+          "5a42602c-21bb-42d6-930c-c32c54317a9c",
+        ],
+        userIds: ["a", "b"],
+        activity: 0,
+      },
+      db
+    )).to.eql({
+      id: '321',
+      name: 'Reto1',
+      routes: [
+        {
+          id: '80ba8d14-057e-4c5d-abb7-92346bc4722c',
+          name: 'Paisaje Lunar de Vilaflor',
+          "start": {
+            "latitude": 28.30936985,
+            "longitude": -16.17865267,
+            "mosl": 1194
+          },
+          "end": {
+            "latitude": 28.46924575,
+            "longitude": -16.63499774,
+            "mosl": 2444
+          },
+          distanceKm: 20.6,
+          averageSlope: 25,
+          userIds: [],
+          activity: 1,
+          averageScore: 3
+        },
+        {
+          id: '5a42602c-21bb-42d6-930c-c32c54317a9c',
+          name: 'Barranco de Ruiz',
+          "start": {
+            "latitude": 28.25608023,
+            "longitude": -16.20676622,
+            "mosl": 1204
+          },
+          "end": {
+            "latitude": 28.30095618,
+            "longitude": -16.28478967,
+            "mosl": 1720
+          },
+          distanceKm: 15.56,
+          averageSlope: 25,
+          userIds: [],
+          activity: 1,
+          averageScore: 5
+        }
+      ],
+      totalKm: 36.160000000000004,
+      userIds: [ 'a', 'b' ],
+      activity: 0
+    })
+  })
+
+  it("toJSON()", () => {
+    expect(reto1.toJSON()).to.deep.equal({
+      id: '123',
+      name: 'Reto1',
+      routes: [ '321', '123' ],
+      userIds: [ 'a', 'b' ],
+      activity: 0
+    })
+    expect(reto2.toJSON()).to.deep.equal({
+      id: '123',
+      name: 'Reto2',
+      routes: [ '123', '321' ],
+      userIds: [ 'a', 'b' ],
+      activity: 0
+    })
   })
 
   it("printTable()", () => {
