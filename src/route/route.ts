@@ -23,7 +23,7 @@ export default class Route {
    * @param start Geographic coordinates of the starting point of the route.
    * @param end Geographic coordinates of the ending point of the route.
    * @param distanceKm Length of the route, in kilometers.
-   * @param averageSlope Average slope of the route, in degrees.
+   * @param averageSlope Average slope of the route, in meters.
    * @param userIds List of users that have traveled through the route.
    * @param activity Type of activity in this route.
    * @param averageScore Average score of this route.
@@ -36,9 +36,6 @@ export default class Route {
     }
     if (distanceKm < 0 || distanceKm > 41_000 || isNaN(distanceKm)) {
       throw new Error("invalid distance in kilometers");
-    }
-    if (averageSlope < -90 || averageSlope > 90 || isNaN(averageSlope)) {
-      throw new Error("invalid average slope");
     }
     if (averageScore < 1 || averageScore > 10 || isNaN(averageScore)) {
       throw new Error("invalid average score");
