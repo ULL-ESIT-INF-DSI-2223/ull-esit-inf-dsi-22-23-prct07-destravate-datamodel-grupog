@@ -110,7 +110,7 @@ export default class SessionManager {
         name: "pass",
         message: "Introduzca su contraseña:",
         mask: "*",
-        validate: (p: string) => p.length < 4 ? true : "La contraseña debe contener al menos 4 carácteres"
+        validate: (p: string) => p.length >= 4 ? true : "La contraseña debe contener al menos 4 carácteres",
       },
       {
         type: "list",

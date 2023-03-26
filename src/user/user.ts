@@ -4,7 +4,7 @@ import RouteHistory from "./route_history.js";
 import { UserData } from "./user_data.js";
 
 /**
- * Class to represente a User
+ * User class represents a user in the app.
  */
 export default class User {
   public id: string; 
@@ -19,17 +19,17 @@ export default class User {
   public isAdmin: boolean;
 
   /**
-   * Constructor of the object User
-   * @param id 
-   * @param name 
-   * @param friends 
-   * @param groupFriends 
-   * @param favoriteRoutes 
-   * @param activeChallenges 
-   * @param routeHistory 
-   * @param activity 
-   * @param passwordHash 
-   * @param isAdmin 
+   * Creates a new User with the data provided.
+   * @param id User ID.
+   * @param name User name.
+   * @param friends List of friends of the user.
+   * @param groupFriends Group of friends of the user.
+   * @param favoriteRoutes List of favorite routes of the user.
+   * @param activeChallenges List of active challenge IDs of the user.
+   * @param routeHistory Historic data of the routes done by the user.
+   * @param activity Activity type the user do.
+   * @param passwordHash Hash of the user's password.
+   * @param isAdmin Whether the user is admin or not.
    */
   constructor(id: string, name: string, friends: string[], groupFriends: string[], favoriteRoutes: string[], activeChallenges: string[], routeHistory: RouteHistory[], activity: ActivityType, passwordHash: string, isAdmin: boolean) {
     this.id = id;
@@ -45,9 +45,9 @@ export default class User {
   }
 
   /**
-   * Function to parse the data from the database
-   * @param data 
-   * @returns 
+   * parse function parses the UserData provided into a new User.
+   * @param data Raw UserData.
+   * @returns User created by the data provided.
    */
   static parse(data: UserData): User {
     return new User(
@@ -65,99 +65,69 @@ export default class User {
   }
 
   /**
-   * Function that returns the number of Km accumulated on a week by a user
+   * weeklyKmStatistics return the sum of kms of the routes done by the user in the last 7 days.
+   * @returns Sum of kms done by the user in the last 7 days.
    */
   weeklyKmStatistics(): number {
     const todaysDate: Date = new Date();
     const oneWeekLess = new Date();
     oneWeekLess.setDate(todaysDate.getDate() - 7);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneWeekLess ? route.kms : 0), 0)
   }
 
   /**
-   * Function that returns the amount of slope accumulated on a week by a user
+   * weeklySlopeStatistics return the sum of meters changed in the routes done by the user in the last 7 days.
+   * @returns Sum of meters changed by the user in the last 7 days.
    */
   weeklySlopeStatistics(): number {
     const todaysDate: Date = new Date();
     const oneWeekLess = new Date();
     oneWeekLess.setDate(todaysDate.getDate() - 7);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneWeekLess ? route.averageSlope : 0), 0)
   }
 
   /**
-   * Function that returns the number of Km accumulated on a month by a user
+   * monthlyKmStatistics return the sum of kms of the routes done by the user in the last 30 days.
+   * @returns Sum of kms done by the user in the last 30 days.
    */
   monthlyKmStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 30);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    const oneMonthLess = new Date();
+    oneMonthLess.setDate(todaysDate.getDate() - 30);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneMonthLess ? route.kms : 0), 0)
   }
 
   /**
-   * Function that returns the amount of slope accumulated on a month by a user
+   * monthlySlopeStatistics return the sum of meters changed in the routes done by the user in the last 30 days.
+   * @returns Sum of meters changed by the user in the last 30 days.
    */
   monthlySlopeStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 30);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    const oneMonthLess = new Date();
+    oneMonthLess.setDate(todaysDate.getDate() - 30);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneMonthLess ? route.averageSlope : 0), 0)
   }
 
   /**
-   * Function that returns the number of Km accumulated on a year by a user
+   * yearlyKmStatistics return the sum of kms of the routes done by the user in the last 365 days.
+   * @returns Sum of kms done by the user in the last 365 days.
    */
   yearlyKmStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 365);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.kms;
-      }
-    })
-    return statistics
+    const oneYearLess = new Date();
+    oneYearLess.setDate(todaysDate.getDate() - 365);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneYearLess ? route.kms : 0), 0)
   }
 
   /**
-   * Function that returns the amount of slope accumulated on a year by a user
+   * yearlySlopeStatistics return the sum of meters changed in the routes done by the user in the last 365 days.
+   * @returns Sum of meters changed by the user in the last 365 days.
    */
   yearlySlopeStatistics(): number {
     const todaysDate: Date = new Date();
-    const oneWeekLess = new Date();
-    oneWeekLess.setDate(todaysDate.getDate() - 365);
-    let statistics = 0;
-    this.routeHistory.forEach((route) => {
-      if (route.date >= oneWeekLess) {
-        statistics += route.averageSlope;
-      }
-    })
-    return statistics
+    const oneYearLess = new Date();
+    oneYearLess.setDate(todaysDate.getDate() - 365);
+    return this.routeHistory.reduce((acc, route) => acc + (route.date >= oneYearLess ? route.averageSlope : 0), 0)
   }
 
   /**
@@ -193,6 +163,41 @@ export default class User {
       user.monthlySlopeStatistics(),
       user.yearlyKmStatistics(),
       user.yearlySlopeStatistics(),
+      user.favoriteRoutes.map((route) => route),
+      user.activeChallenges.map((challenge) => challenge),
+      user.routeHistory.map((route) => route.routeId),
+      activityTypeToString(user.activity),
+    ]))
+
+    console.log(table(tableData, {
+      border: getBorderCharacters("norc"),
+      columnDefault: {alignment: "center"},
+      drawHorizontalLine: (lineIndex: number, rowCount: number) => lineIndex < 2 || lineIndex === rowCount
+    }))
+  }
+
+  /**
+   * printTableLessInfo is a method that prints a new table only with basic information
+   * of the groups that are provided
+   * @param list List of users to print.
+   */
+  static printTableLessInfo(list: User[]): void {
+    const tableData = [[
+      "Identificador",
+      "Nombre",
+      "Amigos",
+      "Grupos de Amigos",
+      "Rutas Favoritas",
+      "Retos activos",
+      "Historial de rutas",
+      "Actividad",
+    ]] as unknown[][]
+
+    list.forEach(user => tableData.push([
+      user.id,
+      user.name,
+      user.friends.map((friend) => friend),
+      user.groupFriends.map((group) => group),
       user.favoriteRoutes.map((route) => route),
       user.activeChallenges.map((challenge) => challenge),
       user.routeHistory.map((route) => route.routeId),

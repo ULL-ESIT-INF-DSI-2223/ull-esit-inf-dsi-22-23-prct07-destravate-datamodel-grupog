@@ -7,6 +7,9 @@ import RoutePrompter from "../route_prompter.js";
 import UserPrompter from "../user_prompter.js";
 import SessionManager from "./session_manager.js";
 
+/**
+ * Class to manage all the things that a admin should be able to do
+ */
 export default class AdminManager {
   protected challenge: Prompter
   protected group: Prompter
@@ -14,6 +17,11 @@ export default class AdminManager {
   protected session: SessionManager
   protected user: Prompter
 
+  /**
+   * Creates a new AdminManager using the DB and SessionManager provided.
+   * @param db Database to use.
+   * @param session SessionManager to use..
+   */
   constructor(db: Database, session: SessionManager) {
     this.challenge = new ChallengePrompter(db)
     this.group = new GroupPrompter(db)
@@ -22,6 +30,9 @@ export default class AdminManager {
     this.user = new UserPrompter(db)
   }
 
+  /**
+   * main methods is the main menu provided by this manager.
+   */
   async main(): Promise<void> {
     for (;;) {
       if (!this.session.isAdmin()) {

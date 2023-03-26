@@ -4,21 +4,34 @@ import { Choice } from "../choices.js";
 import AdminManager from "./admin_manager.js";
 import FriendsManager from "./friends_manager.js";
 import GroupManager from "./group_manager.js";
+import PrintManager from "./print_manager.js";
 import SessionManager from "./session_manager.js";
 
+/**
+ * MainManager class "manages" the main manager of the application. Managers offer functionality to the CLI.
+ */
 export default class MainManager {
   private admin: AdminManager;
+  private friends: FriendsManager;
   private group: GroupManager;
+  private print: PrintManager;
   private session: SessionManager;
-  private user: FriendsManager;
 
+  /**
+   * Creates a new MainManager using the Database provided.
+   * @param db Database to use.
+   */
   constructor(db: Database) {
+    this.print = new PrintManager(db);
     this.session = new SessionManager(db);
     this.admin = new AdminManager(db, this.session);
     this.group = new GroupManager(db, this.session);
-    this.user = new FriendsManager(db, this.session);
+    this.friends = new FriendsManager(db, this.session);
   }
 
+  /**
+   * Main menu of the program
+   */
   async main(): Promise<void> {
     for (;;) {
       await this.session.checkSession();
@@ -33,6 +46,8 @@ export default class MainManager {
         { name: "Ver todas las rutas", value: "printRoutes" },
         { name: "Ver todos los grupos", value: "printGroups" },
         { name: "Ver todos los usuarios", value: "printUsers" },
+        { name: "Ver Top 3 usuarios Km", value: "printTop3UsersKm" },
+        { name: "Ver Top 3 usuarios Elevacion", value: "printTop3UsersSlope" }
       ];
       if (this.session.isAdmin()) {
         choices.push({ name: "Administración", value: "admin" });
@@ -57,7 +72,7 @@ export default class MainManager {
           await this.group.delete();
           break;
         case "editFriends":
-          await this.user.edit();
+          await this.friends.edit();
           break;
         case "exit":
           return;
@@ -68,13 +83,19 @@ export default class MainManager {
           this.session.logout();
           break;
         case "printGroups":
-          throw new Error("TODO: not implemented");
+          this.print.printGroups();
           break;
         case "printRoutes":
-          throw new Error("TODO: not implemented");
+          this.print.printRoutes();
           break;
         case "printUsers":
-          throw new Error("TODO: not implemented");
+          this.print.printUsers()
+          break;
+        case "printTop3UsersKm":
+          this.print.printTop3UsersKm()
+          break;
+        case "printTop3UsersSlope":
+          this.print.printTop3UsersSlope()
           break;
         default:
           throw new Error(`unexpected operation: ${operation}`);
