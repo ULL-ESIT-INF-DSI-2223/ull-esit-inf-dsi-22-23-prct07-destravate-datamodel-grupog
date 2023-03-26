@@ -1,5 +1,27 @@
 {
-  "challenges": [],
+  "challenges": [
+    {
+      "id": "39e1e779-d8a6-4eca-83e3-8444215381c4",
+      "name": "Maratón Teide",
+      "routes": [],
+      "userIds": [],
+      "activity": 1
+    },
+    {
+      "id": "d011545d-9032-40d0-8466-06f1fab20bd6",
+      "name": "Ruta de las vistas",
+      "routes": [],
+      "userIds": [],
+      "activity": 1
+    },
+    {
+      "id": "a47a99a8-e931-4ca3-b778-aa3afd6ed25e",
+      "name": "LEGBREAKER",
+      "routes": [],
+      "userIds": [],
+      "activity": 1
+    }
+  ],
   "groups": [
     {
       "id": "e0a17f71-a7c3-4856-9cd9-679ceb5fa005",
