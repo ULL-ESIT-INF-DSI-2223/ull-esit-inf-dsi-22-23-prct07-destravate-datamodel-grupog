@@ -3,21 +3,36 @@
     {
       "id": "39e1e779-d8a6-4eca-83e3-8444215381c4",
       "name": "Maratón Teide",
-      "routes": [],
+      "routes": [
+        "2efedfb3-5888-4dc1-94ff-cc8500010056",
+        "8f0d841c-786c-40e4-b4ed-0698ff4e2acc",
+        "28397fef-7fd6-452c-b1ac-51cf149a202b",
+        "805d9375-a9c0-4c1e-8da9-d9adb0b2f9be",
+        "80edccc7-a314-465d-9d84-2e55f71e088e"
+      ],
       "userIds": [],
       "activity": 1
     },
     {
       "id": "d011545d-9032-40d0-8466-06f1fab20bd6",
       "name": "Ruta de las vistas",
-      "routes": [],
+      "routes": [
+        "80edccc7-a314-465d-9d84-2e55f71e088e",
+        "28397fef-7fd6-452c-b1ac-51cf149a202b",
+        "f3ee5f7a-a8b3-470d-bd90-d4c3824a8a86",
+        "fd549425-1869-4397-87f0-4a11b99dffbc"
+      ],
       "userIds": [],
       "activity": 1
     },
     {
       "id": "a47a99a8-e931-4ca3-b778-aa3afd6ed25e",
       "name": "LEGBREAKER",
-      "routes": [],
+      "routes": [
+        "28397fef-7fd6-452c-b1ac-51cf149a202b",
+        "5a42602c-21bb-42d6-930c-c32c54317a9c",
+        "ace47fe0-d927-439c-afce-1647c4c64f21"
+      ],
       "userIds": [],
       "activity": 1
     }
